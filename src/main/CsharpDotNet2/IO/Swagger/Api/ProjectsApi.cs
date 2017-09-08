@@ -9,51 +9,51 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IWebhooksApi
+    public interface IProjectsApi
     {
         /// <summary>
-        /// Delete a webhook by ID 
+        /// Delete a project by ID 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
+        /// <param name="projectKey">The project key</param>
         /// <returns></returns>
-        void DeleteWebhook (string resourceId);
+        void DeleteProject (string projectKey);
         /// <summary>
-        /// Get a webhook by ID 
+        /// Get a project by key. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
-        /// <returns>Webhook</returns>
-        Webhook GetWebhook (string resourceId);
+        /// <param name="projectKey">The project key</param>
+        /// <returns>Project</returns>
+        Project GetProject (string projectKey);
         /// <summary>
-        /// Fetch a list of all webhooks 
+        /// Returns a list of all projects in the account. 
         /// </summary>
-        /// <returns>Webhooks</returns>
-        Webhooks GetWebhooks ();
+        /// <returns>Projects</returns>
+        Projects GetProjects ();
         /// <summary>
-        /// Modify a webhook by ID 
+        /// Modify a project by ID 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
+        /// <param name="projectKey">The project key</param>
         /// <param name="patchDelta">http://jsonpatch.com/</param>
-        /// <returns>Webhook</returns>
-        Webhook PatchWebhook (string resourceId, List<PatchDelta> patchDelta);
-        /// <summary>
-        /// Create a webhook 
-        /// </summary>
-        /// <param name="webhookBody">New webhook</param>
         /// <returns></returns>
-        void PostWebhook (WebhookBody webhookBody);
+        void PatchProject (string projectKey, List<PatchDelta> patchDelta);
+        /// <summary>
+        /// Create a project 
+        /// </summary>
+        /// <param name="projectBody">New project</param>
+        /// <returns></returns>
+        void PostProject (ProjectBody projectBody);
     }
   
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class WebhooksApi : IWebhooksApi
+    public class ProjectsApi : IProjectsApi
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhooksApi"/> class.
+        /// Initializes a new instance of the <see cref="ProjectsApi"/> class.
         /// </summary>
         /// <param name="apiClient"> an instance of ApiClient (optional)</param>
         /// <returns></returns>
-        public WebhooksApi(ApiClient apiClient = null)
+        public ProjectsApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
                 this.ApiClient = Configuration.DefaultApiClient; 
@@ -62,10 +62,10 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhooksApi"/> class.
+        /// Initializes a new instance of the <see cref="ProjectsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public WebhooksApi(String basePath)
+        public ProjectsApi(String basePath)
         {
             this.ApiClient = new ApiClient(basePath);
         }
@@ -97,20 +97,20 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Delete a webhook by ID 
+        /// Delete a project by ID 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
+        /// <param name="projectKey">The project key</param> 
         /// <returns></returns>            
-        public void DeleteWebhook (string resourceId)
+        public void DeleteProject (string projectKey)
         {
             
-            // verify the required parameter 'resourceId' is set
-            if (resourceId == null) throw new ApiException(400, "Missing required parameter 'resourceId' when calling DeleteWebhook");
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling DeleteProject");
             
     
-            var path = "/webhooks/{resourceId}";
+            var path = "/projects/{projectKey}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "resourceId" + "}", ApiClient.ParameterToString(resourceId));
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -126,28 +126,28 @@ namespace IO.Swagger.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DeleteWebhook: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteProject: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling DeleteWebhook: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteProject: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
         }
     
         /// <summary>
-        /// Get a webhook by ID 
+        /// Get a project by key. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
-        /// <returns>Webhook</returns>            
-        public Webhook GetWebhook (string resourceId)
+        /// <param name="projectKey">The project key</param> 
+        /// <returns>Project</returns>            
+        public Project GetProject (string projectKey)
         {
             
-            // verify the required parameter 'resourceId' is set
-            if (resourceId == null) throw new ApiException(400, "Missing required parameter 'resourceId' when calling GetWebhook");
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetProject");
             
     
-            var path = "/webhooks/{resourceId}";
+            var path = "/projects/{projectKey}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "resourceId" + "}", ApiClient.ParameterToString(resourceId));
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -163,22 +163,22 @@ namespace IO.Swagger.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetWebhook: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetProject: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetWebhook: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetProject: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Webhook) ApiClient.Deserialize(response.Content, typeof(Webhook), response.Headers);
+            return (Project) ApiClient.Deserialize(response.Content, typeof(Project), response.Headers);
         }
     
         /// <summary>
-        /// Fetch a list of all webhooks 
+        /// Returns a list of all projects in the account. 
         /// </summary>
-        /// <returns>Webhooks</returns>            
-        public Webhooks GetWebhooks ()
+        /// <returns>Projects</returns>            
+        public Projects GetProjects ()
         {
             
     
-            var path = "/webhooks";
+            var path = "/projects";
             path = path.Replace("{format}", "json");
                 
             var queryParams = new Dictionary<String, String>();
@@ -195,32 +195,32 @@ namespace IO.Swagger.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetWebhooks: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetProjects: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetWebhooks: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetProjects: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Webhooks) ApiClient.Deserialize(response.Content, typeof(Webhooks), response.Headers);
+            return (Projects) ApiClient.Deserialize(response.Content, typeof(Projects), response.Headers);
         }
     
         /// <summary>
-        /// Modify a webhook by ID 
+        /// Modify a project by ID 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
+        /// <param name="projectKey">The project key</param> 
         /// <param name="patchDelta">http://jsonpatch.com/</param> 
-        /// <returns>Webhook</returns>            
-        public Webhook PatchWebhook (string resourceId, List<PatchDelta> patchDelta)
+        /// <returns></returns>            
+        public void PatchProject (string projectKey, List<PatchDelta> patchDelta)
         {
             
-            // verify the required parameter 'resourceId' is set
-            if (resourceId == null) throw new ApiException(400, "Missing required parameter 'resourceId' when calling PatchWebhook");
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PatchProject");
             
             // verify the required parameter 'patchDelta' is set
-            if (patchDelta == null) throw new ApiException(400, "Missing required parameter 'patchDelta' when calling PatchWebhook");
+            if (patchDelta == null) throw new ApiException(400, "Missing required parameter 'patchDelta' when calling PatchProject");
             
     
-            var path = "/webhooks/{resourceId}";
+            var path = "/projects/{projectKey}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "resourceId" + "}", ApiClient.ParameterToString(resourceId));
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -237,26 +237,26 @@ namespace IO.Swagger.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PATCH, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PatchWebhook: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchProject: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PatchWebhook: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchProject: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Webhook) ApiClient.Deserialize(response.Content, typeof(Webhook), response.Headers);
+            return;
         }
     
         /// <summary>
-        /// Create a webhook 
+        /// Create a project 
         /// </summary>
-        /// <param name="webhookBody">New webhook</param> 
+        /// <param name="projectBody">New project</param> 
         /// <returns></returns>            
-        public void PostWebhook (WebhookBody webhookBody)
+        public void PostProject (ProjectBody projectBody)
         {
             
-            // verify the required parameter 'webhookBody' is set
-            if (webhookBody == null) throw new ApiException(400, "Missing required parameter 'webhookBody' when calling PostWebhook");
+            // verify the required parameter 'projectBody' is set
+            if (projectBody == null) throw new ApiException(400, "Missing required parameter 'projectBody' when calling PostProject");
             
     
-            var path = "/webhooks";
+            var path = "/projects";
             path = path.Replace("{format}", "json");
                 
             var queryParams = new Dictionary<String, String>();
@@ -265,7 +265,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(webhookBody); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(projectBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
@@ -274,9 +274,9 @@ namespace IO.Swagger.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostWebhook: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostProject: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostWebhook: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostProject: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
         }

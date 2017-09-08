@@ -11,13 +11,20 @@ namespace IO.Swagger.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Links {
+  public class FeatureFlagConfigFallthrough {
     /// <summary>
-    /// Gets or Sets Self
+    /// Gets or Sets Variation
     /// </summary>
-    [DataMember(Name="self", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "self")]
-    public Link Self { get; set; }
+    [DataMember(Name="variation", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "variation")]
+    public int? Variation { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Rollout
+    /// </summary>
+    [DataMember(Name="rollout", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "rollout")]
+    public Rollout Rollout { get; set; }
 
 
     /// <summary>
@@ -26,8 +33,9 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Links {\n");
-      sb.Append("  Self: ").Append(Self).Append("\n");
+      sb.Append("class FeatureFlagConfigFallthrough {\n");
+      sb.Append("  Variation: ").Append(Variation).Append("\n");
+      sb.Append("  Rollout: ").Append(Rollout).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

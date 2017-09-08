@@ -1,9 +1,9 @@
-# IO.Swagger.Model.Links
+# IO.Swagger.Model.Rollout
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Self** | [**Link**](Link.md) |  | [optional] 
+**Variations** | [**List&lt;WeightedVariation&gt;**](WeightedVariation.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

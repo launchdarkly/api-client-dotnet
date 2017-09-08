@@ -11,13 +11,20 @@ namespace IO.Swagger.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Links {
+  public class Project {
     /// <summary>
-    /// Gets or Sets Self
+    /// Gets or Sets Links
     /// </summary>
-    [DataMember(Name="self", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "self")]
-    public Link Self { get; set; }
+    [DataMember(Name="_links", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_links")]
+    public Links Links { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Items
+    /// </summary>
+    [DataMember(Name="items", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "items")]
+    public List<Environment> Items { get; set; }
 
 
     /// <summary>
@@ -26,8 +33,9 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Links {\n");
-      sb.Append("  Self: ").Append(Self).Append("\n");
+      sb.Append("class Project {\n");
+      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("  Items: ").Append(Items).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

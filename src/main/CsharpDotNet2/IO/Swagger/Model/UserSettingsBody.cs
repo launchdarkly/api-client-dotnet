@@ -11,13 +11,14 @@ namespace IO.Swagger.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Links {
+  public class UserSettingsBody {
     /// <summary>
-    /// Gets or Sets Self
+    /// The variation value to set for the user. Must match the variation type of the flag.
     /// </summary>
-    [DataMember(Name="self", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "self")]
-    public Link Self { get; set; }
+    /// <value>The variation value to set for the user. Must match the variation type of the flag.</value>
+    [DataMember(Name="setting", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "setting")]
+    public bool? Setting { get; set; }
 
 
     /// <summary>
@@ -26,8 +27,8 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Links {\n");
-      sb.Append("  Self: ").Append(Self).Append("\n");
+      sb.Append("class UserSettingsBody {\n");
+      sb.Append("  Setting: ").Append(Setting).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

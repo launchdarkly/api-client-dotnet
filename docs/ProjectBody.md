@@ -1,9 +1,10 @@
-# IO.Swagger.Model.Links
+# IO.Swagger.Model.ProjectBody
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Self** | [**Link**](Link.md) |  | [optional] 
+**Name** | **string** |  | 
+**Key** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

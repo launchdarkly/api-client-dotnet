@@ -1,21 +1,20 @@
-# IO.Swagger..WebhooksApi
+# IO.Swagger..EnvironmentsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
-[**GetWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
-[**GetWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Fetch a list of all webhooks
-[**PatchWebhook**](WebhooksApi.md#patchwebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
-[**PostWebhook**](WebhooksApi.md#postwebhook) | **POST** /webhooks | Create a webhook
+[**DeleteEnvironment**](EnvironmentsApi.md#deleteenvironment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
+[**GetEnvironment**](EnvironmentsApi.md#getenvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
+[**PatchEnvironment**](EnvironmentsApi.md#patchenvironment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
+[**PostEnvironment**](EnvironmentsApi.md#postenvironment) | **POST** /environments/{projectKey} | Create an environment
 
 
-<a name="deletewebhook"></a>
-# **DeleteWebhook**
-> void DeleteWebhook (string resourceId)
+<a name="deleteenvironment"></a>
+# **DeleteEnvironment**
+> void DeleteEnvironment (string projectKey, string environmentKey)
 
-Delete a webhook by ID
+Delete an environment by ID
 
 ### Example
 ```csharp
@@ -27,7 +26,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class DeleteWebhookExample
+    public class DeleteEnvironmentExample
     {
         public void main()
         {
@@ -37,17 +36,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new WebhooksApi();
-            var resourceId = resourceId_example;  // string | The resource ID
+            var apiInstance = new EnvironmentsApi();
+            var projectKey = projectKey_example;  // string | The project key
+            var environmentKey = environmentKey_example;  // string | The environment key
 
             try
             {
-                // Delete a webhook by ID
-                apiInstance.DeleteWebhook(resourceId);
+                // Delete an environment by ID
+                apiInstance.DeleteEnvironment(projectKey, environmentKey);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling WebhooksApi.DeleteWebhook: " + e.Message );
+                Debug.Print("Exception when calling EnvironmentsApi.DeleteEnvironment: " + e.Message );
             }
         }
     }
@@ -58,7 +58,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceId** | **string**| The resource ID | 
+ **projectKey** | **string**| The project key | 
+ **environmentKey** | **string**| The environment key | 
 
 ### Return type
 
@@ -75,11 +76,11 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getwebhook"></a>
-# **GetWebhook**
-> Webhook GetWebhook (string resourceId)
+<a name="getenvironment"></a>
+# **GetEnvironment**
+> Environment GetEnvironment (string projectKey, string environmentKey)
 
-Get a webhook by ID
+Get an environment by key.
 
 ### Example
 ```csharp
@@ -91,7 +92,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class GetWebhookExample
+    public class GetEnvironmentExample
     {
         public void main()
         {
@@ -101,18 +102,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new WebhooksApi();
-            var resourceId = resourceId_example;  // string | The resource ID
+            var apiInstance = new EnvironmentsApi();
+            var projectKey = projectKey_example;  // string | The project key
+            var environmentKey = environmentKey_example;  // string | The environment key
 
             try
             {
-                // Get a webhook by ID
-                Webhook result = apiInstance.GetWebhook(resourceId);
+                // Get an environment by key.
+                Environment result = apiInstance.GetEnvironment(projectKey, environmentKey);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling WebhooksApi.GetWebhook: " + e.Message );
+                Debug.Print("Exception when calling EnvironmentsApi.GetEnvironment: " + e.Message );
             }
         }
     }
@@ -123,11 +125,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceId** | **string**| The resource ID | 
+ **projectKey** | **string**| The project key | 
+ **environmentKey** | **string**| The environment key | 
 
 ### Return type
 
-[**Webhook**](Webhook.md)
+[**Environment**](Environment.md)
 
 ### Authorization
 
@@ -140,72 +143,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getwebhooks"></a>
-# **GetWebhooks**
-> Webhooks GetWebhooks ()
+<a name="patchenvironment"></a>
+# **PatchEnvironment**
+> void PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta)
 
-Fetch a list of all webhooks
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class GetWebhooksExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: Token
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new WebhooksApi();
-
-            try
-            {
-                // Fetch a list of all webhooks
-                Webhooks result = apiInstance.GetWebhooks();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling WebhooksApi.GetWebhooks: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Webhooks**](Webhooks.md)
-
-### Authorization
-
-[Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="patchwebhook"></a>
-# **PatchWebhook**
-> Webhook PatchWebhook (string resourceId, List<PatchDelta> patchDelta)
-
-Modify a webhook by ID
+Modify an environment by ID
 
 ### Example
 ```csharp
@@ -217,7 +159,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class PatchWebhookExample
+    public class PatchEnvironmentExample
     {
         public void main()
         {
@@ -227,19 +169,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new WebhooksApi();
-            var resourceId = resourceId_example;  // string | The resource ID
+            var apiInstance = new EnvironmentsApi();
+            var projectKey = projectKey_example;  // string | The project key
+            var environmentKey = environmentKey_example;  // string | The environment key
             var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | http://jsonpatch.com/
 
             try
             {
-                // Modify a webhook by ID
-                Webhook result = apiInstance.PatchWebhook(resourceId, patchDelta);
-                Debug.WriteLine(result);
+                // Modify an environment by ID
+                apiInstance.PatchEnvironment(projectKey, environmentKey, patchDelta);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling WebhooksApi.PatchWebhook: " + e.Message );
+                Debug.Print("Exception when calling EnvironmentsApi.PatchEnvironment: " + e.Message );
             }
         }
     }
@@ -250,12 +192,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceId** | **string**| The resource ID | 
+ **projectKey** | **string**| The project key | 
+ **environmentKey** | **string**| The environment key | 
  **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| http://jsonpatch.com/ | 
 
 ### Return type
 
-[**Webhook**](Webhook.md)
+void (empty response body)
 
 ### Authorization
 
@@ -268,11 +211,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postwebhook"></a>
-# **PostWebhook**
-> void PostWebhook (WebhookBody webhookBody)
+<a name="postenvironment"></a>
+# **PostEnvironment**
+> void PostEnvironment (string projectKey, EnvironmentBody environmentBody)
 
-Create a webhook
+Create an environment
 
 ### Example
 ```csharp
@@ -284,7 +227,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class PostWebhookExample
+    public class PostEnvironmentExample
     {
         public void main()
         {
@@ -294,17 +237,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new WebhooksApi();
-            var webhookBody = new WebhookBody(); // WebhookBody | New webhook
+            var apiInstance = new EnvironmentsApi();
+            var projectKey = projectKey_example;  // string | The project key
+            var environmentBody = new EnvironmentBody(); // EnvironmentBody | New environment
 
             try
             {
-                // Create a webhook
-                apiInstance.PostWebhook(webhookBody);
+                // Create an environment
+                apiInstance.PostEnvironment(projectKey, environmentBody);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling WebhooksApi.PostWebhook: " + e.Message );
+                Debug.Print("Exception when calling EnvironmentsApi.PostEnvironment: " + e.Message );
             }
         }
     }
@@ -315,7 +259,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhookBody** | [**WebhookBody**](WebhookBody.md)| New webhook | 
+ **projectKey** | **string**| The project key | 
+ **environmentBody** | [**EnvironmentBody**](EnvironmentBody.md)| New environment | 
 
 ### Return type
 

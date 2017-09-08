@@ -11,13 +11,13 @@ namespace IO.Swagger.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Links {
+  public class Rollout {
     /// <summary>
-    /// Gets or Sets Self
+    /// Gets or Sets Variations
     /// </summary>
-    [DataMember(Name="self", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "self")]
-    public Link Self { get; set; }
+    [DataMember(Name="variations", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "variations")]
+    public List<WeightedVariation> Variations { get; set; }
 
 
     /// <summary>
@@ -26,8 +26,8 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Links {\n");
-      sb.Append("  Self: ").Append(Self).Append("\n");
+      sb.Append("class Rollout {\n");
+      sb.Append("  Variations: ").Append(Variations).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

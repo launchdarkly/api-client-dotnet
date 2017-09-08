@@ -11,13 +11,27 @@ namespace IO.Swagger.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Links {
+  public class UserFlagSetting {
     /// <summary>
-    /// Gets or Sets Self
+    /// Gets or Sets Links
     /// </summary>
-    [DataMember(Name="self", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "self")]
-    public Link Self { get; set; }
+    [DataMember(Name="_links", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_links")]
+    public Links Links { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Value
+    /// </summary>
+    [DataMember(Name="_value", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_value")]
+    public bool? Value { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Setting
+    /// </summary>
+    [DataMember(Name="setting", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "setting")]
+    public bool? Setting { get; set; }
 
 
     /// <summary>
@@ -26,8 +40,10 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Links {\n");
-      sb.Append("  Self: ").Append(Self).Append("\n");
+      sb.Append("class UserFlagSetting {\n");
+      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("  Value: ").Append(Value).Append("\n");
+      sb.Append("  Setting: ").Append(Setting).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
