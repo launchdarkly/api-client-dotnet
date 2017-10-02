@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetFeatureFlagStatuses**](FlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
 [**GetFeatureFlags**](FlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**PatchFeatureFlag**](FlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
-[**PostFeatureFlag**](FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey}/{featureFlagKey} | Create a feature flag
+[**PostFeatureFlag**](FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Create a feature flag
 
 
 <a name="deletefeatureflag"></a>
@@ -40,8 +40,8 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
 
             try
             {
@@ -61,8 +61,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
 
 ### Return type
 
@@ -106,8 +106,8 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var environmentKeyQuery = environmentKeyQuery_example;  // string | The environment key (optional) 
 
             try
@@ -129,8 +129,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environmentKeyQuery** | **string**| The environment key | [optional] 
 
 ### Return type
@@ -175,7 +175,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key
 
             try
@@ -197,7 +197,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key | 
 
 ### Return type
@@ -242,9 +242,9 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
 
             try
             {
@@ -265,9 +265,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
 
 ### Return type
 
@@ -311,9 +311,9 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKeyQuery = environmentKeyQuery_example;  // string | The environment key (optional) 
-            var tag = tag_example;  // string | Filter by tag (optional) 
+            var tag = tag_example;  // string | Filter by tag. A tag can be used to group flags across projects. (optional) 
 
             try
             {
@@ -334,9 +334,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKeyQuery** | **string**| The environment key | [optional] 
- **tag** | **string**| Filter by tag | [optional] 
+ **tag** | **string**| Filter by tag. A tag can be used to group flags across projects. | [optional] 
 
 ### Return type
 
@@ -380,8 +380,8 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | http://jsonpatch.com/
 
             try
@@ -403,8 +403,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| http://jsonpatch.com/ | 
 
 ### Return type
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 <a name="postfeatureflag"></a>
 # **PostFeatureFlag**
-> void PostFeatureFlag (string projectKey, string featureFlagKey, FeatureFlagBody featureFlagBody)
+> void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody)
 
 Create a feature flag
 
@@ -449,14 +449,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new FlagsApi();
-            var projectKey = projectKey_example;  // string | The project key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagBody = new FeatureFlagBody(); // FeatureFlagBody | Create a new feature flag
 
             try
             {
                 // Create a feature flag
-                apiInstance.PostFeatureFlag(projectKey, featureFlagKey, featureFlagBody);
+                apiInstance.PostFeatureFlag(projectKey, featureFlagBody);
             }
             catch (Exception e)
             {
@@ -471,8 +470,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagBody** | [**FeatureFlagBody**](FeatureFlagBody.md)| Create a new feature flag | 
 
 ### Return type

@@ -14,57 +14,56 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete a feature flag by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
-        /// <param name="featureFlagKey">The feature flags key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <returns></returns>
         void DeleteFeatureFlag (string projectKey, string featureFlagKey);
         /// <summary>
         /// Get a single feature flag by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
-        /// <param name="featureFlagKey">The feature flags key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <param name="environmentKeyQuery">The environment key</param>
         /// <returns>FeatureFlag</returns>
         FeatureFlag GetFeatureFlag (string projectKey, string featureFlagKey, string environmentKeyQuery);
         /// <summary>
         /// Get a list of statuses for all feature flags 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <returns>FeatureFlagStatuses</returns>
         FeatureFlagStatuses GetFeatureFlagStatus (string projectKey, string environmentKey);
         /// <summary>
         /// Get a list of statuses for all feature flags 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
-        /// <param name="featureFlagKey">The feature flags key</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <returns>FeatureFlagStatus</returns>
         FeatureFlagStatus GetFeatureFlagStatuses (string projectKey, string environmentKey, string featureFlagKey);
         /// <summary>
         /// Get a list of all features in the given project. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKeyQuery">The environment key</param>
-        /// <param name="tag">Filter by tag</param>
+        /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param>
         /// <returns>FeatureFlags</returns>
         FeatureFlags GetFeatureFlags (string projectKey, string environmentKeyQuery, string tag);
         /// <summary>
         /// Modify a feature flag by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
-        /// <param name="featureFlagKey">The feature flags key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <param name="patchDelta">http://jsonpatch.com/</param>
         /// <returns>FeatureFlag</returns>
         FeatureFlag PatchFeatureFlag (string projectKey, string featureFlagKey, List<PatchDelta> patchDelta);
         /// <summary>
         /// Create a feature flag 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
-        /// <param name="featureFlagKey">The feature flags key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagBody">Create a new feature flag</param>
         /// <returns></returns>
-        void PostFeatureFlag (string projectKey, string featureFlagKey, FeatureFlagBody featureFlagBody);
+        void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody);
     }
   
     /// <summary>
@@ -123,8 +122,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete a feature flag by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
-        /// <param name="featureFlagKey">The feature flags key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <returns></returns>            
         public void DeleteFeatureFlag (string projectKey, string featureFlagKey)
         {
@@ -165,8 +164,8 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// <summary>
         /// Get a single feature flag by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
-        /// <param name="featureFlagKey">The feature flags key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <param name="environmentKeyQuery">The environment key</param> 
         /// <returns>FeatureFlag</returns>            
         public FeatureFlag GetFeatureFlag (string projectKey, string featureFlagKey, string environmentKeyQuery)
@@ -209,7 +208,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// <summary>
         /// Get a list of statuses for all feature flags 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <returns>FeatureFlagStatuses</returns>            
         public FeatureFlagStatuses GetFeatureFlagStatus (string projectKey, string environmentKey)
@@ -251,9 +250,9 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <summary>
         /// Get a list of statuses for all feature flags 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
-        /// <param name="featureFlagKey">The feature flags key</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <returns>FeatureFlagStatus</returns>            
         public FeatureFlagStatus GetFeatureFlagStatuses (string projectKey, string environmentKey, string featureFlagKey)
         {
@@ -298,9 +297,9 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// <summary>
         /// Get a list of all features in the given project. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKeyQuery">The environment key</param> 
-        /// <param name="tag">Filter by tag</param> 
+        /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param> 
         /// <returns>FeatureFlags</returns>            
         public FeatureFlags GetFeatureFlags (string projectKey, string environmentKeyQuery, string tag)
         {
@@ -339,8 +338,8 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// <summary>
         /// Modify a feature flag by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
-        /// <param name="featureFlagKey">The feature flags key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <param name="patchDelta">http://jsonpatch.com/</param> 
         /// <returns>FeatureFlag</returns>            
         public FeatureFlag PatchFeatureFlag (string projectKey, string featureFlagKey, List<PatchDelta> patchDelta)
@@ -386,27 +385,22 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// <summary>
         /// Create a feature flag 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
-        /// <param name="featureFlagKey">The feature flags key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagBody">Create a new feature flag</param> 
         /// <returns></returns>            
-        public void PostFeatureFlag (string projectKey, string featureFlagKey, FeatureFlagBody featureFlagBody)
+        public void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody)
         {
             
             // verify the required parameter 'projectKey' is set
             if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostFeatureFlag");
             
-            // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostFeatureFlag");
-            
             // verify the required parameter 'featureFlagBody' is set
             if (featureFlagBody == null) throw new ApiException(400, "Missing required parameter 'featureFlagBody' when calling PostFeatureFlag");
             
     
-            var path = "/flags/{projectKey}/{featureFlagKey}";
+            var path = "/flags/{projectKey}";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
-path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();

@@ -14,21 +14,21 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete an environment by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <returns></returns>
         void DeleteEnvironment (string projectKey, string environmentKey);
         /// <summary>
         /// Get an environment by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <returns>Environment</returns>
         Environment GetEnvironment (string projectKey, string environmentKey);
         /// <summary>
         /// Modify an environment by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <param name="patchDelta">http://jsonpatch.com/</param>
         /// <returns></returns>
@@ -36,7 +36,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Create an environment 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentBody">New environment</param>
         /// <returns></returns>
         void PostEnvironment (string projectKey, EnvironmentBody environmentBody);
@@ -98,7 +98,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete an environment by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <returns></returns>            
         public void DeleteEnvironment (string projectKey, string environmentKey)
@@ -140,7 +140,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <summary>
         /// Get an environment by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <returns>Environment</returns>            
         public Environment GetEnvironment (string projectKey, string environmentKey)
@@ -182,7 +182,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <summary>
         /// Modify an environment by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <param name="patchDelta">http://jsonpatch.com/</param> 
         /// <returns></returns>            
@@ -229,7 +229,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <summary>
         /// Create an environment 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentBody">New environment</param> 
         /// <returns></returns>            
         public void PostEnvironment (string projectKey, EnvironmentBody environmentBody)

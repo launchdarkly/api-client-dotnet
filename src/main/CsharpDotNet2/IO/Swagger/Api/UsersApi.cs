@@ -14,7 +14,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete a user by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <param name="userKey">The user&#39;s key</param>
         /// <returns></returns>
@@ -22,7 +22,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Search users in LaunchDarkly based on their last active date, or a search query. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <param name="q">Search query</param>
         /// <param name="limit">Pagination limit</param>
@@ -33,7 +33,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get a user by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <param name="userKey">The user&#39;s key</param>
         /// <returns>User</returns>
@@ -41,7 +41,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List all users in the environment. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
         /// <param name="limit">Pagination limit</param>
         /// <returns>Users</returns>
@@ -104,7 +104,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete a user by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <param name="userKey">The user&#39;s key</param> 
         /// <returns></returns>            
@@ -151,7 +151,7 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
         /// <summary>
         /// Search users in LaunchDarkly based on their last active date, or a search query. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <param name="q">Search query</param> 
         /// <param name="limit">Pagination limit</param> 
@@ -201,7 +201,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <summary>
         /// Get a user by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <param name="userKey">The user&#39;s key</param> 
         /// <returns>User</returns>            
@@ -248,7 +248,7 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
         /// <summary>
         /// List all users in the environment. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
         /// <param name="limit">Pagination limit</param> 
         /// <returns>Users</returns>            

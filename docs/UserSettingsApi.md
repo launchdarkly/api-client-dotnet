@@ -36,10 +36,10 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserSettingsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key
             var userKey = userKey_example;  // string | The user's key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
 
             try
             {
@@ -60,10 +60,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key | 
  **userKey** | **string**| The user&#39;s key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
 
 ### Return type
 
@@ -107,7 +107,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserSettingsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key
             var userKey = userKey_example;  // string | The user's key
 
@@ -130,7 +130,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key | 
  **userKey** | **string**| The user&#39;s key | 
 
@@ -176,10 +176,10 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserSettingsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key
             var userKey = userKey_example;  // string | The user's key
-            var featureFlagKey = featureFlagKey_example;  // string | The feature flags key
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var userSettingsBody = new UserSettingsBody(); // UserSettingsBody | 
 
             try
@@ -200,10 +200,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key | 
  **userKey** | **string**| The user&#39;s key | 
- **featureFlagKey** | **string**| The feature flags key | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **userSettingsBody** | [**UserSettingsBody**](UserSettingsBody.md)|  | 
 
 ### Return type

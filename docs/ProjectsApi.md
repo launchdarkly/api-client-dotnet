@@ -38,7 +38,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ProjectsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
 
             try
             {
@@ -58,7 +58,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
 
 ### Return type
 
@@ -102,7 +102,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ProjectsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
 
             try
             {
@@ -123,7 +123,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
 
 ### Return type
 
@@ -228,7 +228,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ProjectsApi();
-            var projectKey = projectKey_example;  // string | The project key
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | http://jsonpatch.com/
 
             try
@@ -249,7 +249,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key | 
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| http://jsonpatch.com/ | 
 
 ### Return type

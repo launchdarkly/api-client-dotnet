@@ -14,13 +14,13 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete a project by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <returns></returns>
         void DeleteProject (string projectKey);
         /// <summary>
         /// Get a project by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <returns>Project</returns>
         Project GetProject (string projectKey);
         /// <summary>
@@ -31,7 +31,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Modify a project by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="patchDelta">http://jsonpatch.com/</param>
         /// <returns></returns>
         void PatchProject (string projectKey, List<PatchDelta> patchDelta);
@@ -99,7 +99,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Delete a project by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <returns></returns>            
         public void DeleteProject (string projectKey)
         {
@@ -136,7 +136,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get a project by key. 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <returns>Project</returns>            
         public Project GetProject (string projectKey)
         {
@@ -205,7 +205,7 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Modify a project by ID 
         /// </summary>
-        /// <param name="projectKey">The project key</param> 
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="patchDelta">http://jsonpatch.com/</param> 
         /// <returns></returns>            
         public void PatchProject (string projectKey, List<PatchDelta> patchDelta)
