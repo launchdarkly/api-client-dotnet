@@ -18,7 +18,7 @@ namespace IO.Swagger.Api
         /// <returns></returns>
         void DeleteProject (string projectKey);
         /// <summary>
-        /// Get a project by key. 
+        /// Fetch a single project by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <returns>Project</returns>
@@ -134,7 +134,7 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Get a project by key. 
+        /// Fetch a single project by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <returns>Project</returns>            

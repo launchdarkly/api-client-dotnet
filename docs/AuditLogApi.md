@@ -4,15 +4,15 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAuditLogEntries**](AuditLogApi.md#getauditlogentries) | **GET** /auditlog | Fetch a list of all webhooks
-[**GetAuditLogEntry**](AuditLogApi.md#getauditlogentry) | **GET** /auditlog/{resourceId} | Get a webhook by ID
+[**GetAuditLogEntries**](AuditLogApi.md#getauditlogentries) | **GET** /auditlog | Fetch a list of all audit log entries
+[**GetAuditLogEntry**](AuditLogApi.md#getauditlogentry) | **GET** /auditlog/{resourceId} | Get an audit log entry by ID
 
 
 <a name="getauditlogentries"></a>
 # **GetAuditLogEntries**
 > AuditLogEntries GetAuditLogEntries ()
 
-Fetch a list of all webhooks
+Fetch a list of all audit log entries
 
 ### Example
 ```csharp
@@ -38,7 +38,7 @@ namespace Example
 
             try
             {
-                // Fetch a list of all webhooks
+                // Fetch a list of all audit log entries
                 AuditLogEntries result = apiInstance.GetAuditLogEntries();
                 Debug.WriteLine(result);
             }
@@ -73,7 +73,7 @@ This endpoint does not need any parameter.
 # **GetAuditLogEntry**
 > AuditLogEntry GetAuditLogEntry (string resourceId)
 
-Get a webhook by ID
+Get an audit log entry by ID
 
 ### Example
 ```csharp
@@ -100,7 +100,7 @@ namespace Example
 
             try
             {
-                // Get a webhook by ID
+                // Get an audit log entry by ID
                 AuditLogEntry result = apiInstance.GetAuditLogEntry(resourceId);
                 Debug.WriteLine(result);
             }

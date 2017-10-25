@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetFeatureFlagStatuses**](FlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
 [**GetFeatureFlags**](FlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**PatchFeatureFlag**](FlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
-[**PostFeatureFlag**](FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Create a feature flag
+[**PostFeatureFlag**](FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 
 
 <a name="deletefeatureflag"></a>
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 # **PostFeatureFlag**
 > void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody)
 
-Create a feature flag
+Creates a new feature flag.
 
 ### Example
 ```csharp
@@ -454,7 +454,7 @@ namespace Example
 
             try
             {
-                // Create a feature flag
+                // Creates a new feature flag.
                 apiInstance.PostFeatureFlag(projectKey, featureFlagBody);
             }
             catch (Exception e)

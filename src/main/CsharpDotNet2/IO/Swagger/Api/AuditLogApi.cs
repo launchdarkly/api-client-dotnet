@@ -12,12 +12,12 @@ namespace IO.Swagger.Api
     public interface IAuditLogApi
     {
         /// <summary>
-        /// Fetch a list of all webhooks 
+        /// Fetch a list of all audit log entries 
         /// </summary>
         /// <returns>AuditLogEntries</returns>
         AuditLogEntries GetAuditLogEntries ();
         /// <summary>
-        /// Get a webhook by ID 
+        /// Get an audit log entry by ID 
         /// </summary>
         /// <param name="resourceId">The resource ID</param>
         /// <returns>AuditLogEntry</returns>
@@ -78,7 +78,7 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Fetch a list of all webhooks 
+        /// Fetch a list of all audit log entries 
         /// </summary>
         /// <returns>AuditLogEntries</returns>            
         public AuditLogEntries GetAuditLogEntries ()
@@ -110,7 +110,7 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Get a webhook by ID 
+        /// Get an audit log entry by ID 
         /// </summary>
         /// <param name="resourceId">The resource ID</param> 
         /// <returns>AuditLogEntry</returns>            

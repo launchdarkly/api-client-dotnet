@@ -5,7 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteProject**](ProjectsApi.md#deleteproject) | **DELETE** /projects/{projectKey} | Delete a project by ID
-[**GetProject**](ProjectsApi.md#getproject) | **GET** /projects/{projectKey} | Get a project by key.
+[**GetProject**](ProjectsApi.md#getproject) | **GET** /projects/{projectKey} | Fetch a single project by key.
 [**GetProjects**](ProjectsApi.md#getprojects) | **GET** /projects | Returns a list of all projects in the account.
 [**PatchProject**](ProjectsApi.md#patchproject) | **PATCH** /projects/{projectKey} | Modify a project by ID
 [**PostProject**](ProjectsApi.md#postproject) | **POST** /projects | Create a project
@@ -79,7 +79,7 @@ void (empty response body)
 # **GetProject**
 > Project GetProject (string projectKey)
 
-Get a project by key.
+Fetch a single project by key.
 
 ### Example
 ```csharp
@@ -106,7 +106,7 @@ namespace Example
 
             try
             {
-                // Get a project by key.
+                // Fetch a single project by key.
                 Project result = apiInstance.GetProject(projectKey);
                 Debug.WriteLine(result);
             }

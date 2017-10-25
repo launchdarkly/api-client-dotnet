@@ -58,7 +58,7 @@ namespace IO.Swagger.Api
         /// <returns>FeatureFlag</returns>
         FeatureFlag PatchFeatureFlag (string projectKey, string featureFlagKey, List<PatchDelta> patchDelta);
         /// <summary>
-        /// Create a feature flag 
+        /// Creates a new feature flag. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagBody">Create a new feature flag</param>
@@ -383,7 +383,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
-        /// Create a feature flag 
+        /// Creates a new feature flag. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagBody">Create a new feature flag</param> 
