@@ -5,9 +5,9 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteEnvironment**](EnvironmentsApi.md#deleteenvironment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
-[**GetEnvironment**](EnvironmentsApi.md#getenvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
+[**GetEnvironment**](EnvironmentsApi.md#getenvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment given a project and key.
 [**PatchEnvironment**](EnvironmentsApi.md#patchenvironment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
-[**PostEnvironment**](EnvironmentsApi.md#postenvironment) | **POST** /environments/{projectKey} | Create an environment
+[**PostEnvironment**](EnvironmentsApi.md#postenvironment) | **POST** /environments/{projectKey} | Create a new environment in a specified project with a given name, key, and swatch color.
 
 
 <a name="deleteenvironment"></a>
@@ -80,7 +80,7 @@ void (empty response body)
 # **GetEnvironment**
 > Environment GetEnvironment (string projectKey, string environmentKey)
 
-Get an environment by key.
+Get an environment given a project and key.
 
 ### Example
 ```csharp
@@ -108,7 +108,7 @@ namespace Example
 
             try
             {
-                // Get an environment by key.
+                // Get an environment given a project and key.
                 Environment result = apiInstance.GetEnvironment(projectKey, environmentKey);
                 Debug.WriteLine(result);
             }
@@ -215,7 +215,7 @@ void (empty response body)
 # **PostEnvironment**
 > void PostEnvironment (string projectKey, EnvironmentBody environmentBody)
 
-Create an environment
+Create a new environment in a specified project with a given name, key, and swatch color.
 
 ### Example
 ```csharp
@@ -243,7 +243,7 @@ namespace Example
 
             try
             {
-                // Create an environment
+                // Create a new environment in a specified project with a given name, key, and swatch color.
                 apiInstance.PostEnvironment(projectKey, environmentBody);
             }
             catch (Exception e)

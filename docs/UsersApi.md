@@ -5,9 +5,9 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteUser**](UsersApi.md#deleteuser) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID
-[**GetSearchUsers**](UsersApi.md#getsearchusers) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query.
+[**GetSearchUsers**](UsersApi.md#getsearchusers) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
 [**GetUser**](UsersApi.md#getuser) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
-[**GetUsers**](UsersApi.md#getusers) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment.
+[**GetUsers**](UsersApi.md#getusers) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment. Includes the total count of users. In each page, there will be up to &#39;limit&#39; users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
 
 <a name="deleteuser"></a>
@@ -80,9 +80,9 @@ void (empty response body)
 
 <a name="getsearchusers"></a>
 # **GetSearchUsers**
-> Users GetSearchUsers (string projectKey, string environmentKey, string q, decimal? limit, decimal? offset, decimal? after)
+> Users GetSearchUsers (string projectKey, string environmentKey, string q, decimal? limit, decimal? offset, long? after)
 
-Search users in LaunchDarkly based on their last active date, or a search query.
+Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
 
 ### Example
 ```csharp
@@ -110,11 +110,11 @@ namespace Example
             var q = q_example;  // string | Search query (optional) 
             var limit = 3.4;  // decimal? | Pagination limit (optional) 
             var offset = 3.4;  // decimal? | Specifies the first item to return in the collection (optional) 
-            var after = 3.4;  // decimal? | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional) 
+            var after = 789;  // long? | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional) 
 
             try
             {
-                // Search users in LaunchDarkly based on their last active date, or a search query.
+                // Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
                 Users result = apiInstance.GetSearchUsers(projectKey, environmentKey, q, limit, offset, after);
                 Debug.WriteLine(result);
             }
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
  **q** | **string**| Search query | [optional] 
  **limit** | **decimal?**| Pagination limit | [optional] 
  **offset** | **decimal?**| Specifies the first item to return in the collection | [optional] 
- **after** | **decimal?**| A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag | [optional] 
+ **after** | **long?**| A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag | [optional] 
 
 ### Return type
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 # **GetUsers**
 > Users GetUsers (string projectKey, string environmentKey, decimal? limit)
 
-List all users in the environment.
+List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
 ### Example
 ```csharp
@@ -255,7 +255,7 @@ namespace Example
 
             try
             {
-                // List all users in the environment.
+                // List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
                 Users result = apiInstance.GetUsers(projectKey, environmentKey, limit);
                 Debug.WriteLine(result);
             }

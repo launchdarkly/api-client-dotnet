@@ -13,15 +13,17 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class EnvironmentBody {
     /// <summary>
-    /// Gets or Sets Name
+    /// The name of the new environment
     /// </summary>
+    /// <value>The name of the new environment</value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets or Sets Key
+    /// A project-unique key for the new environment
     /// </summary>
+    /// <value>A project-unique key for the new environment</value>
     [DataMember(Name="key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "key")]
     public string Key { get; set; }
@@ -35,8 +37,9 @@ namespace IO.Swagger.Model {
     public string Color { get; set; }
 
     /// <summary>
-    /// Gets or Sets DefaultTtl
+    /// The default TTL for the new environment
     /// </summary>
+    /// <value>The default TTL for the new environment</value>
     [DataMember(Name="defaultTtl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "defaultTtl")]
     public decimal? DefaultTtl { get; set; }

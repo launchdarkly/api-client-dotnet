@@ -31,7 +31,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="date", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "date")]
-    public decimal? Date { get; set; }
+    public long? Date { get; set; }
 
     /// <summary>
     /// Gets or Sets Kind

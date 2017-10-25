@@ -38,7 +38,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="creationDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "creationDate")]
-    public decimal? CreationDate { get; set; }
+    public long? CreationDate { get; set; }
 
     /// <summary>
     /// Gets or Sets IncludeInSnippet

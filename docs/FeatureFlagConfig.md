@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Archived** | **bool?** |  | [optional] 
 **Salt** | **string** |  | [optional] 
 **Sel** | **string** |  | [optional] 
-**LastModified** | **int?** |  | [optional] 
+**LastModified** | **long?** |  | [optional] 
 **Version** | **int?** |  | [optional] 
 **Targets** | [**List&lt;Target&gt;**](Target.md) |  | [optional] 
 **Rules** | [**List&lt;Rule&gt;**](Rule.md) |  | [optional] 

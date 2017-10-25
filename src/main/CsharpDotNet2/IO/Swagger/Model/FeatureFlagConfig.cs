@@ -45,7 +45,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="lastModified", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "lastModified")]
-    public int? LastModified { get; set; }
+    public long? LastModified { get; set; }
 
     /// <summary>
     /// Gets or Sets Version

@@ -21,7 +21,7 @@ namespace IO.Swagger.Api
         /// <returns>UserFlagSetting</returns>
         UserFlagSetting GetUserFlagSetting (string projectKey, string environmentKey, string userKey, string featureFlagKey);
         /// <summary>
-        /// Lists the current flag settings for a given user. 
+        /// Fetch a single flag setting for a user by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
@@ -146,7 +146,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
-        /// Lists the current flag settings for a given user. 
+        /// Fetch a single flag setting for a user by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 

@@ -31,7 +31,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="lastRequested", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "lastRequested")]
-    public string LastRequested { get; set; }
+    public long? LastRequested { get; set; }
 
     /// <summary>
     /// Gets or Sets _Default

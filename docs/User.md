@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastPing** | **string** |  | [optional] 
+**LastPing** | **long?** |  | [optional] 
 **EnvironmentId** | **string** |  | [optional] 
 **OwnerId** | **string** |  | [optional] 
 **_User** | **Object** |  | [optional] 

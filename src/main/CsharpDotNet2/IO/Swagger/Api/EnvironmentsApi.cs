@@ -19,7 +19,7 @@ namespace IO.Swagger.Api
         /// <returns></returns>
         void DeleteEnvironment (string projectKey, string environmentKey);
         /// <summary>
-        /// Get an environment by key. 
+        /// Get an environment given a project and key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key</param>
@@ -34,7 +34,7 @@ namespace IO.Swagger.Api
         /// <returns></returns>
         void PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta);
         /// <summary>
-        /// Create an environment 
+        /// Create a new environment in a specified project with a given name, key, and swatch color. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentBody">New environment</param>
@@ -138,7 +138,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
-        /// Get an environment by key. 
+        /// Get an environment given a project and key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key</param> 
@@ -227,7 +227,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
-        /// Create an environment 
+        /// Create a new environment in a specified project with a given name, key, and swatch color. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentBody">New environment</param> 

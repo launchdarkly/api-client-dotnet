@@ -50,7 +50,7 @@ namespace IO.Swagger.Api
         /// <returns>FeatureFlags</returns>
         FeatureFlags GetFeatureFlags (string projectKey, string environmentKeyQuery, string tag);
         /// <summary>
-        /// Modify a feature flag by ID 
+        /// Perform a partial update to a feature. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
@@ -336,7 +336,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
-        /// Modify a feature flag by ID 
+        /// Perform a partial update to a feature. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 

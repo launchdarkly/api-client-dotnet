@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**GetFeatureFlagStatus**](FlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags
 [**GetFeatureFlagStatuses**](FlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
 [**GetFeatureFlags**](FlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
-[**PatchFeatureFlag**](FlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
+[**PatchFeatureFlag**](FlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
 [**PostFeatureFlag**](FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 
 
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 # **PatchFeatureFlag**
 > FeatureFlag PatchFeatureFlag (string projectKey, string featureFlagKey, List<PatchDelta> patchDelta)
 
-Modify a feature flag by ID
+Perform a partial update to a feature.
 
 ### Example
 ```csharp
@@ -386,7 +386,7 @@ namespace Example
 
             try
             {
-                // Modify a feature flag by ID
+                // Perform a partial update to a feature.
                 FeatureFlag result = apiInstance.PatchFeatureFlag(projectKey, featureFlagKey, patchDelta);
                 Debug.WriteLine(result);
             }

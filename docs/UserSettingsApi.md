@@ -5,7 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetUserFlagSetting**](UserSettingsApi.md#getuserflagsetting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get a user by key.
-[**GetUserFlagSettings**](UserSettingsApi.md#getuserflagsettings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Lists the current flag settings for a given user.
+[**GetUserFlagSettings**](UserSettingsApi.md#getuserflagsettings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Fetch a single flag setting for a user by key.
 [**PutFlagSetting**](UserSettingsApi.md#putflagsetting) | **PUT** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Specifically enable or disable a feature flag for a user based on their key.
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 # **GetUserFlagSettings**
 > UserFlagSettings GetUserFlagSettings (string projectKey, string environmentKey, string userKey)
 
-Lists the current flag settings for a given user.
+Fetch a single flag setting for a user by key.
 
 ### Example
 ```csharp
@@ -113,7 +113,7 @@ namespace Example
 
             try
             {
-                // Lists the current flag settings for a given user.
+                // Fetch a single flag setting for a user by key.
                 UserFlagSettings result = apiInstance.GetUserFlagSettings(projectKey, environmentKey, userKey);
                 Debug.WriteLine(result);
             }
