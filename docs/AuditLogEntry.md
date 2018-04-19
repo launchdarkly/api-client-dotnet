@@ -1,10 +1,10 @@
-# IO.Swagger.Model.AuditLogEntry
+# LaunchDarkly.Api.Model.AuditLogEntry
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | [**Links**](Links.md) |  | [optional] 
-**Id** | [**Id**](Id.md) |  | [optional] 
+**Id** | **string** | The unique resource id. | [optional] 
 **Date** | **long?** |  | [optional] 
 **Kind** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 

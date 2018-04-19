@@ -1,4 +1,4 @@
-# IO.Swagger.Api.EnvironmentsApi
+# LaunchDarkly.Api.Api.EnvironmentsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -20,9 +20,9 @@ Delete an environment in a specific project.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ Get an environment given a project and key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 <a name="patchenvironment"></a>
 # **PatchEnvironment**
-> Environment PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta)
+> Environment PatchEnvironment (string projectKey, string environmentKey, List<PatchOperation> patchDelta)
 
 Modify an environment by ID.
 
@@ -153,9 +153,9 @@ Modify an environment by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -172,7 +172,7 @@ namespace Example
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+            var patchDelta = new List<PatchOperation>(); // List<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+ **patchDelta** | [**List<PatchOperation>**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
@@ -222,9 +222,9 @@ Create a new environment in a specified project with a given name, key, and swat
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {

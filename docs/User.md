@@ -1,13 +1,19 @@
-# IO.Swagger.Model.User
+# LaunchDarkly.Api.Model.User
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastPing** | **string** |  | [optional] 
-**EnvironmentId** | **string** |  | [optional] 
-**OwnerId** | [**Id**](Id.md) |  | [optional] 
-**_User** | **Object** |  | [optional] 
+**Key** | **string** |  | [optional] 
+**Secondary** | **string** |  | [optional] 
+**Ip** | **string** |  | [optional] 
+**Country** | **string** |  | [optional] 
+**Email** | **string** |  | [optional] 
+**FirstName** | **string** |  | [optional] 
+**LastName** | **string** |  | [optional] 
 **Avatar** | **string** |  | [optional] 
+**Name** | **string** |  | [optional] 
+**Anonymous** | **bool?** |  | [optional] 
+**Custom** | **Object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

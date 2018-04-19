@@ -1,4 +1,4 @@
-# IO.Swagger.Api.CustomRolesApi
+# LaunchDarkly.Api.Api.CustomRolesApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -21,9 +21,9 @@ Delete a custom role by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -85,9 +85,9 @@ Get one custom role by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -150,9 +150,9 @@ Return a complete list of custom roles.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -203,7 +203,7 @@ This endpoint does not need any parameter.
 
 <a name="patchcustomrole"></a>
 # **PatchCustomRole**
-> CustomRole PatchCustomRole (string customRoleKey, List<PatchDelta> patchDelta)
+> CustomRole PatchCustomRole (string customRoleKey, List<PatchOperation> patchDelta)
 
 Modify a custom role by key.
 
@@ -211,9 +211,9 @@ Modify a custom role by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -229,7 +229,7 @@ namespace Example
 
             var apiInstance = new CustomRolesApi();
             var customRoleKey = customRoleKey_example;  // string | The custom role key.
-            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+            var patchDelta = new List<PatchOperation>(); // List<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
@@ -251,7 +251,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customRoleKey** | **string**| The custom role key. | 
- **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+ **patchDelta** | [**List<PatchOperation>**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
@@ -278,9 +278,9 @@ Create a new custom role.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# IO.Swagger.Api.UserSettingsApi
+# LaunchDarkly.Api.Api.UserSettingsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,9 +19,9 @@ Fetch a single flag setting for a user by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -90,9 +90,9 @@ Fetch a single flag setting for a user by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -159,9 +159,9 @@ Specifically enable or disable a feature flag for a user based on their key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {

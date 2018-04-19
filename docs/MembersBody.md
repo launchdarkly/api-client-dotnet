@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MembersBody
+# LaunchDarkly.Api.Model.MembersBody
 ## Properties
 
 Name | Type | Description | Notes
@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Email** | **string** |  | 
 **FirstName** | **string** |  | [optional] 
 **LastName** | **string** |  | [optional] 
-**Role** | **NonOwnerRole** |  | [optional] 
+**Role** | **Role** |  | [optional] 
 **CustomRoles** | [**List&lt;CustomRoleKeyOrId&gt;**](CustomRoleKeyOrId.md) |  | [optional] 
 **InlineRole** | [**Statements**](Statements.md) |  | [optional] 
 

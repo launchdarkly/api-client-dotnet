@@ -1,10 +1,10 @@
-# IO.Swagger.Model.Environment
+# LaunchDarkly.Api.Model.Environment
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | [**Links**](Links.md) |  | [optional] 
-**Id** | **string** | The unique id for the environment. | [optional] 
+**Id** | **string** | The unique resource id. | [optional] 
 **Key** | **string** | The key for the environment. | [optional] 
 **Name** | **string** | The name of the environment. | [optional] 
 **ApiKey** | **string** | The SDK key for backend LaunchDarkly SDKs. | [optional] 

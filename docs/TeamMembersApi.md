@@ -1,4 +1,4 @@
-# IO.Swagger.Api.TeamMembersApi
+# LaunchDarkly.Api.Api.TeamMembersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -21,9 +21,9 @@ Delete a team member by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -85,9 +85,9 @@ Get a single team member by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -150,9 +150,9 @@ Returns a list of all members in the account.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -203,7 +203,7 @@ This endpoint does not need any parameter.
 
 <a name="patchmember"></a>
 # **PatchMember**
-> Member PatchMember (string memberId, List<PatchDelta> patchDelta)
+> Member PatchMember (string memberId, List<PatchOperation> patchDelta)
 
 Modify a team member by ID.
 
@@ -211,9 +211,9 @@ Modify a team member by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -229,7 +229,7 @@ namespace Example
 
             var apiInstance = new TeamMembersApi();
             var memberId = memberId_example;  // string | The member ID.
-            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
+            var patchDelta = new List<PatchOperation>(); // List<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
@@ -251,7 +251,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memberId** | **string**| The member ID. | 
- **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
+ **patchDelta** | [**List<PatchOperation>**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
@@ -278,9 +278,9 @@ Invite new members.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {

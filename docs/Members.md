@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Members
+# LaunchDarkly.Api.Model.Members
 ## Properties
 
 Name | Type | Description | Notes

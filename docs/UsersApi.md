@@ -1,4 +1,4 @@
-# IO.Swagger.Api.UsersApi
+# LaunchDarkly.Api.Api.UsersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -20,9 +20,9 @@ Delete a user by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -80,7 +80,7 @@ void (empty response body)
 
 <a name="getsearchusers"></a>
 # **GetSearchUsers**
-> Users GetSearchUsers (string projectKey, string environmentKey, string q, decimal? limit, decimal? offset, decimal? after)
+> Users GetSearchUsers (string projectKey, string environmentKey, string q, int? limit, int? offset, decimal? after)
 
 Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
 
@@ -88,9 +88,9 @@ Search users in LaunchDarkly based on their last active date, or a search query.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -108,8 +108,8 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
             var q = q_example;  // string | Search query. (optional) 
-            var limit = 8.14;  // decimal? | Pagination limit. (optional) 
-            var offset = 8.14;  // decimal? | Specifies the first item to return in the collection. (optional) 
+            var limit = 56;  // int? | Pagination limit. (optional) 
+            var offset = 56;  // int? | Specifies the first item to return in the collection. (optional) 
             var after = 8.14;  // decimal? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
 
             try
@@ -134,8 +134,8 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **q** | **string**| Search query. | [optional] 
- **limit** | **decimal?**| Pagination limit. | [optional] 
- **offset** | **decimal?**| Specifies the first item to return in the collection. | [optional] 
+ **limit** | **int?**| Pagination limit. | [optional] 
+ **offset** | **int?**| Specifies the first item to return in the collection. | [optional] 
  **after** | **decimal?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
 
 ### Return type
@@ -163,9 +163,9 @@ Get a user by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 <a name="getusers"></a>
 # **GetUsers**
-> Users GetUsers (string projectKey, string environmentKey, decimal? limit, string h, string scrollId)
+> Users GetUsers (string projectKey, string environmentKey, int? limit, string h, string scrollId)
 
 List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
@@ -232,9 +232,9 @@ List all users in the environment. Includes the total count of users. In each pa
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -251,9 +251,9 @@ namespace Example
             var apiInstance = new UsersApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var limit = 8.14;  // decimal? | Pagination limit. (optional) 
-            var h = h_example;  // string | Next link query parameter. (optional) 
-            var scrollId = scrollId_example;  // string | Next link query parameter. (optional) 
+            var limit = 56;  // int? | Pagination limit. (optional) 
+            var h = h_example;  // string | This parameter is required when following \"next\" links. (optional) 
+            var scrollId = scrollId_example;  // string | This parameter is required when following \"next\" links. (optional) 
 
             try
             {
@@ -276,9 +276,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **limit** | **decimal?**| Pagination limit. | [optional] 
- **h** | **string**| Next link query parameter. | [optional] 
- **scrollId** | **string**| Next link query parameter. | [optional] 
+ **limit** | **int?**| Pagination limit. | [optional] 
+ **h** | **string**| This parameter is required when following \&quot;next\&quot; links. | [optional] 
+ **scrollId** | **string**| This parameter is required when following \&quot;next\&quot; links. | [optional] 
 
 ### Return type
 

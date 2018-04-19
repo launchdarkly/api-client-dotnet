@@ -1,10 +1,11 @@
-# IO.Swagger.Model.FeatureFlag
+# LaunchDarkly.Api.Model.FeatureFlag
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** |  | [optional] 
 **Name** | **string** | Name of the feature flag. | [optional] 
+**Description** | **string** | Description of the feature flag. | [optional] 
 **Kind** | **string** | Whether the feature flag is a boolean flag or multivariate. | [optional] 
 **CreationDate** | **decimal?** | A unix epoch time in milliseconds specifying the creation time of this flag. | [optional] 
 **IncludeInSnippet** | **bool?** |  | [optional] 

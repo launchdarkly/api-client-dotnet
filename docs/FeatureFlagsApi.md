@@ -1,4 +1,4 @@
-# IO.Swagger.Api.FeatureFlagsApi
+# LaunchDarkly.Api.Api.FeatureFlagsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteFeatureFlag**](FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application.
 [**GetFeatureFlag**](FeatureFlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
-[**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
-[**GetFeatureFlagStatuses**](FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
+[**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
+[**GetFeatureFlagStatuses**](FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**GetFeatureFlags**](FeatureFlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**PatchFeatureFlag**](FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
 [**PostFeatureFlag**](FeatureFlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
@@ -23,9 +23,9 @@ Delete a feature flag in all environments. Be careful- - only delete feature fla
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -89,9 +89,9 @@ Get a single feature flag by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -150,74 +150,7 @@ Name | Type | Description  | Notes
 
 <a name="getfeatureflagstatus"></a>
 # **GetFeatureFlagStatus**
-> FeatureFlagStatuses GetFeatureFlagStatus (string projectKey, string environmentKey)
-
-Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class GetFeatureFlagStatusExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: Token
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new FeatureFlagsApi();
-            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-            try
-            {
-                // Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
-                FeatureFlagStatuses result = apiInstance.GetFeatureFlagStatus(projectKey, environmentKey);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagStatus: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
-
-### Return type
-
-[**FeatureFlagStatuses**](FeatureFlagStatuses.md)
-
-### Authorization
-
-[Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="getfeatureflagstatuses"></a>
-# **GetFeatureFlagStatuses**
-> FeatureFlagStatus GetFeatureFlagStatuses (string projectKey, string environmentKey, string featureFlagKey)
+> FeatureFlagStatus GetFeatureFlagStatus (string projectKey, string environmentKey, string featureFlagKey)
 
 Get the status for a particular feature flag.
 
@@ -225,13 +158,13 @@ Get the status for a particular feature flag.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class GetFeatureFlagStatusesExample
+    public class GetFeatureFlagStatusExample
     {
         public void main()
         {
@@ -249,12 +182,12 @@ namespace Example
             try
             {
                 // Get the status for a particular feature flag.
-                FeatureFlagStatus result = apiInstance.GetFeatureFlagStatuses(projectKey, environmentKey, featureFlagKey);
+                FeatureFlagStatus result = apiInstance.GetFeatureFlagStatus(projectKey, environmentKey, featureFlagKey);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagStatuses: " + e.Message );
+                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagStatus: " + e.Message );
             }
         }
     }
@@ -284,6 +217,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getfeatureflagstatuses"></a>
+# **GetFeatureFlagStatuses**
+> FeatureFlagStatuses GetFeatureFlagStatuses (string projectKey, string environmentKey)
+
+Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
+
+namespace Example
+{
+    public class GetFeatureFlagStatusesExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: Token
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new FeatureFlagsApi();
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+            try
+            {
+                // Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
+                FeatureFlagStatuses result = apiInstance.GetFeatureFlagStatuses(projectKey, environmentKey);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagStatuses: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+
+### Return type
+
+[**FeatureFlagStatuses**](FeatureFlagStatuses.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getfeatureflags"></a>
 # **GetFeatureFlags**
 > FeatureFlags GetFeatureFlags (string projectKey, string env, string tag)
@@ -294,9 +294,9 @@ Get a list of all features in the given project.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -363,9 +363,9 @@ Perform a partial update to a feature.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -382,7 +382,7 @@ namespace Example
             var apiInstance = new FeatureFlagsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
-            var patchComment = new PatchComment(); // PatchComment | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+            var patchComment = new PatchComment(); // PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
 
             try
             {
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
- **patchComment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+ **patchComment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
 
 ### Return type
 
@@ -432,9 +432,9 @@ Creates a new feature flag.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
