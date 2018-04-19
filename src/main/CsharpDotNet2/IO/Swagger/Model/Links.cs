@@ -19,6 +19,13 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "self")]
     public Link Self { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Next
+    /// </summary>
+    [DataMember(Name="next", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "next")]
+    public Link Next { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -28,6 +35,7 @@ namespace IO.Swagger.Model {
       var sb = new StringBuilder();
       sb.Append("class Links {\n");
       sb.Append("  Self: ").Append(Self).Append("\n");
+      sb.Append("  Next: ").Append(Next).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

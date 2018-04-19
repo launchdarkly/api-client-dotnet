@@ -13,33 +13,33 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class EnvironmentBody {
     /// <summary>
-    /// The name of the new environment
+    /// The name of the new environment.
     /// </summary>
-    /// <value>The name of the new environment</value>
+    /// <value>The name of the new environment.</value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
     /// <summary>
-    /// A project-unique key for the new environment
+    /// A project-unique key for the new environment.
     /// </summary>
-    /// <value>A project-unique key for the new environment</value>
+    /// <value>A project-unique key for the new environment.</value>
     [DataMember(Name="key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "key")]
     public string Key { get; set; }
 
     /// <summary>
-    /// A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8)
+    /// A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8).
     /// </summary>
-    /// <value>A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8)</value>
+    /// <value>A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8).</value>
     [DataMember(Name="color", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "color")]
     public string Color { get; set; }
 
     /// <summary>
-    /// The default TTL for the new environment
+    /// The default TTL for the new environment.
     /// </summary>
-    /// <value>The default TTL for the new environment</value>
+    /// <value>The default TTL for the new environment.</value>
     [DataMember(Name="defaultTtl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "defaultTtl")]
     public decimal? DefaultTtl { get; set; }

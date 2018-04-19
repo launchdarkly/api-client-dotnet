@@ -24,7 +24,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_id")]
-    public string Id { get; set; }
+    public Id Id { get; set; }
 
     /// <summary>
     /// Gets or Sets Key

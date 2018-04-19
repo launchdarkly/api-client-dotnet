@@ -1,21 +1,21 @@
-# IO.Swagger..WebhooksApi
+# IO.Swagger.Api.WebhooksApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
-[**GetWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
-[**GetWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Fetch a list of all webhooks
-[**PatchWebhook**](WebhooksApi.md#patchwebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
-[**PostWebhook**](WebhooksApi.md#postwebhook) | **POST** /webhooks | Create a webhook
+[**DeleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID.
+[**GetWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID.
+[**GetWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Fetch a list of all webhooks.
+[**PatchWebhook**](WebhooksApi.md#patchwebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID.
+[**PostWebhook**](WebhooksApi.md#postwebhook) | **POST** /webhooks | Create a webhook.
 
 
 <a name="deletewebhook"></a>
 # **DeleteWebhook**
 > void DeleteWebhook (string resourceId)
 
-Delete a webhook by ID
+Delete a webhook by ID.
 
 ### Example
 ```csharp
@@ -38,11 +38,11 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
-            var resourceId = resourceId_example;  // string | The resource ID
+            var resourceId = resourceId_example;  // string | The resource ID.
 
             try
             {
-                // Delete a webhook by ID
+                // Delete a webhook by ID.
                 apiInstance.DeleteWebhook(resourceId);
             }
             catch (Exception e)
@@ -58,7 +58,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceId** | **string**| The resource ID | 
+ **resourceId** | **string**| The resource ID. | 
 
 ### Return type
 
@@ -79,7 +79,7 @@ void (empty response body)
 # **GetWebhook**
 > Webhook GetWebhook (string resourceId)
 
-Get a webhook by ID
+Get a webhook by ID.
 
 ### Example
 ```csharp
@@ -102,11 +102,11 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
-            var resourceId = resourceId_example;  // string | The resource ID
+            var resourceId = resourceId_example;  // string | The resource ID.
 
             try
             {
-                // Get a webhook by ID
+                // Get a webhook by ID.
                 Webhook result = apiInstance.GetWebhook(resourceId);
                 Debug.WriteLine(result);
             }
@@ -123,7 +123,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceId** | **string**| The resource ID | 
+ **resourceId** | **string**| The resource ID. | 
 
 ### Return type
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 # **GetWebhooks**
 > Webhooks GetWebhooks ()
 
-Fetch a list of all webhooks
+Fetch a list of all webhooks.
 
 ### Example
 ```csharp
@@ -170,7 +170,7 @@ namespace Example
 
             try
             {
-                // Fetch a list of all webhooks
+                // Fetch a list of all webhooks.
                 Webhooks result = apiInstance.GetWebhooks();
                 Debug.WriteLine(result);
             }
@@ -205,7 +205,7 @@ This endpoint does not need any parameter.
 # **PatchWebhook**
 > Webhook PatchWebhook (string resourceId, List<PatchDelta> patchDelta)
 
-Modify a webhook by ID
+Modify a webhook by ID.
 
 ### Example
 ```csharp
@@ -228,12 +228,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
-            var resourceId = resourceId_example;  // string | The resource ID
-            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | http://jsonpatch.com/
+            var resourceId = resourceId_example;  // string | The resource ID.
+            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
-                // Modify a webhook by ID
+                // Modify a webhook by ID.
                 Webhook result = apiInstance.PatchWebhook(resourceId, patchDelta);
                 Debug.WriteLine(result);
             }
@@ -250,8 +250,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceId** | **string**| The resource ID | 
- **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| http://jsonpatch.com/ | 
+ **resourceId** | **string**| The resource ID. | 
+ **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 # **PostWebhook**
 > void PostWebhook (WebhookBody webhookBody)
 
-Create a webhook
+Create a webhook.
 
 ### Example
 ```csharp
@@ -295,11 +295,11 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
-            var webhookBody = new WebhookBody(); // WebhookBody | New webhook
+            var webhookBody = new WebhookBody(); // WebhookBody | New webhook.
 
             try
             {
-                // Create a webhook
+                // Create a webhook.
                 apiInstance.PostWebhook(webhookBody);
             }
             catch (Exception e)
@@ -315,7 +315,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhookBody** | [**WebhookBody**](WebhookBody.md)| New webhook | 
+ **webhookBody** | [**WebhookBody**](WebhookBody.md)| New webhook. | 
 
 ### Return type
 

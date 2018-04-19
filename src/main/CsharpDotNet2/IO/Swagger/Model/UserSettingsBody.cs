@@ -13,9 +13,9 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class UserSettingsBody {
     /// <summary>
-    /// The variation value to set for the user. Must match the variation type of the flag.
+    /// The variation value to set for the user. Must match the variation type of the flag. 
     /// </summary>
-    /// <value>The variation value to set for the user. Must match the variation type of the flag.</value>
+    /// <value>The variation value to set for the user. Must match the variation type of the flag. </value>
     [DataMember(Name="setting", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "setting")]
     public bool? Setting { get; set; }

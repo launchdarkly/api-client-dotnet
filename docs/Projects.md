@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | [**Links**](Links.md) |  | [optional] 
-**Id** | **string** |  | [optional] 
+**Id** | [**Id**](Id.md) |  | [optional] 
 **Key** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Items** | [**List&lt;Project&gt;**](Project.md) |  | [optional] 

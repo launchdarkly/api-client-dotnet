@@ -21,9 +21,9 @@ namespace IO.Swagger.Model {
     public string Name { get; set; }
 
     /// <summary>
-    /// A unique key that will be used to reference the flag in your code
+    /// A unique key that will be used to reference the flag in your code.
     /// </summary>
-    /// <value>A unique key that will be used to reference the flag in your code</value>
+    /// <value>A unique key that will be used to reference the flag in your code.</value>
     [DataMember(Name="key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "key")]
     public string Key { get; set; }
@@ -37,25 +37,25 @@ namespace IO.Swagger.Model {
     public List<Variation> Variations { get; set; }
 
     /// <summary>
-    /// Whether or not the flag is a temporary flag
+    /// Whether or not the flag is a temporary flag.
     /// </summary>
-    /// <value>Whether or not the flag is a temporary flag</value>
+    /// <value>Whether or not the flag is a temporary flag.</value>
     [DataMember(Name="temporary", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "temporary")]
     public bool? Temporary { get; set; }
 
     /// <summary>
-    /// Tags for the feature flag
+    /// Tags for the feature flag.
     /// </summary>
-    /// <value>Tags for the feature flag</value>
+    /// <value>Tags for the feature flag.</value>
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> Tags { get; set; }
 
     /// <summary>
-    /// Whether or not this flag should be made available to the client-side JavaScript SDK
+    /// Whether or not this flag should be made available to the client-side JavaScript SDK.
     /// </summary>
-    /// <value>Whether or not this flag should be made available to the client-side JavaScript SDK</value>
+    /// <value>Whether or not this flag should be made available to the client-side JavaScript SDK.</value>
     [DataMember(Name="includeInSnippet", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "includeInSnippet")]
     public bool? IncludeInSnippet { get; set; }

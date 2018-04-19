@@ -20,8 +20,9 @@ namespace IO.Swagger.Model {
     public Links Links { get; set; }
 
     /// <summary>
-    /// Gets or Sets Name
+    /// | Name     | Description | | - -- -- -- -:| - -- -- -- -- -- | | new      | the feature flag was created within the last 7 days, and has not been requested yet | | active   | the feature flag was requested by your servers or clients within the last 7 days | | inactive | the feature flag was created more than 7 days ago, and hasn't been requested by your servers or clients within the past 7 days | | launched | one variation of the feature flag has been rolled out to all your users for at least 7 days | 
     /// </summary>
+    /// <value>| Name     | Description | | - -- -- -- -:| - -- -- -- -- -- | | new      | the feature flag was created within the last 7 days, and has not been requested yet | | active   | the feature flag was requested by your servers or clients within the last 7 days | | inactive | the feature flag was created more than 7 days ago, and hasn't been requested by your servers or clients within the past 7 days | | launched | one variation of the feature flag has been rolled out to all your users for at least 7 days | </value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
@@ -31,7 +32,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="lastRequested", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "lastRequested")]
-    public long? LastRequested { get; set; }
+    public string LastRequested { get; set; }
 
     /// <summary>
     /// Gets or Sets _Default

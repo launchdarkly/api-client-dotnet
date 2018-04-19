@@ -1,21 +1,21 @@
-# IO.Swagger..ProjectsApi
+# IO.Swagger.Api.ProjectsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteProject**](ProjectsApi.md#deleteproject) | **DELETE** /projects/{projectKey} | Delete a project by ID
+[**DeleteProject**](ProjectsApi.md#deleteproject) | **DELETE** /projects/{projectKey} | Delete a project by key. Caution- - deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
 [**GetProject**](ProjectsApi.md#getproject) | **GET** /projects/{projectKey} | Fetch a single project by key.
 [**GetProjects**](ProjectsApi.md#getprojects) | **GET** /projects | Returns a list of all projects in the account.
-[**PatchProject**](ProjectsApi.md#patchproject) | **PATCH** /projects/{projectKey} | Modify a project by ID
-[**PostProject**](ProjectsApi.md#postproject) | **POST** /projects | Create a project
+[**PatchProject**](ProjectsApi.md#patchproject) | **PATCH** /projects/{projectKey} | Modify a project by ID.
+[**PostProject**](ProjectsApi.md#postproject) | **POST** /projects | Create a new project with the given key and name.
 
 
 <a name="deleteproject"></a>
 # **DeleteProject**
 > void DeleteProject (string projectKey)
 
-Delete a project by ID
+Delete a project by key. Caution- - deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
 
 ### Example
 ```csharp
@@ -42,7 +42,7 @@ namespace Example
 
             try
             {
-                // Delete a project by ID
+                // Delete a project by key. Caution- - deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
                 apiInstance.DeleteProject(projectKey);
             }
             catch (Exception e)
@@ -203,9 +203,9 @@ This endpoint does not need any parameter.
 
 <a name="patchproject"></a>
 # **PatchProject**
-> void PatchProject (string projectKey, List<PatchDelta> patchDelta)
+> Project PatchProject (string projectKey, List<PatchDelta> patchDelta)
 
-Modify a project by ID
+Modify a project by ID.
 
 ### Example
 ```csharp
@@ -229,12 +229,13 @@ namespace Example
 
             var apiInstance = new ProjectsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | http://jsonpatch.com/
+            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
-                // Modify a project by ID
-                apiInstance.PatchProject(projectKey, patchDelta);
+                // Modify a project by ID.
+                Project result = apiInstance.PatchProject(projectKey, patchDelta);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -250,11 +251,11 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| http://jsonpatch.com/ | 
+ **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
-void (empty response body)
+[**Project**](Project.md)
 
 ### Authorization
 
@@ -271,7 +272,7 @@ void (empty response body)
 # **PostProject**
 > void PostProject (ProjectBody projectBody)
 
-Create a project
+Create a new project with the given key and name.
 
 ### Example
 ```csharp
@@ -294,11 +295,11 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ProjectsApi();
-            var projectBody = new ProjectBody(); // ProjectBody | New project
+            var projectBody = new ProjectBody(); // ProjectBody | Project keys must be unique within an account.
 
             try
             {
-                // Create a project
+                // Create a new project with the given key and name.
                 apiInstance.PostProject(projectBody);
             }
             catch (Exception e)
@@ -314,7 +315,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectBody** | [**ProjectBody**](ProjectBody.md)| New project | 
+ **projectBody** | [**ProjectBody**](ProjectBody.md)| Project keys must be unique within an account. | 
 
 ### Return type
 

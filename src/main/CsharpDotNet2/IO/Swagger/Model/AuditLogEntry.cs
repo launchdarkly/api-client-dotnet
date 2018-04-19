@@ -24,7 +24,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_id")]
-    public string Id { get; set; }
+    public Id Id { get; set; }
 
     /// <summary>
     /// Gets or Sets Date
@@ -53,6 +53,20 @@ namespace IO.Swagger.Model {
     [DataMember(Name="description", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "description")]
     public string Description { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ShortDescription
+    /// </summary>
+    [DataMember(Name="shortDescription", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "shortDescription")]
+    public string ShortDescription { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Comment
+    /// </summary>
+    [DataMember(Name="comment", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "comment")]
+    public string Comment { get; set; }
 
     /// <summary>
     /// Gets or Sets Member
@@ -96,6 +110,8 @@ namespace IO.Swagger.Model {
       sb.Append("  Kind: ").Append(Kind).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Description: ").Append(Description).Append("\n");
+      sb.Append("  ShortDescription: ").Append(ShortDescription).Append("\n");
+      sb.Append("  Comment: ").Append(Comment).Append("\n");
       sb.Append("  Member: ").Append(Member).Append("\n");
       sb.Append("  TitleVerb: ").Append(TitleVerb).Append("\n");
       sb.Append("  Title: ").Append(Title).Append("\n");

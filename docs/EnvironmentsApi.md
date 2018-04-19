@@ -1,20 +1,20 @@
-# IO.Swagger..EnvironmentsApi
+# IO.Swagger.Api.EnvironmentsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteEnvironment**](EnvironmentsApi.md#deleteenvironment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
-[**GetEnvironment**](EnvironmentsApi.md#getenvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment given a project and key.
-[**PatchEnvironment**](EnvironmentsApi.md#patchenvironment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
-[**PostEnvironment**](EnvironmentsApi.md#postenvironment) | **POST** /environments/{projectKey} | Create a new environment in a specified project with a given name, key, and swatch color.
+[**DeleteEnvironment**](EnvironmentsApi.md#deleteenvironment) | **DELETE** /projects/{projectKey}/environments/{environmentKey} | Delete an environment in a specific project.
+[**GetEnvironment**](EnvironmentsApi.md#getenvironment) | **GET** /projects/{projectKey}/environments/{environmentKey} | Get an environment given a project and key.
+[**PatchEnvironment**](EnvironmentsApi.md#patchenvironment) | **PATCH** /projects/{projectKey}/environments/{environmentKey} | Modify an environment by ID.
+[**PostEnvironment**](EnvironmentsApi.md#postenvironment) | **POST** /projects/{projectKey}/environments | Create a new environment in a specified project with a given name, key, and swatch color.
 
 
 <a name="deleteenvironment"></a>
 # **DeleteEnvironment**
 > void DeleteEnvironment (string projectKey, string environmentKey)
 
-Delete an environment by ID
+Delete an environment in a specific project.
 
 ### Example
 ```csharp
@@ -38,11 +38,11 @@ namespace Example
 
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
             try
             {
-                // Delete an environment by ID
+                // Delete an environment in a specific project.
                 apiInstance.DeleteEnvironment(projectKey, environmentKey);
             }
             catch (Exception e)
@@ -59,7 +59,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
 
 ### Return type
 
@@ -104,7 +104,7 @@ namespace Example
 
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 
             try
             {
@@ -126,7 +126,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
 
 ### Return type
 
@@ -145,9 +145,9 @@ Name | Type | Description  | Notes
 
 <a name="patchenvironment"></a>
 # **PatchEnvironment**
-> void PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta)
+> Environment PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta)
 
-Modify an environment by ID
+Modify an environment by ID.
 
 ### Example
 ```csharp
@@ -171,13 +171,14 @@ namespace Example
 
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | http://jsonpatch.com/
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var patchDelta = new List<PatchDelta>(); // List<PatchDelta> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
-                // Modify an environment by ID
-                apiInstance.PatchEnvironment(projectKey, environmentKey, patchDelta);
+                // Modify an environment by ID.
+                Environment result = apiInstance.PatchEnvironment(projectKey, environmentKey, patchDelta);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -193,12 +194,12 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| http://jsonpatch.com/ | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **patchDelta** | [**List<PatchDelta>**](PatchDelta.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
-void (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 
@@ -239,7 +240,7 @@ namespace Example
 
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentBody = new EnvironmentBody(); // EnvironmentBody | New environment
+            var environmentBody = new EnvironmentBody(); // EnvironmentBody | New environment.
 
             try
             {
@@ -260,7 +261,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentBody** | [**EnvironmentBody**](EnvironmentBody.md)| New environment | 
+ **environmentBody** | [**EnvironmentBody**](EnvironmentBody.md)| New environment. | 
 
 ### Return type
 

@@ -24,14 +24,14 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_id")]
-    public string Id { get; set; }
+    public Id Id { get; set; }
 
     /// <summary>
     /// Gets or Sets Role
     /// </summary>
     [DataMember(Name="role", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "role")]
-    public string Role { get; set; }
+    public Role Role { get; set; }
 
     /// <summary>
     /// Gets or Sets Email
@@ -59,7 +59,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="customRoles", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "customRoles")]
-    public List<string> CustomRoles { get; set; }
+    public List<Id> CustomRoles { get; set; }
 
 
     /// <summary>

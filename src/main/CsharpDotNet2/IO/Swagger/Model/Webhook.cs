@@ -24,32 +24,36 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_id")]
-    public string Id { get; set; }
+    public Id Id { get; set; }
 
     /// <summary>
-    /// Gets or Sets Url
+    /// The URL of the remote webhook.
     /// </summary>
+    /// <value>The URL of the remote webhook.</value>
     [DataMember(Name="url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "url")]
     public string Url { get; set; }
 
     /// <summary>
-    /// Gets or Sets Secret
+    /// If defined, the webhooks post request will include a X-LD-Signature header whose value will contain an HMAC SHA256 hex digest of the webhook payload, using the secret as the key.
     /// </summary>
+    /// <value>If defined, the webhooks post request will include a X-LD-Signature header whose value will contain an HMAC SHA256 hex digest of the webhook payload, using the secret as the key.</value>
     [DataMember(Name="secret", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "secret")]
     public string Secret { get; set; }
 
     /// <summary>
-    /// Gets or Sets On
+    /// Whether this webhook is enabled or not.
     /// </summary>
+    /// <value>Whether this webhook is enabled or not.</value>
     [DataMember(Name="on", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "on")]
     public bool? On { get; set; }
 
     /// <summary>
-    /// Gets or Sets Tags
+    /// Tags assigned to this webhook.
     /// </summary>
+    /// <value>Tags assigned to this webhook.</value>
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> Tags { get; set; }

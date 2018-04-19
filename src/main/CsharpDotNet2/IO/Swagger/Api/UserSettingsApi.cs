@@ -12,11 +12,11 @@ namespace IO.Swagger.Api
     public interface IUserSettingsApi
     {
         /// <summary>
-        /// Get a user by key. 
+        /// Fetch a single flag setting for a user by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key</param>
-        /// <param name="userKey">The user&#39;s key</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="userKey">The user&#39;s key.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <returns>UserFlagSetting</returns>
         UserFlagSetting GetUserFlagSetting (string projectKey, string environmentKey, string userKey, string featureFlagKey);
@@ -24,16 +24,16 @@ namespace IO.Swagger.Api
         /// Fetch a single flag setting for a user by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key</param>
-        /// <param name="userKey">The user&#39;s key</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="userKey">The user&#39;s key.</param>
         /// <returns>UserFlagSettings</returns>
         UserFlagSettings GetUserFlagSettings (string projectKey, string environmentKey, string userKey);
         /// <summary>
         /// Specifically enable or disable a feature flag for a user based on their key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key</param>
-        /// <param name="userKey">The user&#39;s key</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="userKey">The user&#39;s key.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <param name="userSettingsBody"></param>
         /// <returns></returns>
@@ -94,11 +94,11 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Get a user by key. 
+        /// Fetch a single flag setting for a user by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key</param> 
-        /// <param name="userKey">The user&#39;s key</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="userKey">The user&#39;s key.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <returns>UserFlagSetting</returns>            
         public UserFlagSetting GetUserFlagSetting (string projectKey, string environmentKey, string userKey, string featureFlagKey)
@@ -149,8 +149,8 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// Fetch a single flag setting for a user by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key</param> 
-        /// <param name="userKey">The user&#39;s key</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="userKey">The user&#39;s key.</param> 
         /// <returns>UserFlagSettings</returns>            
         public UserFlagSettings GetUserFlagSettings (string projectKey, string environmentKey, string userKey)
         {
@@ -196,8 +196,8 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
         /// Specifically enable or disable a feature flag for a user based on their key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key</param> 
-        /// <param name="userKey">The user&#39;s key</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="userKey">The user&#39;s key.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <param name="userSettingsBody"></param> 
         /// <returns></returns>            

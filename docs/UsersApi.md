@@ -1,10 +1,10 @@
-# IO.Swagger..UsersApi
+# IO.Swagger.Api.UsersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteUser**](UsersApi.md#deleteuser) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID
+[**DeleteUser**](UsersApi.md#deleteuser) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID.
 [**GetSearchUsers**](UsersApi.md#getsearchusers) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
 [**GetUser**](UsersApi.md#getuser) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
 [**GetUsers**](UsersApi.md#getusers) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment. Includes the total count of users. In each page, there will be up to &#39;limit&#39; users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 # **DeleteUser**
 > void DeleteUser (string projectKey, string environmentKey, string userKey)
 
-Delete a user by ID
+Delete a user by ID.
 
 ### Example
 ```csharp
@@ -38,12 +38,12 @@ namespace Example
 
             var apiInstance = new UsersApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var userKey = userKey_example;  // string | The user's key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var userKey = userKey_example;  // string | The user's key.
 
             try
             {
-                // Delete a user by ID
+                // Delete a user by ID.
                 apiInstance.DeleteUser(projectKey, environmentKey, userKey);
             }
             catch (Exception e)
@@ -60,8 +60,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **userKey** | **string**| The user&#39;s key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **userKey** | **string**| The user&#39;s key. | 
 
 ### Return type
 
@@ -80,7 +80,7 @@ void (empty response body)
 
 <a name="getsearchusers"></a>
 # **GetSearchUsers**
-> Users GetSearchUsers (string projectKey, string environmentKey, string q, decimal? limit, decimal? offset, long? after)
+> Users GetSearchUsers (string projectKey, string environmentKey, string q, decimal? limit, decimal? offset, decimal? after)
 
 Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
 
@@ -106,11 +106,11 @@ namespace Example
 
             var apiInstance = new UsersApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var q = q_example;  // string | Search query (optional) 
-            var limit = 3.4;  // decimal? | Pagination limit (optional) 
-            var offset = 3.4;  // decimal? | Specifies the first item to return in the collection (optional) 
-            var after = 789;  // long? | A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional) 
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var q = q_example;  // string | Search query. (optional) 
+            var limit = 8.14;  // decimal? | Pagination limit. (optional) 
+            var offset = 8.14;  // decimal? | Specifies the first item to return in the collection. (optional) 
+            var after = 8.14;  // decimal? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
 
             try
             {
@@ -132,11 +132,11 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **q** | **string**| Search query | [optional] 
- **limit** | **decimal?**| Pagination limit | [optional] 
- **offset** | **decimal?**| Specifies the first item to return in the collection | [optional] 
- **after** | **long?**| A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag | [optional] 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **q** | **string**| Search query. | [optional] 
+ **limit** | **decimal?**| Pagination limit. | [optional] 
+ **offset** | **decimal?**| Specifies the first item to return in the collection. | [optional] 
+ **after** | **decimal?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
 
 ### Return type
 
@@ -181,8 +181,8 @@ namespace Example
 
             var apiInstance = new UsersApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var userKey = userKey_example;  // string | The user's key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var userKey = userKey_example;  // string | The user's key.
 
             try
             {
@@ -204,8 +204,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **userKey** | **string**| The user&#39;s key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **userKey** | **string**| The user&#39;s key. | 
 
 ### Return type
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 <a name="getusers"></a>
 # **GetUsers**
-> Users GetUsers (string projectKey, string environmentKey, decimal? limit)
+> Users GetUsers (string projectKey, string environmentKey, decimal? limit, string h, string scrollId)
 
 List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
@@ -250,13 +250,15 @@ namespace Example
 
             var apiInstance = new UsersApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var limit = 3.4;  // decimal? | Pagination limit (optional) 
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var limit = 8.14;  // decimal? | Pagination limit. (optional) 
+            var h = h_example;  // string | Next link query parameter. (optional) 
+            var scrollId = scrollId_example;  // string | Next link query parameter. (optional) 
 
             try
             {
                 // List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
-                Users result = apiInstance.GetUsers(projectKey, environmentKey, limit);
+                Users result = apiInstance.GetUsers(projectKey, environmentKey, limit, h, scrollId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -273,8 +275,10 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **limit** | **decimal?**| Pagination limit | [optional] 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **limit** | **decimal?**| Pagination limit. | [optional] 
+ **h** | **string**| Next link query parameter. | [optional] 
+ **scrollId** | **string**| Next link query parameter. | [optional] 
 
 ### Return type
 

@@ -12,7 +12,7 @@ namespace IO.Swagger.Api
     public interface IRootApi
     {
         /// <summary>
-        /// Get the root resource 
+        ///  You can issue a GET request to the root resource to find all of the resource categories supported by the API.
         /// </summary>
         /// <returns>Links</returns>
         Links GetRoot ();
@@ -72,7 +72,7 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Get the root resource 
+        ///  You can issue a GET request to the root resource to find all of the resource categories supported by the API.
         /// </summary>
         /// <returns>Links</returns>            
         public Links GetRoot ()

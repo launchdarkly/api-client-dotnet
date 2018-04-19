@@ -12,14 +12,19 @@ namespace IO.Swagger.Api
     public interface IAuditLogApi
     {
         /// <summary>
-        /// Fetch a list of all audit log entries 
+        /// Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query. 
         /// </summary>
+        /// <param name="before">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp.</param>
+        /// <param name="after">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.</param>
+        /// <param name="q">Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change.</param>
+        /// <param name="limit">A limit on the number of audit log entries to be returned, between 1 and 20.</param>
+        /// <param name="spec">A resource specifier, allowing you to filter audit log listings by resource.</param>
         /// <returns>AuditLogEntries</returns>
-        AuditLogEntries GetAuditLogEntries ();
+        AuditLogEntries GetAuditLogEntries (decimal? before, decimal? after, string q, decimal? limit, string spec);
         /// <summary>
-        /// Get an audit log entry by ID 
+        /// Use this endpoint to fetch a single audit log entry by its resouce ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
+        /// <param name="resourceId">The resource ID.</param>
         /// <returns>AuditLogEntry</returns>
         AuditLogEntry GetAuditLogEntry (string resourceId);
     }
@@ -78,10 +83,15 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Fetch a list of all audit log entries 
+        /// Get a list of all audit log entries. The query parameters allow you to restrict the returned results by date ranges, resource specifiers, or a full-text search query. 
         /// </summary>
+        /// <param name="before">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp.</param> 
+        /// <param name="after">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.</param> 
+        /// <param name="q">Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change.</param> 
+        /// <param name="limit">A limit on the number of audit log entries to be returned, between 1 and 20.</param> 
+        /// <param name="spec">A resource specifier, allowing you to filter audit log listings by resource.</param> 
         /// <returns>AuditLogEntries</returns>            
-        public AuditLogEntries GetAuditLogEntries ()
+        public AuditLogEntries GetAuditLogEntries (decimal? before, decimal? after, string q, decimal? limit, string spec)
         {
             
     
@@ -94,7 +104,12 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+             if (before != null) queryParams.Add("before", ApiClient.ParameterToString(before)); // query parameter
+ if (after != null) queryParams.Add("after", ApiClient.ParameterToString(after)); // query parameter
+ if (q != null) queryParams.Add("q", ApiClient.ParameterToString(q)); // query parameter
+ if (limit != null) queryParams.Add("limit", ApiClient.ParameterToString(limit)); // query parameter
+ if (spec != null) queryParams.Add("spec", ApiClient.ParameterToString(spec)); // query parameter
+                                        
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
     
@@ -110,9 +125,9 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Get an audit log entry by ID 
+        /// Use this endpoint to fetch a single audit log entry by its resouce ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
+        /// <param name="resourceId">The resource ID.</param> 
         /// <returns>AuditLogEntry</returns>            
         public AuditLogEntry GetAuditLogEntry (string resourceId)
         {

@@ -12,33 +12,33 @@ namespace IO.Swagger.Api
     public interface IWebhooksApi
     {
         /// <summary>
-        /// Delete a webhook by ID 
+        /// Delete a webhook by ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
+        /// <param name="resourceId">The resource ID.</param>
         /// <returns></returns>
         void DeleteWebhook (string resourceId);
         /// <summary>
-        /// Get a webhook by ID 
+        /// Get a webhook by ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
+        /// <param name="resourceId">The resource ID.</param>
         /// <returns>Webhook</returns>
         Webhook GetWebhook (string resourceId);
         /// <summary>
-        /// Fetch a list of all webhooks 
+        /// Fetch a list of all webhooks. 
         /// </summary>
         /// <returns>Webhooks</returns>
         Webhooks GetWebhooks ();
         /// <summary>
-        /// Modify a webhook by ID 
+        /// Modify a webhook by ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param>
-        /// <param name="patchDelta">http://jsonpatch.com/</param>
+        /// <param name="resourceId">The resource ID.</param>
+        /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param>
         /// <returns>Webhook</returns>
         Webhook PatchWebhook (string resourceId, List<PatchDelta> patchDelta);
         /// <summary>
-        /// Create a webhook 
+        /// Create a webhook. 
         /// </summary>
-        /// <param name="webhookBody">New webhook</param>
+        /// <param name="webhookBody">New webhook.</param>
         /// <returns></returns>
         void PostWebhook (WebhookBody webhookBody);
     }
@@ -97,9 +97,9 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Delete a webhook by ID 
+        /// Delete a webhook by ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
+        /// <param name="resourceId">The resource ID.</param> 
         /// <returns></returns>            
         public void DeleteWebhook (string resourceId)
         {
@@ -134,9 +134,9 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Get a webhook by ID 
+        /// Get a webhook by ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
+        /// <param name="resourceId">The resource ID.</param> 
         /// <returns>Webhook</returns>            
         public Webhook GetWebhook (string resourceId)
         {
@@ -171,7 +171,7 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Fetch a list of all webhooks 
+        /// Fetch a list of all webhooks. 
         /// </summary>
         /// <returns>Webhooks</returns>            
         public Webhooks GetWebhooks ()
@@ -203,10 +203,10 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Modify a webhook by ID 
+        /// Modify a webhook by ID. 
         /// </summary>
-        /// <param name="resourceId">The resource ID</param> 
-        /// <param name="patchDelta">http://jsonpatch.com/</param> 
+        /// <param name="resourceId">The resource ID.</param> 
+        /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param> 
         /// <returns>Webhook</returns>            
         public Webhook PatchWebhook (string resourceId, List<PatchDelta> patchDelta)
         {
@@ -245,9 +245,9 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Create a webhook 
+        /// Create a webhook. 
         /// </summary>
-        /// <param name="webhookBody">New webhook</param> 
+        /// <param name="webhookBody">New webhook.</param> 
         /// <returns></returns>            
         public void PostWebhook (WebhookBody webhookBody)
         {

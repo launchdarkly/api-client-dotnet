@@ -20,65 +20,65 @@ namespace IO.Swagger.Model {
     public Links Links { get; set; }
 
     /// <summary>
-    /// The unique id for the environment
+    /// The unique id for the environment.
     /// </summary>
-    /// <value>The unique id for the environment</value>
+    /// <value>The unique id for the environment.</value>
     [DataMember(Name="_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_id")]
     public string Id { get; set; }
 
     /// <summary>
-    /// The key for the environment
+    /// The key for the environment.
     /// </summary>
-    /// <value>The key for the environment</value>
+    /// <value>The key for the environment.</value>
     [DataMember(Name="key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "key")]
     public string Key { get; set; }
 
     /// <summary>
-    /// The name of the environment
+    /// The name of the environment.
     /// </summary>
-    /// <value>The name of the environment</value>
+    /// <value>The name of the environment.</value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
     /// <summary>
-    /// The SDK key for backend LaunchDarkly SDKs
+    /// The SDK key for backend LaunchDarkly SDKs.
     /// </summary>
-    /// <value>The SDK key for backend LaunchDarkly SDKs</value>
+    /// <value>The SDK key for backend LaunchDarkly SDKs.</value>
     [DataMember(Name="apiKey", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "apiKey")]
     public string ApiKey { get; set; }
 
     /// <summary>
-    /// The SDK key for mobile LaunchDarkly SDKs
+    /// The SDK key for mobile LaunchDarkly SDKs.
     /// </summary>
-    /// <value>The SDK key for mobile LaunchDarkly SDKs</value>
+    /// <value>The SDK key for mobile LaunchDarkly SDKs.</value>
     [DataMember(Name="mobileKey", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mobileKey")]
     public string MobileKey { get; set; }
 
     /// <summary>
-    /// The swatch color for the environment
+    /// The swatch color for the environment.
     /// </summary>
-    /// <value>The swatch color for the environment</value>
+    /// <value>The swatch color for the environment.</value>
     [DataMember(Name="color", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "color")]
     public string Color { get; set; }
 
     /// <summary>
-    /// The default TTL
+    /// The default TTL.
     /// </summary>
-    /// <value>The default TTL</value>
+    /// <value>The default TTL.</value>
     [DataMember(Name="defaultTtl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "defaultTtl")]
     public decimal? DefaultTtl { get; set; }
 
     /// <summary>
-    /// Determines if this environment is in safe mode
+    /// Determines if this environment is in safe mode.
     /// </summary>
-    /// <value>Determines if this environment is in safe mode</value>
+    /// <value>Determines if this environment is in safe mode.</value>
     [DataMember(Name="secureMode", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "secureMode")]
     public bool? SecureMode { get; set; }

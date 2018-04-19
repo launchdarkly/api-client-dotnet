@@ -20,25 +20,28 @@ namespace IO.Swagger.Model {
     public string Key { get; set; }
 
     /// <summary>
-    /// Gets or Sets Name
+    /// Name of the feature flag.
     /// </summary>
+    /// <value>Name of the feature flag.</value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets or Sets Kind
+    /// Whether the feature flag is a boolean flag or multivariate.
     /// </summary>
+    /// <value>Whether the feature flag is a boolean flag or multivariate.</value>
     [DataMember(Name="kind", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "kind")]
     public string Kind { get; set; }
 
     /// <summary>
-    /// Gets or Sets CreationDate
+    /// A unix epoch time in milliseconds specifying the creation time of this flag.
     /// </summary>
+    /// <value>A unix epoch time in milliseconds specifying the creation time of this flag.</value>
     [DataMember(Name="creationDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "creationDate")]
-    public long? CreationDate { get; set; }
+    public decimal? CreationDate { get; set; }
 
     /// <summary>
     /// Gets or Sets IncludeInSnippet
@@ -48,29 +51,33 @@ namespace IO.Swagger.Model {
     public bool? IncludeInSnippet { get; set; }
 
     /// <summary>
-    /// Gets or Sets Temporary
+    /// Whether or not this flag is temporary.
     /// </summary>
+    /// <value>Whether or not this flag is temporary.</value>
     [DataMember(Name="temporary", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "temporary")]
     public bool? Temporary { get; set; }
 
     /// <summary>
-    /// Gets or Sets MaintainerId
+    /// The ID of the member that should maintain this flag.
     /// </summary>
+    /// <value>The ID of the member that should maintain this flag.</value>
     [DataMember(Name="maintainerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "maintainerId")]
     public string MaintainerId { get; set; }
 
     /// <summary>
-    /// Gets or Sets Tags
+    /// An array of tags for this feature flag.
     /// </summary>
+    /// <value>An array of tags for this feature flag.</value>
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> Tags { get; set; }
 
     /// <summary>
-    /// Gets or Sets Variations
+    /// The variations for this feature flag.
     /// </summary>
+    /// <value>The variations for this feature flag.</value>
     [DataMember(Name="variations", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "variations")]
     public List<Variation> Variations { get; set; }

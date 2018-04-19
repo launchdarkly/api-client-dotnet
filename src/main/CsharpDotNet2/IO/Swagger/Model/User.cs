@@ -17,7 +17,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="lastPing", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "lastPing")]
-    public long? LastPing { get; set; }
+    public string LastPing { get; set; }
 
     /// <summary>
     /// Gets or Sets EnvironmentId
@@ -31,7 +31,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="ownerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "ownerId")]
-    public string OwnerId { get; set; }
+    public Id OwnerId { get; set; }
 
     /// <summary>
     /// Gets or Sets _User

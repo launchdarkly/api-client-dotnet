@@ -1,17 +1,19 @@
-# IO.Swagger..RootApi
+# IO.Swagger.Api.RootApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetRoot**](RootApi.md#getroot) | **GET** / | Get the root resource
+[**GetRoot**](RootApi.md#getroot) | **GET** / | 
 
 
 <a name="getroot"></a>
 # **GetRoot**
 > Links GetRoot ()
 
-Get the root resource
+
+
+You can issue a GET request to the root resource to find all of the resource categories supported by the API.
 
 ### Example
 ```csharp
@@ -37,7 +39,6 @@ namespace Example
 
             try
             {
-                // Get the root resource
                 Links result = apiInstance.GetRoot();
                 Debug.WriteLine(result);
             }

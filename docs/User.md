@@ -3,9 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastPing** | **long?** |  | [optional] 
+**LastPing** | **string** |  | [optional] 
 **EnvironmentId** | **string** |  | [optional] 
-**OwnerId** | **string** |  | [optional] 
+**OwnerId** | [**Id**](Id.md) |  | [optional] 
 **_User** | **Object** |  | [optional] 
 **Avatar** | **string** |  | [optional] 
 

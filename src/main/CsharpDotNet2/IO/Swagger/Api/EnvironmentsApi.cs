@@ -12,32 +12,32 @@ namespace IO.Swagger.Api
     public interface IEnvironmentsApi
     {
         /// <summary>
-        /// Delete an environment by ID 
+        /// Delete an environment in a specific project. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <returns></returns>
         void DeleteEnvironment (string projectKey, string environmentKey);
         /// <summary>
         /// Get an environment given a project and key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <returns>Environment</returns>
         Environment GetEnvironment (string projectKey, string environmentKey);
         /// <summary>
-        /// Modify an environment by ID 
+        /// Modify an environment by ID. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key</param>
-        /// <param name="patchDelta">http://jsonpatch.com/</param>
-        /// <returns></returns>
-        void PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta);
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param>
+        /// <returns>Environment</returns>
+        Environment PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta);
         /// <summary>
         /// Create a new environment in a specified project with a given name, key, and swatch color. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentBody">New environment</param>
+        /// <param name="environmentBody">New environment.</param>
         /// <returns></returns>
         void PostEnvironment (string projectKey, EnvironmentBody environmentBody);
     }
@@ -96,10 +96,10 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Delete an environment by ID 
+        /// Delete an environment in a specific project. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <returns></returns>            
         public void DeleteEnvironment (string projectKey, string environmentKey)
         {
@@ -111,7 +111,7 @@ namespace IO.Swagger.Api
             if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling DeleteEnvironment");
             
     
-            var path = "/environments/{projectKey}/{environmentKey}";
+            var path = "/projects/{projectKey}/environments/{environmentKey}";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
@@ -141,7 +141,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// Get an environment given a project and key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <returns>Environment</returns>            
         public Environment GetEnvironment (string projectKey, string environmentKey)
         {
@@ -153,7 +153,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetEnvironment");
             
     
-            var path = "/environments/{projectKey}/{environmentKey}";
+            var path = "/projects/{projectKey}/environments/{environmentKey}";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
@@ -180,13 +180,13 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
-        /// Modify an environment by ID 
+        /// Modify an environment by ID. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key</param> 
-        /// <param name="patchDelta">http://jsonpatch.com/</param> 
-        /// <returns></returns>            
-        public void PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta)
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param> 
+        /// <returns>Environment</returns>            
+        public Environment PatchEnvironment (string projectKey, string environmentKey, List<PatchDelta> patchDelta)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -199,7 +199,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             if (patchDelta == null) throw new ApiException(400, "Missing required parameter 'patchDelta' when calling PatchEnvironment");
             
     
-            var path = "/environments/{projectKey}/{environmentKey}";
+            var path = "/projects/{projectKey}/environments/{environmentKey}";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
@@ -223,14 +223,14 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PatchEnvironment: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Environment) ApiClient.Deserialize(response.Content, typeof(Environment), response.Headers);
         }
     
         /// <summary>
         /// Create a new environment in a specified project with a given name, key, and swatch color. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentBody">New environment</param> 
+        /// <param name="environmentBody">New environment.</param> 
         /// <returns></returns>            
         public void PostEnvironment (string projectKey, EnvironmentBody environmentBody)
         {
@@ -242,7 +242,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             if (environmentBody == null) throw new ApiException(400, "Missing required parameter 'environmentBody' when calling PostEnvironment");
             
     
-            var path = "/environments/{projectKey}";
+            var path = "/projects/{projectKey}/environments";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
     

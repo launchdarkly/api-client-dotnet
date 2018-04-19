@@ -123,7 +123,7 @@ namespace IO.Swagger.Client
                      .GetExecutingAssembly()
                      .GetReferencedAssemblies()
                      .Where(x => x.Name == "System.Core").First().Version.ToString()  + "\n";
-            report += "    Version of the API: 2.0.0\n";
+            report += "    Version of the API: 1.0.7\n";
             report += "    SDK Package Version: 1.0.0\n";
   
             return report;

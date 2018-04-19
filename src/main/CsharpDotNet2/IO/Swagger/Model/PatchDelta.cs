@@ -31,7 +31,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value")]
-    public Object Value { get; set; }
+    public bool? Value { get; set; }
 
 
     /// <summary>

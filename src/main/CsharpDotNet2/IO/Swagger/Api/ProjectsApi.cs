@@ -12,7 +12,7 @@ namespace IO.Swagger.Api
     public interface IProjectsApi
     {
         /// <summary>
-        /// Delete a project by ID 
+        /// Delete a project by key. Caution- - deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <returns></returns>
@@ -29,16 +29,16 @@ namespace IO.Swagger.Api
         /// <returns>Projects</returns>
         Projects GetProjects ();
         /// <summary>
-        /// Modify a project by ID 
+        /// Modify a project by ID. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="patchDelta">http://jsonpatch.com/</param>
-        /// <returns></returns>
-        void PatchProject (string projectKey, List<PatchDelta> patchDelta);
+        /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param>
+        /// <returns>Project</returns>
+        Project PatchProject (string projectKey, List<PatchDelta> patchDelta);
         /// <summary>
-        /// Create a project 
+        /// Create a new project with the given key and name. 
         /// </summary>
-        /// <param name="projectBody">New project</param>
+        /// <param name="projectBody">Project keys must be unique within an account.</param>
         /// <returns></returns>
         void PostProject (ProjectBody projectBody);
     }
@@ -97,7 +97,7 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Delete a project by ID 
+        /// Delete a project by key. Caution- - deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <returns></returns>            
@@ -203,12 +203,12 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Modify a project by ID 
+        /// Modify a project by ID. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="patchDelta">http://jsonpatch.com/</param> 
-        /// <returns></returns>            
-        public void PatchProject (string projectKey, List<PatchDelta> patchDelta)
+        /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param> 
+        /// <returns>Project</returns>            
+        public Project PatchProject (string projectKey, List<PatchDelta> patchDelta)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -241,13 +241,13 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PatchProject: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Project) ApiClient.Deserialize(response.Content, typeof(Project), response.Headers);
         }
     
         /// <summary>
-        /// Create a project 
+        /// Create a new project with the given key and name. 
         /// </summary>
-        /// <param name="projectBody">New project</param> 
+        /// <param name="projectBody">Project keys must be unique within an account.</param> 
         /// <returns></returns>            
         public void PostProject (ProjectBody projectBody)
         {

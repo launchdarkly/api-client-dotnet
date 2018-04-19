@@ -1,10 +1,10 @@
-# IO.Swagger..UserSettingsApi
+# IO.Swagger.Api.UserSettingsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetUserFlagSetting**](UserSettingsApi.md#getuserflagsetting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get a user by key.
+[**GetUserFlagSetting**](UserSettingsApi.md#getuserflagsetting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Fetch a single flag setting for a user by key.
 [**GetUserFlagSettings**](UserSettingsApi.md#getuserflagsettings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Fetch a single flag setting for a user by key.
 [**PutFlagSetting**](UserSettingsApi.md#putflagsetting) | **PUT** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Specifically enable or disable a feature flag for a user based on their key.
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 # **GetUserFlagSetting**
 > UserFlagSetting GetUserFlagSetting (string projectKey, string environmentKey, string userKey, string featureFlagKey)
 
-Get a user by key.
+Fetch a single flag setting for a user by key.
 
 ### Example
 ```csharp
@@ -37,13 +37,13 @@ namespace Example
 
             var apiInstance = new UserSettingsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var userKey = userKey_example;  // string | The user's key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var userKey = userKey_example;  // string | The user's key.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
 
             try
             {
-                // Get a user by key.
+                // Fetch a single flag setting for a user by key.
                 UserFlagSetting result = apiInstance.GetUserFlagSetting(projectKey, environmentKey, userKey, featureFlagKey);
                 Debug.WriteLine(result);
             }
@@ -61,8 +61,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **userKey** | **string**| The user&#39;s key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **userKey** | **string**| The user&#39;s key. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
 
 ### Return type
@@ -108,8 +108,8 @@ namespace Example
 
             var apiInstance = new UserSettingsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var userKey = userKey_example;  // string | The user's key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var userKey = userKey_example;  // string | The user's key.
 
             try
             {
@@ -131,8 +131,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **userKey** | **string**| The user&#39;s key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **userKey** | **string**| The user&#39;s key. | 
 
 ### Return type
 
@@ -177,8 +177,8 @@ namespace Example
 
             var apiInstance = new UserSettingsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key
-            var userKey = userKey_example;  // string | The user's key
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var userKey = userKey_example;  // string | The user's key.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var userSettingsBody = new UserSettingsBody(); // UserSettingsBody | 
 
@@ -201,8 +201,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key | 
- **userKey** | **string**| The user&#39;s key | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **userKey** | **string**| The user&#39;s key. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **userSettingsBody** | [**UserSettingsBody**](UserSettingsBody.md)|  | 
 

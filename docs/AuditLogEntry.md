@@ -4,11 +4,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | [**Links**](Links.md) |  | [optional] 
-**Id** | **string** |  | [optional] 
+**Id** | [**Id**](Id.md) |  | [optional] 
 **Date** | **long?** |  | [optional] 
 **Kind** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Description** | **string** |  | [optional] 
+**ShortDescription** | **string** |  | [optional] 
+**Comment** | **string** |  | [optional] 
 **Member** | [**Member**](Member.md) |  | [optional] 
 **TitleVerb** | **string** |  | [optional] 
 **Title** | **string** |  | [optional] 
