@@ -83,6 +83,14 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "secureMode")]
     public bool? SecureMode { get; set; }
 
+    /// <summary>
+    /// Set to true to send detailed event information for new flags.
+    /// </summary>
+    /// <value>Set to true to send detailed event information for new flags.</value>
+    [DataMember(Name="defaultTrackEvents", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "defaultTrackEvents")]
+    public bool? DefaultTrackEvents { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -100,6 +108,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Color: ").Append(Color).Append("\n");
       sb.Append("  DefaultTtl: ").Append(DefaultTtl).Append("\n");
       sb.Append("  SecureMode: ").Append(SecureMode).Append("\n");
+      sb.Append("  DefaultTrackEvents: ").Append(DefaultTrackEvents).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Color** | **string** | The swatch color for the environment. | [optional] 
 **DefaultTtl** | **decimal?** | The default TTL. | [optional] 
 **SecureMode** | **bool?** | Determines if this environment is in safe mode. | [optional] 
+**DefaultTrackEvents** | **bool?** | Set to true to send detailed event information for new flags. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
