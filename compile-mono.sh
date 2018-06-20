@@ -6,7 +6,7 @@ mcs -sdk:2 -r:vendor/Newtonsoft.Json.7.0.1/lib/net20/Newtonsoft.Json.dll,\
 vendor/RestSharp.Net2.1.1.11/lib/net20/RestSharp.Net2.dll,\
 System.Runtime.Serialization.dll \
 -target:library \
--out:bin/LaunchDarkly.Api.dll \
+-out:bin/IO.Swagger.dll \
 -recurse:'src/*.cs' \
--doc:bin/LaunchDarkly.Api.xml \
+-doc:bin/IO.Swagger.xml \
 -platform:anycpu

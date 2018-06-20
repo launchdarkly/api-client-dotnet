@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.Links
+# IO.Swagger.Model.Links
 ## Properties
 
 Name | Type | Description | Notes

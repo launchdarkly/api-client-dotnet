@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Api.UserSegmentsApi
+# IO.Swagger.Api.UserSegmentsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -21,9 +21,9 @@ Delete a user segment.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -89,9 +89,9 @@ Get a single user segment by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -158,9 +158,9 @@ Get a list of all user segments in the given project.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -227,9 +227,9 @@ Perform a partial update to a user segment.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -298,9 +298,9 @@ Creates a new user segment.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {

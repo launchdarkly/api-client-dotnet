@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Api.RootApi
+# IO.Swagger.Api.RootApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -19,9 +19,9 @@ You can issue a GET request to the root resource to find all of the resource cat
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {

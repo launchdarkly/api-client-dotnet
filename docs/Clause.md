@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.Clause
+# IO.Swagger.Model.Clause
 ## Properties
 
 Name | Type | Description | Notes

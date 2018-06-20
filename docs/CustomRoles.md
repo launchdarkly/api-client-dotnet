@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.CustomRoles
+# IO.Swagger.Model.CustomRoles
 ## Properties
 
 Name | Type | Description | Notes

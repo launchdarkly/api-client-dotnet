@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.Policy
+# IO.Swagger.Model.Policy
 ## Properties
 
 Name | Type | Description | Notes

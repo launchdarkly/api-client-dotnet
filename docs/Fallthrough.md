@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.Fallthrough
+# IO.Swagger.Model.Fallthrough
 ## Properties
 
 Name | Type | Description | Notes

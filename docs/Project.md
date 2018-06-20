@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.Project
+# IO.Swagger.Model.Project
 ## Properties
 
 Name | Type | Description | Notes

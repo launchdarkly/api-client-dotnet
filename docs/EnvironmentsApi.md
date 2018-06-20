@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Api.EnvironmentsApi
+# IO.Swagger.Api.EnvironmentsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -20,9 +20,9 @@ Delete an environment in a specific project.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ Get an environment given a project and key.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -153,9 +153,9 @@ Modify an environment by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -222,9 +222,9 @@ Create a new environment in a specified project with a given name, key, and swat
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {

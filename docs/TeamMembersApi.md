@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Api.TeamMembersApi
+# IO.Swagger.Api.TeamMembersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -21,9 +21,9 @@ Delete a team member by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -85,9 +85,9 @@ Get a single team member by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -150,9 +150,9 @@ Returns a list of all members in the account.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -211,9 +211,9 @@ Modify a team member by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -278,9 +278,9 @@ Invite new members.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {

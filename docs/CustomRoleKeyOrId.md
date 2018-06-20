@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.CustomRoleKeyOrId
+# IO.Swagger.Model.CustomRoleKeyOrId
 ## Properties
 
 Name | Type | Description | Notes

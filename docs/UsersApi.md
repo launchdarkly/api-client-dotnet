@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Api.UsersApi
+# IO.Swagger.Api.UsersApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -20,9 +20,9 @@ Delete a user by ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -88,9 +88,9 @@ Search users in LaunchDarkly based on their last active date, or a search query.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -163,9 +163,9 @@ Get a user by key.
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -232,9 +232,9 @@ List all users in the environment. Includes the total count of users. In each pa
 ```csharp
 using System;
 using System.Diagnostics;
-using LaunchDarkly.Api.Api;
-using LaunchDarkly.Api.Client;
-using LaunchDarkly.Api.Model;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace Example
 {

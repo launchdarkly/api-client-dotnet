@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.UserSegments
+# IO.Swagger.Model.UserSegments
 ## Properties
 
 Name | Type | Description | Notes

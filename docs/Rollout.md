@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.Rollout
+# IO.Swagger.Model.Rollout
 ## Properties
 
 Name | Type | Description | Notes

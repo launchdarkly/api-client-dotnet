@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.FeatureFlagStatuses
+# IO.Swagger.Model.FeatureFlagStatuses
 ## Properties
 
 Name | Type | Description | Notes

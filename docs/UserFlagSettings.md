@@ -1,4 +1,4 @@
-# LaunchDarkly.Api.Model.UserFlagSettings
+# IO.Swagger.Model.UserFlagSettings
 ## Properties
 
 Name | Type | Description | Notes
