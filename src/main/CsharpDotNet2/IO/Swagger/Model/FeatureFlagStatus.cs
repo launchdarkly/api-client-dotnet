@@ -39,7 +39,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="default", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default")]
-    public bool? _Default { get; set; }
+    public Object _Default { get; set; }
 
 
     /// <summary>
