@@ -91,6 +91,14 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "defaultTrackEvents")]
     public bool? DefaultTrackEvents { get; set; }
 
+    /// <summary>
+    /// An array of tags for this environment.
+    /// </summary>
+    /// <value>An array of tags for this environment.</value>
+    [DataMember(Name="tags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "tags")]
+    public List<string> Tags { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -109,6 +117,7 @@ namespace IO.Swagger.Model {
       sb.Append("  DefaultTtl: ").Append(DefaultTtl).Append("\n");
       sb.Append("  SecureMode: ").Append(SecureMode).Append("\n");
       sb.Append("  DefaultTrackEvents: ").Append(DefaultTrackEvents).Append("\n");
+      sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

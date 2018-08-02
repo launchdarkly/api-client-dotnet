@@ -48,6 +48,14 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "environments")]
     public List<Environment> Environments { get; set; }
 
+    /// <summary>
+    /// An array of tags for this project.
+    /// </summary>
+    /// <value>An array of tags for this project.</value>
+    [DataMember(Name="tags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "tags")]
+    public List<string> Tags { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -61,6 +69,7 @@ namespace IO.Swagger.Model {
       sb.Append("  Key: ").Append(Key).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Environments: ").Append(Environments).Append("\n");
+      sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

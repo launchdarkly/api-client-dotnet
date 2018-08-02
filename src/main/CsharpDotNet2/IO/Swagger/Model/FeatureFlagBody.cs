@@ -29,6 +29,14 @@ namespace IO.Swagger.Model {
     public string Key { get; set; }
 
     /// <summary>
+    /// A description of the feature flag.
+    /// </summary>
+    /// <value>A description of the feature flag.</value>
+    [DataMember(Name="description", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "description")]
+    public string Description { get; set; }
+
+    /// <summary>
     /// An array of possible variations for the flag.
     /// </summary>
     /// <value>An array of possible variations for the flag.</value>
@@ -70,6 +78,7 @@ namespace IO.Swagger.Model {
       sb.Append("class FeatureFlagBody {\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Key: ").Append(Key).Append("\n");
+      sb.Append("  Description: ").Append(Description).Append("\n");
       sb.Append("  Variations: ").Append(Variations).Append("\n");
       sb.Append("  Temporary: ").Append(Temporary).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
