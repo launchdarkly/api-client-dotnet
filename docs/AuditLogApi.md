@@ -1,4 +1,4 @@
-# IO.Swagger.Api.AuditLogApi
+# LaunchDarkly.Api.Api.AuditLogApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
@@ -18,9 +18,9 @@ Get a list of all audit log entries. The query parameters allow you to restrict 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {
@@ -91,9 +91,9 @@ Use this endpoint to fetch a single audit log entry by its resouce ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.CustomProperty
+# LaunchDarkly.Api.Model.CustomProperty
 ## Properties
 
 Name | Type | Description | Notes

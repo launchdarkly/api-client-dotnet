@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Actions
+# LaunchDarkly.Api.Model.Actions
 ## Properties
 
 Name | Type | Description | Notes

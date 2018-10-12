@@ -1,4 +1,4 @@
-# IO.Swagger.Model.PatchOperation
+# LaunchDarkly.Api.Model.PatchOperation
 ## Properties
 
 Name | Type | Description | Notes

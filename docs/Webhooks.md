@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Webhooks
+# LaunchDarkly.Api.Model.Webhooks
 ## Properties
 
 Name | Type | Description | Notes

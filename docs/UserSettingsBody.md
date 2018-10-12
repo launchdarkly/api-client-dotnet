@@ -1,4 +1,4 @@
-# IO.Swagger.Model.UserSettingsBody
+# LaunchDarkly.Api.Model.UserSettingsBody
 ## Properties
 
 Name | Type | Description | Notes

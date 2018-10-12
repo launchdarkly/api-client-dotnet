@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AuditLogEntries
+# LaunchDarkly.Api.Model.AuditLogEntries
 ## Properties
 
 Name | Type | Description | Notes

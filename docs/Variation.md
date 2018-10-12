@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Variation
+# LaunchDarkly.Api.Model.Variation
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.WeightedVariation
+# LaunchDarkly.Api.Model.WeightedVariation
 ## Properties
 
 Name | Type | Description | Notes

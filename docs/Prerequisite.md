@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Prerequisite
+# LaunchDarkly.Api.Model.Prerequisite
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.EnvironmentBody
+# LaunchDarkly.Api.Model.EnvironmentBody
 ## Properties
 
 Name | Type | Description | Notes
