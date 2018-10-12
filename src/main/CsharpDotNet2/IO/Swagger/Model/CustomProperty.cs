@@ -8,23 +8,24 @@ using Newtonsoft.Json;
 namespace IO.Swagger.Model {
 
   /// <summary>
-  /// 
+  /// A name and value describing a custom property.
   /// </summary>
   [DataContract]
-  public class UserFlagSettings {
+  public class CustomProperty {
     /// <summary>
-    /// Gets or Sets Links
+    /// The name of the property.
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
+    /// <value>The name of the property.</value>
+    [DataMember(Name="name", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "name")]
+    public string Name { get; set; }
 
     /// <summary>
-    /// Gets or Sets Items
+    /// Gets or Sets Value
     /// </summary>
-    [DataMember(Name="items", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "items")]
-    public Dictionary<string, UserFlagSetting> Items { get; set; }
+    [DataMember(Name="value", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "value")]
+    public CustomPropertyValues Value { get; set; }
 
 
     /// <summary>
@@ -33,9 +34,9 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class UserFlagSettings {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
-      sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("class CustomProperty {\n");
+      sb.Append("  Name: ").Append(Name).Append("\n");
+      sb.Append("  Value: ").Append(Value).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

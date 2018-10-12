@@ -8,24 +8,10 @@ using Newtonsoft.Json;
 namespace IO.Swagger.Model {
 
   /// <summary>
-  /// 
+  /// A mapping of keys to CustomProperty entries.
   /// </summary>
   [DataContract]
-  public class UserFlagSettings {
-    /// <summary>
-    /// Gets or Sets Links
-    /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Items
-    /// </summary>
-    [DataMember(Name="items", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "items")]
-    public Dictionary<string, UserFlagSetting> Items { get; set; }
-
+  public class CustomProperties {
 
     /// <summary>
     /// Get the string presentation of the object
@@ -33,9 +19,7 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class UserFlagSettings {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
-      sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("class CustomProperties {\n");
       sb.Append("}\n");
       return sb.ToString();
     }

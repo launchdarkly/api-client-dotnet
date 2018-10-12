@@ -91,6 +91,13 @@ namespace IO.Swagger.Model {
     public List<Variation> Variations { get; set; }
 
     /// <summary>
+    /// Gets or Sets CustomProperties
+    /// </summary>
+    [DataMember(Name="customProperties", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "customProperties")]
+    public CustomProperties CustomProperties { get; set; }
+
+    /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [DataMember(Name="_links", EmitDefaultValue=false)]
@@ -129,6 +136,7 @@ namespace IO.Swagger.Model {
       sb.Append("  MaintainerId: ").Append(MaintainerId).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  Variations: ").Append(Variations).Append("\n");
+      sb.Append("  CustomProperties: ").Append(CustomProperties).Append("\n");
       sb.Append("  Links: ").Append(Links).Append("\n");
       sb.Append("  Maintainer: ").Append(Maintainer).Append("\n");
       sb.Append("  Environments: ").Append(Environments).Append("\n");

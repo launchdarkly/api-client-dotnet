@@ -13,6 +13,13 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class Rule {
     /// <summary>
+    /// Gets or Sets Id
+    /// </summary>
+    [DataMember(Name="_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_id")]
+    public string Id { get; set; }
+
+    /// <summary>
     /// Gets or Sets Variation
     /// </summary>
     [DataMember(Name="variation", EmitDefaultValue=false)]
@@ -41,6 +48,7 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Rule {\n");
+      sb.Append("  Id: ").Append(Id).Append("\n");
       sb.Append("  Variation: ").Append(Variation).Append("\n");
       sb.Append("  Rollout: ").Append(Rollout).Append("\n");
       sb.Append("  Clauses: ").Append(Clauses).Append("\n");
