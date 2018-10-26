@@ -62,8 +62,9 @@ namespace LaunchDarkly.Api.Api
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagBody">Create a new feature flag.</param>
+        /// <param name="clone">The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.</param>
         /// <returns></returns>
-        void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody);
+        void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone);
     }
   
     /// <summary>
@@ -387,8 +388,9 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagBody">Create a new feature flag.</param> 
+        /// <param name="clone">The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.</param> 
         /// <returns></returns>            
-        public void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody)
+        public void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -408,7 +410,8 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(featureFlagBody); // http body (model) parameter
+             if (clone != null) queryParams.Add("clone", ApiClient.ParameterToString(clone)); // query parameter
+                                    postBody = ApiClient.Serialize(featureFlagBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };

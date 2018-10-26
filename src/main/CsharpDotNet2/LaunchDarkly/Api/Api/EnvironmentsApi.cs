@@ -39,7 +39,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentBody">New environment.</param>
         /// <returns></returns>
-        void PostEnvironment (string projectKey, EnvironmentBody environmentBody);
+        void PostEnvironment (string projectKey, EnvironmentPost environmentBody);
     }
   
     /// <summary>
@@ -232,7 +232,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentBody">New environment.</param> 
         /// <returns></returns>            
-        public void PostEnvironment (string projectKey, EnvironmentBody environmentBody)
+        public void PostEnvironment (string projectKey, EnvironmentPost environmentBody)
         {
             
             // verify the required parameter 'projectKey' is set

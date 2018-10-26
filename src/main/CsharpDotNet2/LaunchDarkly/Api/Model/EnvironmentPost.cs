@@ -11,7 +11,7 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class EnvironmentBody {
+  public class EnvironmentPost {
     /// <summary>
     /// The name of the new environment.
     /// </summary>
@@ -51,7 +51,7 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class EnvironmentBody {\n");
+      sb.Append("class EnvironmentPost {\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Key: ").Append(Key).Append("\n");
       sb.Append("  Color: ").Append(Color).Append("\n");

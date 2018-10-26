@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 <a name="postenvironment"></a>
 # **PostEnvironment**
-> void PostEnvironment (string projectKey, EnvironmentBody environmentBody)
+> void PostEnvironment (string projectKey, EnvironmentPost environmentBody)
 
 Create a new environment in a specified project with a given name, key, and swatch color.
 
@@ -240,7 +240,7 @@ namespace Example
 
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentBody = new EnvironmentBody(); // EnvironmentBody | New environment.
+            var environmentBody = new EnvironmentPost(); // EnvironmentPost | New environment.
 
             try
             {
@@ -261,7 +261,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentBody** | [**EnvironmentBody**](EnvironmentBody.md)| New environment. | 
+ **environmentBody** | [**EnvironmentPost**](EnvironmentPost.md)| New environment. | 
 
 ### Return type
 

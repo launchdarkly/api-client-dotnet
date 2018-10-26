@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 <a name="postfeatureflag"></a>
 # **PostFeatureFlag**
-> void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody)
+> void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone)
 
 Creates a new feature flag.
 
@@ -451,11 +451,12 @@ namespace Example
             var apiInstance = new FeatureFlagsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagBody = new FeatureFlagBody(); // FeatureFlagBody | Create a new feature flag.
+            var clone = clone_example;  // string | The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone=flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag. (optional) 
 
             try
             {
                 // Creates a new feature flag.
-                apiInstance.PostFeatureFlag(projectKey, featureFlagBody);
+                apiInstance.PostFeatureFlag(projectKey, featureFlagBody, clone);
             }
             catch (Exception e)
             {
@@ -472,6 +473,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagBody** | [**FeatureFlagBody**](FeatureFlagBody.md)| Create a new feature flag. | 
+ **clone** | **string**| The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag. | [optional] 
 
 ### Return type
 

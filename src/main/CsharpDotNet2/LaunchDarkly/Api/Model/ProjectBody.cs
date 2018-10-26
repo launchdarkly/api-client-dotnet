@@ -26,6 +26,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "key")]
     public string Key { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Environments
+    /// </summary>
+    [DataMember(Name="environments", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "environments")]
+    public List<EnvironmentPost> Environments { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -36,6 +43,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("class ProjectBody {\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Key: ").Append(Key).Append("\n");
+      sb.Append("  Environments: ").Append(Environments).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
