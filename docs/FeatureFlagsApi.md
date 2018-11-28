@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 <a name="postfeatureflag"></a>
 # **PostFeatureFlag**
-> void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone)
+> FeatureFlag PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone)
 
 Creates a new feature flag.
 
@@ -456,7 +456,8 @@ namespace Example
             try
             {
                 // Creates a new feature flag.
-                apiInstance.PostFeatureFlag(projectKey, featureFlagBody, clone);
+                FeatureFlag result = apiInstance.PostFeatureFlag(projectKey, featureFlagBody, clone);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -477,7 +478,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**FeatureFlag**](FeatureFlag.md)
 
 ### Authorization
 

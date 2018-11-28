@@ -63,8 +63,8 @@ namespace LaunchDarkly.Api.Api
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagBody">Create a new feature flag.</param>
         /// <param name="clone">The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.</param>
-        /// <returns></returns>
-        void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone);
+        /// <returns>FeatureFlag</returns>
+        FeatureFlag PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone);
     }
   
     /// <summary>
@@ -389,8 +389,8 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagBody">Create a new feature flag.</param> 
         /// <param name="clone">The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.</param> 
-        /// <returns></returns>            
-        public void PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone)
+        /// <returns>FeatureFlag</returns>            
+        public FeatureFlag PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -424,7 +424,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostFeatureFlag: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (FeatureFlag) ApiClient.Deserialize(response.Content, typeof(FeatureFlag), response.Headers);
         }
     
     }

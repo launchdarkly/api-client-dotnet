@@ -91,6 +91,13 @@ namespace LaunchDarkly.Api.Model {
     public List<Variation> Variations { get; set; }
 
     /// <summary>
+    /// Gets or Sets Version
+    /// </summary>
+    [DataMember(Name="_version", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_version")]
+    public int? Version { get; set; }
+
+    /// <summary>
     /// Gets or Sets CustomProperties
     /// </summary>
     [DataMember(Name="customProperties", EmitDefaultValue=false)]
@@ -136,6 +143,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  MaintainerId: ").Append(MaintainerId).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  Variations: ").Append(Variations).Append("\n");
+      sb.Append("  Version: ").Append(Version).Append("\n");
       sb.Append("  CustomProperties: ").Append(CustomProperties).Append("\n");
       sb.Append("  Links: ").Append(Links).Append("\n");
       sb.Append("  Maintainer: ").Append(Maintainer).Append("\n");
