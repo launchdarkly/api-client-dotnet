@@ -12,6 +12,14 @@ namespace LaunchDarkly.Api.Api
     public interface IFeatureFlagsApi
     {
         /// <summary>
+        /// Copies the feature flag configuration from one environment to the same feature flag in another environment. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <returns>FeatureFlag</returns>
+        FeatureFlag CopyFeatureFlag (string projectKey, string environmentKey, string featureFlagKey);
+        /// <summary>
         /// Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -119,6 +127,53 @@ namespace LaunchDarkly.Api.Api
         /// </summary>
         /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
+    
+        /// <summary>
+        /// Copies the feature flag configuration from one environment to the same feature flag in another environment. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <returns>FeatureFlag</returns>            
+        public FeatureFlag CopyFeatureFlag (string projectKey, string environmentKey, string featureFlagKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling CopyFeatureFlag");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling CopyFeatureFlag");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling CopyFeatureFlag");
+            
+    
+            var path = "/flags/{projectKey}/{environmentKey}/{featureFlagKey}/copy";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling CopyFeatureFlag: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling CopyFeatureFlag: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (FeatureFlag) ApiClient.Deserialize(response.Content, typeof(FeatureFlag), response.Headers);
+        }
     
         /// <summary>
         /// Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application. 

@@ -98,11 +98,12 @@ namespace LaunchDarkly.Api.Model {
     public int? Version { get; set; }
 
     /// <summary>
-    /// Gets or Sets CustomProperties
+    /// A mapping of keys to CustomProperty entries.
     /// </summary>
+    /// <value>A mapping of keys to CustomProperty entries.</value>
     [DataMember(Name="customProperties", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "customProperties")]
-    public CustomProperties CustomProperties { get; set; }
+    public Dictionary<string, CustomProperty> CustomProperties { get; set; }
 
     /// <summary>
     /// Gets or Sets Links

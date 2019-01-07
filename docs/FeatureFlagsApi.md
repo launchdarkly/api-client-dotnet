@@ -4,6 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CopyFeatureFlag**](FeatureFlagsApi.md#copyfeatureflag) | **POST** /flags/{projectKey}/{environmentKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**DeleteFeatureFlag**](FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application.
 [**GetFeatureFlag**](FeatureFlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
@@ -12,6 +13,75 @@ Method | HTTP request | Description
 [**PatchFeatureFlag**](FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
 [**PostFeatureFlag**](FeatureFlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 
+
+<a name="copyfeatureflag"></a>
+# **CopyFeatureFlag**
+> FeatureFlag CopyFeatureFlag (string projectKey, string environmentKey, string featureFlagKey)
+
+Copies the feature flag configuration from one environment to the same feature flag in another environment.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
+
+namespace Example
+{
+    public class CopyFeatureFlagExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: Token
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new FeatureFlagsApi();
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
+
+            try
+            {
+                // Copies the feature flag configuration from one environment to the same feature flag in another environment.
+                FeatureFlag result = apiInstance.CopyFeatureFlag(projectKey, environmentKey, featureFlagKey);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling FeatureFlagsApi.CopyFeatureFlag: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+[**FeatureFlag**](FeatureFlag.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="deletefeatureflag"></a>
 # **DeleteFeatureFlag**

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Tags** | **List&lt;string&gt;** | An array of tags for this feature flag. | [optional] 
 **Variations** | [**List&lt;Variation&gt;**](Variation.md) | The variations for this feature flag. | [optional] 
 **Version** | **int?** |  | [optional] 
-**CustomProperties** | [**CustomProperties**](CustomProperties.md) |  | [optional] 
+**CustomProperties** | [**Dictionary&lt;string, CustomProperty&gt;**](CustomProperty.md) | A mapping of keys to CustomProperty entries. | [optional] 
 **Links** | [**Links**](Links.md) |  | [optional] 
 **Maintainer** | [**Member**](Member.md) |  | [optional] 
 **Environments** | [**Dictionary&lt;string, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) |  | [optional] 
