@@ -62,13 +62,6 @@ namespace LaunchDarkly.Api.Model {
     public List<Target> Targets { get; set; }
 
     /// <summary>
-    /// Gets or Sets GoalIds
-    /// </summary>
-    [DataMember(Name="goalIds", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "goalIds")]
-    public List<string> GoalIds { get; set; }
-
-    /// <summary>
     /// Gets or Sets Rules
     /// </summary>
     [DataMember(Name="rules", EmitDefaultValue=false)]
@@ -119,7 +112,6 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  LastModified: ").Append(LastModified).Append("\n");
       sb.Append("  Version: ").Append(Version).Append("\n");
       sb.Append("  Targets: ").Append(Targets).Append("\n");
-      sb.Append("  GoalIds: ").Append(GoalIds).Append("\n");
       sb.Append("  Rules: ").Append(Rules).Append("\n");
       sb.Append("  Fallthrough: ").Append(Fallthrough).Append("\n");
       sb.Append("  OffVariation: ").Append(OffVariation).Append("\n");

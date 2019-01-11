@@ -91,6 +91,14 @@ namespace LaunchDarkly.Api.Model {
     public List<Variation> Variations { get; set; }
 
     /// <summary>
+    /// An array goals from all environments associated with this feature flag
+    /// </summary>
+    /// <value>An array goals from all environments associated with this feature flag</value>
+    [DataMember(Name="goalIds", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "goalIds")]
+    public List<string> GoalIds { get; set; }
+
+    /// <summary>
     /// Gets or Sets Version
     /// </summary>
     [DataMember(Name="_version", EmitDefaultValue=false)]
@@ -144,6 +152,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  MaintainerId: ").Append(MaintainerId).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  Variations: ").Append(Variations).Append("\n");
+      sb.Append("  GoalIds: ").Append(GoalIds).Append("\n");
       sb.Append("  Version: ").Append(Version).Append("\n");
       sb.Append("  CustomProperties: ").Append(CustomProperties).Append("\n");
       sb.Append("  Links: ").Append(Links).Append("\n");

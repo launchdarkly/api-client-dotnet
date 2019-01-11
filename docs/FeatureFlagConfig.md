@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **LastModified** | **long?** |  | [optional] 
 **Version** | **int?** |  | [optional] 
 **Targets** | [**List&lt;Target&gt;**](Target.md) |  | [optional] 
-**GoalIds** | **List&lt;string&gt;** |  | [optional] 
 **Rules** | [**List&lt;Rule&gt;**](Rule.md) |  | [optional] 
 **Fallthrough** | [**Fallthrough**](Fallthrough.md) |  | [optional] 
 **OffVariation** | **int?** |  | [optional] 
