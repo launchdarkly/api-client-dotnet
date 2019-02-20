@@ -35,11 +35,11 @@ namespace LaunchDarkly.Api.Model {
     public string LastRequested { get; set; }
 
     /// <summary>
-    /// Gets or Sets _Default
+    /// Gets or Sets Default
     /// </summary>
     [DataMember(Name="default", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default")]
-    public Object _Default { get; set; }
+    public Object Default { get; set; }
 
 
     /// <summary>
@@ -52,7 +52,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Links: ").Append(Links).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  LastRequested: ").Append(LastRequested).Append("\n");
-      sb.Append("  _Default: ").Append(_Default).Append("\n");
+      sb.Append("  Default: ").Append(Default).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
