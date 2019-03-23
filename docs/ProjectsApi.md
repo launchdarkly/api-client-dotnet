@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="postproject"></a>
 # **PostProject**
-> void PostProject (ProjectBody projectBody)
+> Project PostProject (ProjectBody projectBody)
 
 Create a new project with the given key and name.
 
@@ -300,7 +300,8 @@ namespace Example
             try
             {
                 // Create a new project with the given key and name.
-                apiInstance.PostProject(projectBody);
+                Project result = apiInstance.PostProject(projectBody);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -319,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Project**](Project.md)
 
 ### Authorization
 

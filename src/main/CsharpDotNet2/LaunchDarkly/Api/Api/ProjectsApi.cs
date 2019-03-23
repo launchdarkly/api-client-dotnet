@@ -39,8 +39,8 @@ namespace LaunchDarkly.Api.Api
         /// Create a new project with the given key and name. 
         /// </summary>
         /// <param name="projectBody">Project keys must be unique within an account.</param>
-        /// <returns></returns>
-        void PostProject (ProjectBody projectBody);
+        /// <returns>Project</returns>
+        Project PostProject (ProjectBody projectBody);
     }
   
     /// <summary>
@@ -248,8 +248,8 @@ namespace LaunchDarkly.Api.Api
         /// Create a new project with the given key and name. 
         /// </summary>
         /// <param name="projectBody">Project keys must be unique within an account.</param> 
-        /// <returns></returns>            
-        public void PostProject (ProjectBody projectBody)
+        /// <returns>Project</returns>            
+        public Project PostProject (ProjectBody projectBody)
         {
             
             // verify the required parameter 'projectBody' is set
@@ -278,7 +278,7 @@ namespace LaunchDarkly.Api.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostProject: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Project) ApiClient.Deserialize(response.Content, typeof(Project), response.Headers);
         }
     
     }

@@ -42,6 +42,20 @@ namespace LaunchDarkly.Api.Model {
     public string Email { get; set; }
 
     /// <summary>
+    /// Gets or Sets FirstName
+    /// </summary>
+    [DataMember(Name="firstName", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "firstName")]
+    public string FirstName { get; set; }
+
+    /// <summary>
+    /// Gets or Sets LastName
+    /// </summary>
+    [DataMember(Name="lastName", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "lastName")]
+    public string LastName { get; set; }
+
+    /// <summary>
     /// Gets or Sets PendingInvite
     /// </summary>
     [DataMember(Name="_pendingInvite", EmitDefaultValue=false)]
@@ -74,6 +88,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Id: ").Append(Id).Append("\n");
       sb.Append("  Role: ").Append(Role).Append("\n");
       sb.Append("  Email: ").Append(Email).Append("\n");
+      sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+      sb.Append("  LastName: ").Append(LastName).Append("\n");
       sb.Append("  PendingInvite: ").Append(PendingInvite).Append("\n");
       sb.Append("  IsBeta: ").Append(IsBeta).Append("\n");
       sb.Append("  CustomRoles: ").Append(CustomRoles).Append("\n");

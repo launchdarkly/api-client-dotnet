@@ -38,8 +38,8 @@ namespace LaunchDarkly.Api.Api
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentBody">New environment.</param>
-        /// <returns></returns>
-        void PostEnvironment (string projectKey, EnvironmentPost environmentBody);
+        /// <returns>Environment</returns>
+        Environment PostEnvironment (string projectKey, EnvironmentPost environmentBody);
     }
   
     /// <summary>
@@ -231,8 +231,8 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentBody">New environment.</param> 
-        /// <returns></returns>            
-        public void PostEnvironment (string projectKey, EnvironmentPost environmentBody)
+        /// <returns>Environment</returns>            
+        public Environment PostEnvironment (string projectKey, EnvironmentPost environmentBody)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -265,7 +265,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostEnvironment: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Environment) ApiClient.Deserialize(response.Content, typeof(Environment), response.Headers);
         }
     
     }

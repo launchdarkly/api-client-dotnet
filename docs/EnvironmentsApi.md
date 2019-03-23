@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 <a name="postenvironment"></a>
 # **PostEnvironment**
-> void PostEnvironment (string projectKey, EnvironmentPost environmentBody)
+> Environment PostEnvironment (string projectKey, EnvironmentPost environmentBody)
 
 Create a new environment in a specified project with a given name, key, and swatch color.
 
@@ -245,7 +245,8 @@ namespace Example
             try
             {
                 // Create a new environment in a specified project with a given name, key, and swatch color.
-                apiInstance.PostEnvironment(projectKey, environmentBody);
+                Environment result = apiInstance.PostEnvironment(projectKey, environmentBody);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -265,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Environment**](Environment.md)
 
 ### Authorization
 

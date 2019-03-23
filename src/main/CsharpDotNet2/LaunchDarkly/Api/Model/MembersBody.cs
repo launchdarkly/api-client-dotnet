@@ -45,7 +45,7 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="customRoles", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "customRoles")]
-    public List<CustomRoleKeyOrId> CustomRoles { get; set; }
+    public List<string> CustomRoles { get; set; }
 
     /// <summary>
     /// Gets or Sets InlineRole

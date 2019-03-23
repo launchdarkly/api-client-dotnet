@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 <a name="postusersegment"></a>
 # **PostUserSegment**
-> void PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody)
+> UserSegment PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody)
 
 Creates a new user segment.
 
@@ -322,7 +322,8 @@ namespace Example
             try
             {
                 // Creates a new user segment.
-                apiInstance.PostUserSegment(projectKey, environmentKey, userSegmentBody);
+                UserSegment result = apiInstance.PostUserSegment(projectKey, environmentKey, userSegmentBody);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -343,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserSegment**](UserSegment.md)
 
 ### Authorization
 

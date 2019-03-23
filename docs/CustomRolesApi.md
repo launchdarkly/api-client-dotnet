@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="postcustomrole"></a>
 # **PostCustomRole**
-> void PostCustomRole (CustomRoleBody customRoleBody)
+> CustomRole PostCustomRole (CustomRoleBody customRoleBody)
 
 Create a new custom role.
 
@@ -300,7 +300,8 @@ namespace Example
             try
             {
                 // Create a new custom role.
-                apiInstance.PostCustomRole(customRoleBody);
+                CustomRole result = apiInstance.PostCustomRole(customRoleBody);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -319,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CustomRole**](CustomRole.md)
 
 ### Authorization
 

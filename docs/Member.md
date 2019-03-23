@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique resource id. | [optional] 
 **Role** | **Role** |  | [optional] 
 **Email** | **string** |  | [optional] 
+**FirstName** | **string** |  | [optional] 
+**LastName** | **string** |  | [optional] 
 **PendingInvite** | **bool?** |  | [optional] 
 **IsBeta** | **bool?** |  | [optional] 
 **CustomRoles** | **List&lt;string&gt;** |  | [optional] 

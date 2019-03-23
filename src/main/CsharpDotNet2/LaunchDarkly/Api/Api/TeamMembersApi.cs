@@ -39,8 +39,8 @@ namespace LaunchDarkly.Api.Api
         /// Invite new members. 
         /// </summary>
         /// <param name="membersBody">New members to invite.</param>
-        /// <returns></returns>
-        void PostMembers (List<MembersBody> membersBody);
+        /// <returns>Members</returns>
+        Members PostMembers (List<MembersBody> membersBody);
     }
   
     /// <summary>
@@ -248,8 +248,8 @@ namespace LaunchDarkly.Api.Api
         /// Invite new members. 
         /// </summary>
         /// <param name="membersBody">New members to invite.</param> 
-        /// <returns></returns>            
-        public void PostMembers (List<MembersBody> membersBody)
+        /// <returns>Members</returns>            
+        public Members PostMembers (List<MembersBody> membersBody)
         {
             
             // verify the required parameter 'membersBody' is set
@@ -278,7 +278,7 @@ namespace LaunchDarkly.Api.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostMembers: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Members) ApiClient.Deserialize(response.Content, typeof(Members), response.Headers);
         }
     
     }

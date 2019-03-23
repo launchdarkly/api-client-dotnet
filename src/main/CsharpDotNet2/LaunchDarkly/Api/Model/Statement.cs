@@ -17,7 +17,7 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="resources", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "resources")]
-    public Resources Resources { get; set; }
+    public List<string> Resources { get; set; }
 
     /// <summary>
     /// Targeted resource will be those resources NOT in this list. The \"resources`\" field must be empty to use this field.
@@ -25,14 +25,14 @@ namespace LaunchDarkly.Api.Model {
     /// <value>Targeted resource will be those resources NOT in this list. The \"resources`\" field must be empty to use this field.</value>
     [DataMember(Name="notresources", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "notresources")]
-    public Resources Notresources { get; set; }
+    public List<string> Notresources { get; set; }
 
     /// <summary>
     /// Gets or Sets Actions
     /// </summary>
     [DataMember(Name="actions", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "actions")]
-    public Actions Actions { get; set; }
+    public List<string> Actions { get; set; }
 
     /// <summary>
     /// Targeted actions will be those actions NOT in this list. The \"actions\" field must be empty to use this field.
@@ -40,7 +40,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>Targeted actions will be those actions NOT in this list. The \"actions\" field must be empty to use this field.</value>
     [DataMember(Name="notactions", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "notactions")]
-    public Actions Notactions { get; set; }
+    public List<string> Notactions { get; set; }
 
     /// <summary>
     /// Gets or Sets Effect

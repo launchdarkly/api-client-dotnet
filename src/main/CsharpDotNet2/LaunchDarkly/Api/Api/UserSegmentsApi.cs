@@ -50,8 +50,8 @@ namespace LaunchDarkly.Api.Api
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <param name="userSegmentBody">Create a new user segment.</param>
-        /// <returns></returns>
-        void PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody);
+        /// <returns>UserSegment</returns>
+        UserSegment PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody);
     }
   
     /// <summary>
@@ -303,8 +303,8 @@ path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(us
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <param name="userSegmentBody">Create a new user segment.</param> 
-        /// <returns></returns>            
-        public void PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody)
+        /// <returns>UserSegment</returns>            
+        public UserSegment PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -341,7 +341,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostUserSegment: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (UserSegment) ApiClient.Deserialize(response.Content, typeof(UserSegment), response.Headers);
         }
     
     }

@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="postmembers"></a>
 # **PostMembers**
-> void PostMembers (List<MembersBody> membersBody)
+> Members PostMembers (List<MembersBody> membersBody)
 
 Invite new members.
 
@@ -300,7 +300,8 @@ namespace Example
             try
             {
                 // Invite new members.
-                apiInstance.PostMembers(membersBody);
+                Members result = apiInstance.PostMembers(membersBody);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -319,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Members**](Members.md)
 
 ### Authorization
 

@@ -21,11 +21,12 @@ namespace LaunchDarkly.Api.Model {
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets or Sets Value
+    /// Values for this property.
     /// </summary>
+    /// <value>Values for this property.</value>
     [DataMember(Name="value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value")]
-    public CustomPropertyValues Value { get; set; }
+    public List<string> Value { get; set; }
 
 
     /// <summary>

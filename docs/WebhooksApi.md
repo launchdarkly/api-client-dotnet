@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="postwebhook"></a>
 # **PostWebhook**
-> void PostWebhook (WebhookBody webhookBody)
+> Webhook PostWebhook (WebhookBody webhookBody)
 
 Create a webhook.
 
@@ -300,7 +300,8 @@ namespace Example
             try
             {
                 // Create a webhook.
-                apiInstance.PostWebhook(webhookBody);
+                Webhook result = apiInstance.PostWebhook(webhookBody);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -319,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Webhook**](Webhook.md)
 
 ### Authorization
 

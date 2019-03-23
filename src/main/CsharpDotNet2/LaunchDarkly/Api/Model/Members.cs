@@ -24,7 +24,7 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="items", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "items")]
-    public Member Items { get; set; }
+    public List<Member> Items { get; set; }
 
 
     /// <summary>

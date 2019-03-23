@@ -29,11 +29,12 @@ namespace LaunchDarkly.Api.Model {
     public string Description { get; set; }
 
     /// <summary>
-    /// Gets or Sets Key
+    /// The 20-hexdigit id or the key for a custom role.
     /// </summary>
+    /// <value>The 20-hexdigit id or the key for a custom role.</value>
     [DataMember(Name="key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "key")]
-    public CustomRoleKeyOrId Key { get; set; }
+    public string Key { get; set; }
 
     /// <summary>
     /// Gets or Sets Policy

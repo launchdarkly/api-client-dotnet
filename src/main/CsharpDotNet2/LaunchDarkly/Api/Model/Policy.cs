@@ -17,14 +17,14 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="resources", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "resources")]
-    public Resources Resources { get; set; }
+    public List<string> Resources { get; set; }
 
     /// <summary>
     /// Gets or Sets Actions
     /// </summary>
     [DataMember(Name="actions", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "actions")]
-    public Actions Actions { get; set; }
+    public List<string> Actions { get; set; }
 
     /// <summary>
     /// Effect of the policy - allow or deny.

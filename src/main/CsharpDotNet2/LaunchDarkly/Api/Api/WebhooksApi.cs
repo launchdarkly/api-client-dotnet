@@ -39,8 +39,8 @@ namespace LaunchDarkly.Api.Api
         /// Create a webhook. 
         /// </summary>
         /// <param name="webhookBody">New webhook.</param>
-        /// <returns></returns>
-        void PostWebhook (WebhookBody webhookBody);
+        /// <returns>Webhook</returns>
+        Webhook PostWebhook (WebhookBody webhookBody);
     }
   
     /// <summary>
@@ -248,8 +248,8 @@ namespace LaunchDarkly.Api.Api
         /// Create a webhook. 
         /// </summary>
         /// <param name="webhookBody">New webhook.</param> 
-        /// <returns></returns>            
-        public void PostWebhook (WebhookBody webhookBody)
+        /// <returns>Webhook</returns>            
+        public Webhook PostWebhook (WebhookBody webhookBody)
         {
             
             // verify the required parameter 'webhookBody' is set
@@ -278,7 +278,7 @@ namespace LaunchDarkly.Api.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostWebhook: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Webhook) ApiClient.Deserialize(response.Content, typeof(Webhook), response.Headers);
         }
     
     }

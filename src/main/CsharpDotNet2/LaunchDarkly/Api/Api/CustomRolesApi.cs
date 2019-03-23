@@ -39,8 +39,8 @@ namespace LaunchDarkly.Api.Api
         /// Create a new custom role. 
         /// </summary>
         /// <param name="customRoleBody">New role or roles to create.</param>
-        /// <returns></returns>
-        void PostCustomRole (CustomRoleBody customRoleBody);
+        /// <returns>CustomRole</returns>
+        CustomRole PostCustomRole (CustomRoleBody customRoleBody);
     }
   
     /// <summary>
@@ -248,8 +248,8 @@ namespace LaunchDarkly.Api.Api
         /// Create a new custom role. 
         /// </summary>
         /// <param name="customRoleBody">New role or roles to create.</param> 
-        /// <returns></returns>            
-        public void PostCustomRole (CustomRoleBody customRoleBody)
+        /// <returns>CustomRole</returns>            
+        public CustomRole PostCustomRole (CustomRoleBody customRoleBody)
         {
             
             // verify the required parameter 'customRoleBody' is set
@@ -278,7 +278,7 @@ namespace LaunchDarkly.Api.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostCustomRole: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (CustomRole) ApiClient.Deserialize(response.Content, typeof(CustomRole), response.Headers);
         }
     
     }
