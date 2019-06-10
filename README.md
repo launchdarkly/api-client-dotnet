@@ -61,8 +61,8 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new AuditLogApi();
-            var before = 8.14;  // decimal? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. (optional) 
-            var after = 8.14;  // decimal? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
+            var before = 789;  // long? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. (optional) 
+            var after = 789;  // long? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
             var q = q_example;  // string | Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change. (optional) 
             var limit = 8.14;  // decimal? | A limit on the number of audit log entries to be returned, between 1 and 20. (optional) 
             var spec = spec_example;  // string | A resource specifier, allowing you to filter audit log listings by resource. (optional) 

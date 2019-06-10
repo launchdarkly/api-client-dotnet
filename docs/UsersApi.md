@@ -80,7 +80,7 @@ void (empty response body)
 
 <a name="getsearchusers"></a>
 # **GetSearchUsers**
-> Users GetSearchUsers (string projectKey, string environmentKey, string q, int? limit, int? offset, decimal? after)
+> Users GetSearchUsers (string projectKey, string environmentKey, string q, int? limit, int? offset, long? after)
 
 Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly- - use the List users API resource.
 
@@ -110,7 +110,7 @@ namespace Example
             var q = q_example;  // string | Search query. (optional) 
             var limit = 56;  // int? | Pagination limit. (optional) 
             var offset = 56;  // int? | Specifies the first item to return in the collection. (optional) 
-            var after = 8.14;  // decimal? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
+            var after = 789;  // long? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
 
             try
             {
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
  **q** | **string**| Search query. | [optional] 
  **limit** | **int?**| Pagination limit. | [optional] 
  **offset** | **int?**| Specifies the first item to return in the collection. | [optional] 
- **after** | **decimal?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
+ **after** | **long?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
 
 ### Return type
 

@@ -20,7 +20,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="limit">A limit on the number of audit log entries to be returned, between 1 and 20.</param>
         /// <param name="spec">A resource specifier, allowing you to filter audit log listings by resource.</param>
         /// <returns>AuditLogEntries</returns>
-        AuditLogEntries GetAuditLogEntries (decimal? before, decimal? after, string q, decimal? limit, string spec);
+        AuditLogEntries GetAuditLogEntries (long? before, long? after, string q, decimal? limit, string spec);
         /// <summary>
         /// Use this endpoint to fetch a single audit log entry by its resouce ID. 
         /// </summary>
@@ -91,7 +91,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="limit">A limit on the number of audit log entries to be returned, between 1 and 20.</param> 
         /// <param name="spec">A resource specifier, allowing you to filter audit log listings by resource.</param> 
         /// <returns>AuditLogEntries</returns>            
-        public AuditLogEntries GetAuditLogEntries (decimal? before, decimal? after, string q, decimal? limit, string spec)
+        public AuditLogEntries GetAuditLogEntries (long? before, long? after, string q, decimal? limit, string spec)
         {
             
     
