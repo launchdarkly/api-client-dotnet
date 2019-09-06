@@ -99,6 +99,22 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "tags")]
     public List<string> Tags { get; set; }
 
+    /// <summary>
+    /// Determines if this environment requires comments for flag and segment changes.
+    /// </summary>
+    /// <value>Determines if this environment requires comments for flag and segment changes.</value>
+    [DataMember(Name="requireComments", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "requireComments")]
+    public bool? RequireComments { get; set; }
+
+    /// <summary>
+    /// Determines if this environment requires confirmation for flag and segment changes.
+    /// </summary>
+    /// <value>Determines if this environment requires confirmation for flag and segment changes.</value>
+    [DataMember(Name="confirmChanges", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "confirmChanges")]
+    public bool? ConfirmChanges { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -118,6 +134,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  SecureMode: ").Append(SecureMode).Append("\n");
       sb.Append("  DefaultTrackEvents: ").Append(DefaultTrackEvents).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
+      sb.Append("  RequireComments: ").Append(RequireComments).Append("\n");
+      sb.Append("  ConfirmChanges: ").Append(ConfirmChanges).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
