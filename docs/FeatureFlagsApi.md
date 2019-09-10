@@ -4,7 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CopyFeatureFlag**](FeatureFlagsApi.md#copyfeatureflag) | **POST** /flags/{projectKey}/{environmentKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
+[**CopyFeatureFlag**](FeatureFlagsApi.md#copyfeatureflag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**DeleteFeatureFlag**](FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application.
 [**GetFeatureFlag**](FeatureFlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="copyfeatureflag"></a>
 # **CopyFeatureFlag**
-> FeatureFlag CopyFeatureFlag (string projectKey, string environmentKey, string featureFlagKey)
+> FeatureFlag CopyFeatureFlag (string projectKey, string featureFlagKey, FeatureFlagCopyBody featureFlagCopyBody)
 
 Copies the feature flag configuration from one environment to the same feature flag in another environment.
 
@@ -42,13 +42,13 @@ namespace Example
 
             var apiInstance = new FeatureFlagsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
+            var featureFlagCopyBody = new FeatureFlagCopyBody(); // FeatureFlagCopyBody | Copy feature flag configurations between environments.
 
             try
             {
                 // Copies the feature flag configuration from one environment to the same feature flag in another environment.
-                FeatureFlag result = apiInstance.CopyFeatureFlag(projectKey, environmentKey, featureFlagKey);
+                FeatureFlag result = apiInstance.CopyFeatureFlag(projectKey, featureFlagKey, featureFlagCopyBody);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -65,8 +65,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+ **featureFlagCopyBody** | [**FeatureFlagCopyBody**](FeatureFlagCopyBody.md)| Copy feature flag configurations between environments. | 
 
 ### Return type
 

@@ -123,7 +123,7 @@ namespace LaunchDarkly.Api.Client
                      .GetExecutingAssembly()
                      .GetReferencedAssemblies()
                      .Where(x => x.Name == "System.Core").First().Version.ToString()  + "\n";
-            report += "    Version of the API: 2.0.18\n";
+            report += "    Version of the API: 2.0.19\n";
             report += "    SDK Package Version: 1.0.0\n";
   
             return report;
