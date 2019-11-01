@@ -11,13 +11,27 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatus : Dictionary<String, FeatureFlagStatusForQueriedEnvironment> {
+  public class StreamBySDK {
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [DataMember(Name="_links", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
+    public StreamBySDKLinks Links { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Metadata
+    /// </summary>
+    [DataMember(Name="metadata", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "metadata")]
+    public List<StreamBySDKLinksMetadata> Metadata { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Series
+    /// </summary>
+    [DataMember(Name="series", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "series")]
+    public List<StreamUsageSeries> Series { get; set; }
 
 
     /// <summary>
@@ -26,8 +40,10 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatus {\n");
+      sb.Append("class StreamBySDK {\n");
       sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+      sb.Append("  Series: ").Append(Series).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
@@ -36,7 +52,7 @@ namespace LaunchDarkly.Api.Model {
     /// Get the JSON string presentation of the object
     /// </summary>
     /// <returns>JSON string presentation of the object</returns>
-    public  new string ToJson() {
+    public string ToJson() {
       return JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 

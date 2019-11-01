@@ -134,6 +134,22 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "environments")]
     public Dictionary<string, FeatureFlagConfig> Environments { get; set; }
 
+    /// <summary>
+    /// A unix epoch time in milliseconds specifying the archived time of this flag.
+    /// </summary>
+    /// <value>A unix epoch time in milliseconds specifying the archived time of this flag.</value>
+    [DataMember(Name="archivedDate", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "archivedDate")]
+    public decimal? ArchivedDate { get; set; }
+
+    /// <summary>
+    /// Whether or not this flag is archived.
+    /// </summary>
+    /// <value>Whether or not this flag is archived.</value>
+    [DataMember(Name="archived", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "archived")]
+    public bool? Archived { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -158,6 +174,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Links: ").Append(Links).Append("\n");
       sb.Append("  Maintainer: ").Append(Maintainer).Append("\n");
       sb.Append("  Environments: ").Append(Environments).Append("\n");
+      sb.Append("  ArchivedDate: ").Append(ArchivedDate).Append("\n");
+      sb.Append("  Archived: ").Append(Archived).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

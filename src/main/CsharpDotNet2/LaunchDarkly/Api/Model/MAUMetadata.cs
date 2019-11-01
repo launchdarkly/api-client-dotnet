@@ -11,14 +11,7 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatus : Dictionary<String, FeatureFlagStatusForQueriedEnvironment> {
-    /// <summary>
-    /// Gets or Sets Links
-    /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
-
+  public class MAUMetadata {
 
     /// <summary>
     /// Get the string presentation of the object
@@ -26,8 +19,7 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatus {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("class MAUMetadata {\n");
       sb.Append("}\n");
       return sb.ToString();
     }
@@ -36,7 +28,7 @@ namespace LaunchDarkly.Api.Model {
     /// Get the JSON string presentation of the object
     /// </summary>
     /// <returns>JSON string presentation of the object</returns>
-    public  new string ToJson() {
+    public string ToJson() {
       return JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 

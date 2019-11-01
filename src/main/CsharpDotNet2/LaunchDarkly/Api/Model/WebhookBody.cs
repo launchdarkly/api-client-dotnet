@@ -52,6 +52,21 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Statements
+    /// </summary>
+    [DataMember(Name="statements", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "statements")]
+    public Statements Statements { get; set; }
+
+    /// <summary>
+    /// Tags for the webhook.
+    /// </summary>
+    /// <value>Tags for the webhook.</value>
+    [DataMember(Name="tags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "tags")]
+    public List<string> Tags { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -65,6 +80,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Sign: ").Append(Sign).Append("\n");
       sb.Append("  On: ").Append(On).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
+      sb.Append("  Statements: ").Append(Statements).Append("\n");
+      sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

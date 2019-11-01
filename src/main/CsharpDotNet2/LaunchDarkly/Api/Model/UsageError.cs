@@ -11,13 +11,13 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatus : Dictionary<String, FeatureFlagStatusForQueriedEnvironment> {
+  public class UsageError {
     /// <summary>
-    /// Gets or Sets Links
+    /// Gets or Sets Message
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
+    [DataMember(Name="message", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "message")]
+    public string Message { get; set; }
 
 
     /// <summary>
@@ -26,8 +26,8 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatus {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("class UsageError {\n");
+      sb.Append("  Message: ").Append(Message).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
@@ -36,7 +36,7 @@ namespace LaunchDarkly.Api.Model {
     /// Get the JSON string presentation of the object
     /// </summary>
     /// <returns>JSON string presentation of the object</returns>
-    public  new string ToJson() {
+    public string ToJson() {
       return JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 

@@ -43,6 +43,13 @@ namespace LaunchDarkly.Api.Api
         /// <returns>FeatureFlagStatus</returns>
         FeatureFlagStatus GetFeatureFlagStatus (string projectKey, string environmentKey, string featureFlagKey);
         /// <summary>
+        /// [BETA] Get the status for a particular feature flag across environments 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <returns>FeatureFlagStatusAcrossEnvironments</returns>
+        FeatureFlagStatusAcrossEnvironments GetFeatureFlagStatusAcrossEnvironments (string projectKey, string featureFlagKey);
+        /// <summary>
         /// Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -306,6 +313,48 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
                 throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagStatus: " + response.ErrorMessage, response.ErrorMessage);
     
             return (FeatureFlagStatus) ApiClient.Deserialize(response.Content, typeof(FeatureFlagStatus), response.Headers);
+        }
+    
+        /// <summary>
+        /// [BETA] Get the status for a particular feature flag across environments 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <returns>FeatureFlagStatusAcrossEnvironments</returns>            
+        public FeatureFlagStatusAcrossEnvironments GetFeatureFlagStatusAcrossEnvironments (string projectKey, string featureFlagKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetFeatureFlagStatusAcrossEnvironments");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetFeatureFlagStatusAcrossEnvironments");
+            
+    
+            var path = "/flag-status/{projectKey}/{featureFlagKey}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagStatusAcrossEnvironments: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagStatusAcrossEnvironments: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (FeatureFlagStatusAcrossEnvironments) ApiClient.Deserialize(response.Content, typeof(FeatureFlagStatusAcrossEnvironments), response.Headers);
         }
     
         /// <summary>

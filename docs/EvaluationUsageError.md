@@ -1,9 +1,10 @@
-# LaunchDarkly.Api.Model.FeatureFlagStatus
+# LaunchDarkly.Api.Model.EvaluationUsageError
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | [**Links**](Links.md) |  | [optional] 
+**Code** | **string** |  | [optional] 
+**Message** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

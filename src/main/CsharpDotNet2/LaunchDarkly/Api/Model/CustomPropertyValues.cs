@@ -8,17 +8,10 @@ using Newtonsoft.Json;
 namespace LaunchDarkly.Api.Model {
 
   /// <summary>
-  /// 
+  /// Values for this property.
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatus : Dictionary<String, FeatureFlagStatusForQueriedEnvironment> {
-    /// <summary>
-    /// Gets or Sets Links
-    /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
-
+  public class CustomPropertyValues : List<string> {
 
     /// <summary>
     /// Get the string presentation of the object
@@ -26,8 +19,7 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatus {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("class CustomPropertyValues {\n");
       sb.Append("}\n");
       return sb.ToString();
     }

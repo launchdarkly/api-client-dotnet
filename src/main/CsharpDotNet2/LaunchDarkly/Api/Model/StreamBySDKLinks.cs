@@ -11,13 +11,20 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatus : Dictionary<String, FeatureFlagStatusForQueriedEnvironment> {
+  public class StreamBySDKLinks {
     /// <summary>
-    /// Gets or Sets Links
+    /// Gets or Sets Parent
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
+    [DataMember(Name="parent", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "parent")]
+    public Link Parent { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Self
+    /// </summary>
+    [DataMember(Name="self", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "self")]
+    public Link Self { get; set; }
 
 
     /// <summary>
@@ -26,8 +33,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatus {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("class StreamBySDKLinks {\n");
+      sb.Append("  Parent: ").Append(Parent).Append("\n");
+      sb.Append("  Self: ").Append(Self).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
@@ -36,7 +44,7 @@ namespace LaunchDarkly.Api.Model {
     /// Get the JSON string presentation of the object
     /// </summary>
     /// <returns>JSON string presentation of the object</returns>
-    public  new string ToJson() {
+    public string ToJson() {
       return JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 

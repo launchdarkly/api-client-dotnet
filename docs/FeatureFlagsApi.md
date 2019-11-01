@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteFeatureFlag**](FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application.
 [**GetFeatureFlag**](FeatureFlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
+[**GetFeatureFlagStatusAcrossEnvironments**](FeatureFlagsApi.md#getfeatureflagstatusacrossenvironments) | **GET** /flag-status/{projectKey}/{featureFlagKey} | [BETA] Get the status for a particular feature flag across environments
 [**GetFeatureFlagStatuses**](FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**GetFeatureFlags**](FeatureFlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**PatchFeatureFlag**](FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
@@ -275,6 +276,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FeatureFlagStatus**](FeatureFlagStatus.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getfeatureflagstatusacrossenvironments"></a>
+# **GetFeatureFlagStatusAcrossEnvironments**
+> FeatureFlagStatusAcrossEnvironments GetFeatureFlagStatusAcrossEnvironments (string projectKey, string featureFlagKey)
+
+[BETA] Get the status for a particular feature flag across environments
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
+
+namespace Example
+{
+    public class GetFeatureFlagStatusAcrossEnvironmentsExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: Token
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new FeatureFlagsApi();
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
+
+            try
+            {
+                // [BETA] Get the status for a particular feature flag across environments
+                FeatureFlagStatusAcrossEnvironments result = apiInstance.GetFeatureFlagStatusAcrossEnvironments(projectKey, featureFlagKey);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagStatusAcrossEnvironments: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+[**FeatureFlagStatusAcrossEnvironments**](FeatureFlagStatusAcrossEnvironments.md)
 
 ### Authorization
 
