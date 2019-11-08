@@ -27,6 +27,20 @@ namespace LaunchDarkly.Api.Model {
     public string Key { get; set; }
 
     /// <summary>
+    /// Gets or Sets IncludeInSnippetByDefault
+    /// </summary>
+    [DataMember(Name="includeInSnippetByDefault", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "includeInSnippetByDefault")]
+    public bool? IncludeInSnippetByDefault { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Tags
+    /// </summary>
+    [DataMember(Name="tags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "tags")]
+    public List<string> Tags { get; set; }
+
+    /// <summary>
     /// Gets or Sets Environments
     /// </summary>
     [DataMember(Name="environments", EmitDefaultValue=false)]
@@ -43,6 +57,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("class ProjectBody {\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Key: ").Append(Key).Append("\n");
+      sb.Append("  IncludeInSnippetByDefault: ").Append(IncludeInSnippetByDefault).Append("\n");
+      sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  Environments: ").Append(Environments).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

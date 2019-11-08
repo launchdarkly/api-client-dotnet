@@ -43,7 +43,7 @@ namespace LaunchDarkly.Api.Api
         /// <returns>FeatureFlagStatus</returns>
         FeatureFlagStatus GetFeatureFlagStatus (string projectKey, string environmentKey, string featureFlagKey);
         /// <summary>
-        /// [BETA] Get the status for a particular feature flag across environments 
+        /// Get the status for a particular feature flag across environments 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
@@ -316,7 +316,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
-        /// [BETA] Get the status for a particular feature flag across environments 
+        /// Get the status for a particular feature flag across environments 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 

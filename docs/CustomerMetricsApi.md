@@ -1,26 +1,26 @@
-# LaunchDarkly.Api.Api.UsageApi
+# LaunchDarkly.Api.Api.CustomerMetricsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetEvaluations**](UsageApi.md#getevaluations) | **GET** /usage/evaluations/{envId}/{flagKey} | [BETA] Get events usage by event id and the feature flag key.
-[**GetEvent**](UsageApi.md#getevent) | **GET** /usage/events/{type} | [BETA] Get events usage by event type.
-[**GetEvents**](UsageApi.md#getevents) | **GET** /usage/events | [BETA] Get events usage endpoints.
-[**GetMAU**](UsageApi.md#getmau) | **GET** /usage/mau | [BETA] Get monthly active user data.
-[**GetMAUByCategory**](UsageApi.md#getmaubycategory) | **GET** /usage/mau/bycategory | [BETA] Get monthly active user data by category.
-[**GetStream**](UsageApi.md#getstream) | **GET** /usage/streams/{source} | [BETA] Get a stream endpoint and return timeseries data.
-[**GetStreamBySDK**](UsageApi.md#getstreambysdk) | **GET** /usage/streams/{source}/bysdkversion | [BETA] Get a stream timeseries data by source show sdk version metadata.
-[**GetStreamSDKVersion**](UsageApi.md#getstreamsdkversion) | **GET** /usage/streams/{source}/sdkversions | [BETA] Get a stream timeseries data by source and show all sdk version associated.
-[**GetStreams**](UsageApi.md#getstreams) | **GET** /usage/streams | [BETA] Returns a list of all streams.
-[**GetUsage**](UsageApi.md#getusage) | **GET** /usage | [BETA] Returns of the usage endpoints available.
+[**GetEvaluations**](CustomerMetricsApi.md#getevaluations) | **GET** /usage/evaluations/{envId}/{flagKey} | Get events usage by event id and the feature flag key.
+[**GetEvent**](CustomerMetricsApi.md#getevent) | **GET** /usage/events/{type} | Get events usage by event type.
+[**GetEvents**](CustomerMetricsApi.md#getevents) | **GET** /usage/events | Get events usage endpoints.
+[**GetMAU**](CustomerMetricsApi.md#getmau) | **GET** /usage/mau | Get monthly active user data.
+[**GetMAUByCategory**](CustomerMetricsApi.md#getmaubycategory) | **GET** /usage/mau/bycategory | Get monthly active user data by category.
+[**GetStream**](CustomerMetricsApi.md#getstream) | **GET** /usage/streams/{source} | Get a stream endpoint and return timeseries data.
+[**GetStreamBySDK**](CustomerMetricsApi.md#getstreambysdk) | **GET** /usage/streams/{source}/bysdkversion | Get a stream timeseries data by source show sdk version metadata.
+[**GetStreamSDKVersion**](CustomerMetricsApi.md#getstreamsdkversion) | **GET** /usage/streams/{source}/sdkversions | Get a stream timeseries data by source and show all sdk version associated.
+[**GetStreams**](CustomerMetricsApi.md#getstreams) | **GET** /usage/streams | Returns a list of all streams.
+[**GetUsage**](CustomerMetricsApi.md#getusage) | **GET** /usage | Returns of the usage endpoints available.
 
 
 <a name="getevaluations"></a>
 # **GetEvaluations**
 > StreamSDKVersion GetEvaluations (string envId, string flagKey)
 
-[BETA] Get events usage by event id and the feature flag key.
+Get events usage by event id and the feature flag key.
 
 ### Example
 ```csharp
@@ -42,19 +42,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
             var envId = envId_example;  // string | The environment id for the flag evaluations in question.
             var flagKey = flagKey_example;  // string | The key of the flag we want metrics for.
 
             try
             {
-                // [BETA] Get events usage by event id and the feature flag key.
+                // Get events usage by event id and the feature flag key.
                 StreamSDKVersion result = apiInstance.GetEvaluations(envId, flagKey);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetEvaluations: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetEvaluations: " + e.Message );
             }
         }
     }
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 # **GetEvent**
 > StreamSDKVersion GetEvent (string type)
 
-[BETA] Get events usage by event type.
+Get events usage by event type.
 
 ### Example
 ```csharp
@@ -109,18 +109,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
             var type = type_example;  // string | The type of event we would like to track.
 
             try
             {
-                // [BETA] Get events usage by event type.
+                // Get events usage by event type.
                 StreamSDKVersion result = apiInstance.GetEvent(type);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetEvent: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetEvent: " + e.Message );
             }
         }
     }
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 # **GetEvents**
 > Events GetEvents ()
 
-[BETA] Get events usage endpoints.
+Get events usage endpoints.
 
 ### Example
 ```csharp
@@ -174,17 +174,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
 
             try
             {
-                // [BETA] Get events usage endpoints.
+                // Get events usage endpoints.
                 Events result = apiInstance.GetEvents();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetEvents: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetEvents: " + e.Message );
             }
         }
     }
@@ -213,7 +213,7 @@ This endpoint does not need any parameter.
 # **GetMAU**
 > MAU GetMAU ()
 
-[BETA] Get monthly active user data.
+Get monthly active user data.
 
 ### Example
 ```csharp
@@ -235,17 +235,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
 
             try
             {
-                // [BETA] Get monthly active user data.
+                // Get monthly active user data.
                 MAU result = apiInstance.GetMAU();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetMAU: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetMAU: " + e.Message );
             }
         }
     }
@@ -274,7 +274,7 @@ This endpoint does not need any parameter.
 # **GetMAUByCategory**
 > MAUbyCategory GetMAUByCategory ()
 
-[BETA] Get monthly active user data by category.
+Get monthly active user data by category.
 
 ### Example
 ```csharp
@@ -296,17 +296,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
 
             try
             {
-                // [BETA] Get monthly active user data by category.
+                // Get monthly active user data by category.
                 MAUbyCategory result = apiInstance.GetMAUByCategory();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetMAUByCategory: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetMAUByCategory: " + e.Message );
             }
         }
     }
@@ -335,7 +335,7 @@ This endpoint does not need any parameter.
 # **GetStream**
 > Stream GetStream (string source)
 
-[BETA] Get a stream endpoint and return timeseries data.
+Get a stream endpoint and return timeseries data.
 
 ### Example
 ```csharp
@@ -357,18 +357,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
             var source = source_example;  // string | The source of where the stream comes from.
 
             try
             {
-                // [BETA] Get a stream endpoint and return timeseries data.
+                // Get a stream endpoint and return timeseries data.
                 Stream result = apiInstance.GetStream(source);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetStream: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetStream: " + e.Message );
             }
         }
     }
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 # **GetStreamBySDK**
 > StreamBySDK GetStreamBySDK (string source)
 
-[BETA] Get a stream timeseries data by source show sdk version metadata.
+Get a stream timeseries data by source show sdk version metadata.
 
 ### Example
 ```csharp
@@ -422,18 +422,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
             var source = source_example;  // string | The source of where the stream comes from.
 
             try
             {
-                // [BETA] Get a stream timeseries data by source show sdk version metadata.
+                // Get a stream timeseries data by source show sdk version metadata.
                 StreamBySDK result = apiInstance.GetStreamBySDK(source);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetStreamBySDK: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetStreamBySDK: " + e.Message );
             }
         }
     }
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 # **GetStreamSDKVersion**
 > StreamSDKVersion GetStreamSDKVersion (string source)
 
-[BETA] Get a stream timeseries data by source and show all sdk version associated.
+Get a stream timeseries data by source and show all sdk version associated.
 
 ### Example
 ```csharp
@@ -487,18 +487,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
             var source = source_example;  // string | The source of where the stream comes from.
 
             try
             {
-                // [BETA] Get a stream timeseries data by source and show all sdk version associated.
+                // Get a stream timeseries data by source and show all sdk version associated.
                 StreamSDKVersion result = apiInstance.GetStreamSDKVersion(source);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetStreamSDKVersion: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetStreamSDKVersion: " + e.Message );
             }
         }
     }
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 # **GetStreams**
 > Streams GetStreams ()
 
-[BETA] Returns a list of all streams.
+Returns a list of all streams.
 
 ### Example
 ```csharp
@@ -552,17 +552,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
 
             try
             {
-                // [BETA] Returns a list of all streams.
+                // Returns a list of all streams.
                 Streams result = apiInstance.GetStreams();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetStreams: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetStreams: " + e.Message );
             }
         }
     }
@@ -591,7 +591,7 @@ This endpoint does not need any parameter.
 # **GetUsage**
 > Usage GetUsage ()
 
-[BETA] Returns of the usage endpoints available.
+Returns of the usage endpoints available.
 
 ### Example
 ```csharp
@@ -613,17 +613,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new UsageApi();
+            var apiInstance = new CustomerMetricsApi();
 
             try
             {
-                // [BETA] Returns of the usage endpoints available.
+                // Returns of the usage endpoints available.
                 Usage result = apiInstance.GetUsage();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UsageApi.GetUsage: " + e.Message );
+                Debug.Print("Exception when calling CustomerMetricsApi.GetUsage: " + e.Message );
             }
         }
     }

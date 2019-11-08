@@ -9,61 +9,61 @@ namespace LaunchDarkly.Api.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IUsageApi
+    public interface ICustomerMetricsApi
     {
         /// <summary>
-        /// [BETA] Get events usage by event id and the feature flag key. 
+        /// Get events usage by event id and the feature flag key. 
         /// </summary>
         /// <param name="envId">The environment id for the flag evaluations in question.</param>
         /// <param name="flagKey">The key of the flag we want metrics for.</param>
         /// <returns>StreamSDKVersion</returns>
         StreamSDKVersion GetEvaluations (string envId, string flagKey);
         /// <summary>
-        /// [BETA] Get events usage by event type. 
+        /// Get events usage by event type. 
         /// </summary>
         /// <param name="type">The type of event we would like to track.</param>
         /// <returns>StreamSDKVersion</returns>
         StreamSDKVersion GetEvent (string type);
         /// <summary>
-        /// [BETA] Get events usage endpoints. 
+        /// Get events usage endpoints. 
         /// </summary>
         /// <returns>Events</returns>
         Events GetEvents ();
         /// <summary>
-        /// [BETA] Get monthly active user data. 
+        /// Get monthly active user data. 
         /// </summary>
         /// <returns>MAU</returns>
         MAU GetMAU ();
         /// <summary>
-        /// [BETA] Get monthly active user data by category. 
+        /// Get monthly active user data by category. 
         /// </summary>
         /// <returns>MAUbyCategory</returns>
         MAUbyCategory GetMAUByCategory ();
         /// <summary>
-        /// [BETA] Get a stream endpoint and return timeseries data. 
+        /// Get a stream endpoint and return timeseries data. 
         /// </summary>
         /// <param name="source">The source of where the stream comes from.</param>
         /// <returns>Stream</returns>
         Stream GetStream (string source);
         /// <summary>
-        /// [BETA] Get a stream timeseries data by source show sdk version metadata. 
+        /// Get a stream timeseries data by source show sdk version metadata. 
         /// </summary>
         /// <param name="source">The source of where the stream comes from.</param>
         /// <returns>StreamBySDK</returns>
         StreamBySDK GetStreamBySDK (string source);
         /// <summary>
-        /// [BETA] Get a stream timeseries data by source and show all sdk version associated. 
+        /// Get a stream timeseries data by source and show all sdk version associated. 
         /// </summary>
         /// <param name="source">The source of where the stream comes from.</param>
         /// <returns>StreamSDKVersion</returns>
         StreamSDKVersion GetStreamSDKVersion (string source);
         /// <summary>
-        /// [BETA] Returns a list of all streams. 
+        /// Returns a list of all streams. 
         /// </summary>
         /// <returns>Streams</returns>
         Streams GetStreams ();
         /// <summary>
-        /// [BETA] Returns of the usage endpoints available. 
+        /// Returns of the usage endpoints available. 
         /// </summary>
         /// <returns>Usage</returns>
         Usage GetUsage ();
@@ -72,14 +72,14 @@ namespace LaunchDarkly.Api.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class UsageApi : IUsageApi
+    public class CustomerMetricsApi : ICustomerMetricsApi
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsageApi"/> class.
+        /// Initializes a new instance of the <see cref="CustomerMetricsApi"/> class.
         /// </summary>
         /// <param name="apiClient"> an instance of ApiClient (optional)</param>
         /// <returns></returns>
-        public UsageApi(ApiClient apiClient = null)
+        public CustomerMetricsApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
                 this.ApiClient = Configuration.DefaultApiClient; 
@@ -88,10 +88,10 @@ namespace LaunchDarkly.Api.Api
         }
     
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsageApi"/> class.
+        /// Initializes a new instance of the <see cref="CustomerMetricsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public UsageApi(String basePath)
+        public CustomerMetricsApi(String basePath)
         {
             this.ApiClient = new ApiClient(basePath);
         }
@@ -123,7 +123,7 @@ namespace LaunchDarkly.Api.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// [BETA] Get events usage by event id and the feature flag key. 
+        /// Get events usage by event id and the feature flag key. 
         /// </summary>
         /// <param name="envId">The environment id for the flag evaluations in question.</param> 
         /// <param name="flagKey">The key of the flag we want metrics for.</param> 
@@ -165,7 +165,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get events usage by event type. 
+        /// Get events usage by event type. 
         /// </summary>
         /// <param name="type">The type of event we would like to track.</param> 
         /// <returns>StreamSDKVersion</returns>            
@@ -202,7 +202,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get events usage endpoints. 
+        /// Get events usage endpoints. 
         /// </summary>
         /// <returns>Events</returns>            
         public Events GetEvents ()
@@ -234,7 +234,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get monthly active user data. 
+        /// Get monthly active user data. 
         /// </summary>
         /// <returns>MAU</returns>            
         public MAU GetMAU ()
@@ -266,7 +266,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get monthly active user data by category. 
+        /// Get monthly active user data by category. 
         /// </summary>
         /// <returns>MAUbyCategory</returns>            
         public MAUbyCategory GetMAUByCategory ()
@@ -298,7 +298,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get a stream endpoint and return timeseries data. 
+        /// Get a stream endpoint and return timeseries data. 
         /// </summary>
         /// <param name="source">The source of where the stream comes from.</param> 
         /// <returns>Stream</returns>            
@@ -335,7 +335,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get a stream timeseries data by source show sdk version metadata. 
+        /// Get a stream timeseries data by source show sdk version metadata. 
         /// </summary>
         /// <param name="source">The source of where the stream comes from.</param> 
         /// <returns>StreamBySDK</returns>            
@@ -372,7 +372,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Get a stream timeseries data by source and show all sdk version associated. 
+        /// Get a stream timeseries data by source and show all sdk version associated. 
         /// </summary>
         /// <param name="source">The source of where the stream comes from.</param> 
         /// <returns>StreamSDKVersion</returns>            
@@ -409,7 +409,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Returns a list of all streams. 
+        /// Returns a list of all streams. 
         /// </summary>
         /// <returns>Streams</returns>            
         public Streams GetStreams ()
@@ -441,7 +441,7 @@ path = path.Replace("{" + "flagKey" + "}", ApiClient.ParameterToString(flagKey))
         }
     
         /// <summary>
-        /// [BETA] Returns of the usage endpoints available. 
+        /// Returns of the usage endpoints available. 
         /// </summary>
         /// <returns>Usage</returns>            
         public Usage GetUsage ()
