@@ -61,9 +61,11 @@ namespace LaunchDarkly.Api.Api
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="env">By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment.</param>
+        /// <param name="summary">By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned.</param>
+        /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param>
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param>
         /// <returns>FeatureFlags</returns>
-        FeatureFlags GetFeatureFlags (string projectKey, string env, string tag);
+        FeatureFlags GetFeatureFlags (string projectKey, string env, string summary, string archived, string tag);
         /// <summary>
         /// Perform a partial update to a feature. 
         /// </summary>
@@ -404,9 +406,11 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="env">By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment.</param> 
+        /// <param name="summary">By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned.</param> 
+        /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param> 
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param> 
         /// <returns>FeatureFlags</returns>            
-        public FeatureFlags GetFeatureFlags (string projectKey, string env, string tag)
+        public FeatureFlags GetFeatureFlags (string projectKey, string env, string summary, string archived, string tag)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -424,6 +428,8 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             String postBody = null;
     
              if (env != null) queryParams.Add("env", ApiClient.ParameterToString(env)); // query parameter
+ if (summary != null) queryParams.Add("summary", ApiClient.ParameterToString(summary)); // query parameter
+ if (archived != null) queryParams.Add("archived", ApiClient.ParameterToString(archived)); // query parameter
  if (tag != null) queryParams.Add("tag", ApiClient.ParameterToString(tag)); // query parameter
                                         
             // authentication setting, if any

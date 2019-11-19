@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 <a name="getfeatureflags"></a>
 # **GetFeatureFlags**
-> FeatureFlags GetFeatureFlags (string projectKey, string env, string tag)
+> FeatureFlags GetFeatureFlags (string projectKey, string env, string summary, string archived, string tag)
 
 Get a list of all features in the given project.
 
@@ -451,12 +451,14 @@ namespace Example
             var apiInstance = new FeatureFlagsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var env = env_example;  // string | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment. (optional) 
+            var summary = summary_example;  // string | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned. (optional) 
+            var archived = archived_example;  // string | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. (optional) 
             var tag = tag_example;  // string | Filter by tag. A tag can be used to group flags across projects. (optional) 
 
             try
             {
                 // Get a list of all features in the given project.
-                FeatureFlags result = apiInstance.GetFeatureFlags(projectKey, env, tag);
+                FeatureFlags result = apiInstance.GetFeatureFlags(projectKey, env, summary, archived, tag);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -474,6 +476,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **env** | **string**| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment. | [optional] 
+ **summary** | **string**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional] 
+ **archived** | **string**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional] 
  **tag** | **string**| Filter by tag. A tag can be used to group flags across projects. | [optional] 
 
 ### Return type
