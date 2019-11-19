@@ -13,6 +13,13 @@ namespace LaunchDarkly.Api.Model {
   [DataContract]
   public class Rollout {
     /// <summary>
+    /// Gets or Sets BucketBy
+    /// </summary>
+    [DataMember(Name="bucketBy", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "bucketBy")]
+    public string BucketBy { get; set; }
+
+    /// <summary>
     /// Gets or Sets Variations
     /// </summary>
     [DataMember(Name="variations", EmitDefaultValue=false)]
@@ -27,6 +34,7 @@ namespace LaunchDarkly.Api.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Rollout {\n");
+      sb.Append("  BucketBy: ").Append(BucketBy).Append("\n");
       sb.Append("  Variations: ").Append(Variations).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

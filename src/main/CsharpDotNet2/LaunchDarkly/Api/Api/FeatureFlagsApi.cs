@@ -65,7 +65,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param>
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param>
         /// <returns>FeatureFlags</returns>
-        FeatureFlags GetFeatureFlags (string projectKey, string env, string summary, string archived, string tag);
+        FeatureFlags GetFeatureFlags (string projectKey, string env, bool? summary, bool? archived, string tag);
         /// <summary>
         /// Perform a partial update to a feature. 
         /// </summary>
@@ -410,7 +410,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param> 
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param> 
         /// <returns>FeatureFlags</returns>            
-        public FeatureFlags GetFeatureFlags (string projectKey, string env, string summary, string archived, string tag)
+        public FeatureFlags GetFeatureFlags (string projectKey, string env, bool? summary, bool? archived, string tag)
         {
             
             // verify the required parameter 'projectKey' is set
