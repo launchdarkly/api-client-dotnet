@@ -44,6 +44,46 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "defaultTtl")]
     public decimal? DefaultTtl { get; set; }
 
+    /// <summary>
+    /// Determines whether the environment is in secure mode.
+    /// </summary>
+    /// <value>Determines whether the environment is in secure mode.</value>
+    [DataMember(Name="secureMode", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "secureMode")]
+    public bool? SecureMode { get; set; }
+
+    /// <summary>
+    /// Set to true to send detailed event information for newly created flags.
+    /// </summary>
+    /// <value>Set to true to send detailed event information for newly created flags.</value>
+    [DataMember(Name="defaultTrackEvents", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "defaultTrackEvents")]
+    public bool? DefaultTrackEvents { get; set; }
+
+    /// <summary>
+    /// An array of tags for this environment.
+    /// </summary>
+    /// <value>An array of tags for this environment.</value>
+    [DataMember(Name="tags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "tags")]
+    public List<string> Tags { get; set; }
+
+    /// <summary>
+    /// Determines if this environment requires comments for flag and segment changes.
+    /// </summary>
+    /// <value>Determines if this environment requires comments for flag and segment changes.</value>
+    [DataMember(Name="requireComments", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "requireComments")]
+    public bool? RequireComments { get; set; }
+
+    /// <summary>
+    /// Determines if this environment requires confirmation for flag and segment changes.
+    /// </summary>
+    /// <value>Determines if this environment requires confirmation for flag and segment changes.</value>
+    [DataMember(Name="confirmChanges", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "confirmChanges")]
+    public bool? ConfirmChanges { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -56,6 +96,11 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Key: ").Append(Key).Append("\n");
       sb.Append("  Color: ").Append(Color).Append("\n");
       sb.Append("  DefaultTtl: ").Append(DefaultTtl).Append("\n");
+      sb.Append("  SecureMode: ").Append(SecureMode).Append("\n");
+      sb.Append("  DefaultTrackEvents: ").Append(DefaultTrackEvents).Append("\n");
+      sb.Append("  Tags: ").Append(Tags).Append("\n");
+      sb.Append("  RequireComments: ").Append(RequireComments).Append("\n");
+      sb.Append("  ConfirmChanges: ").Append(ConfirmChanges).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
