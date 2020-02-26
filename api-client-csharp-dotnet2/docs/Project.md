@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique resource id. | [optional] 
 **Key** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
+**IncludeInSnippetByDefault** | **bool?** |  | [optional] 
 **Environments** | [**List&lt;Environment&gt;**](Environment.md) |  | [optional] 
 **Tags** | **List&lt;string&gt;** | An array of tags for this project. | [optional] 
 

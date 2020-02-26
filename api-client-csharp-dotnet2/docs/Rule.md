@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [optional] 
 **Variation** | **int?** |  | [optional] 
+**TrackEvents** | **bool?** |  | [optional] 
 **Rollout** | [**Rollout**](Rollout.md) |  | [optional] 
 **Clauses** | [**List&lt;Clause&gt;**](Clause.md) |  | [optional] 
 

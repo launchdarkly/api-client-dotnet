@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Rules** | [**List&lt;UserSegmentRule&gt;**](UserSegmentRule.md) | An array of rules that can cause a user to be included in this segment. | [optional] 
 **Version** | **int?** |  | [optional] 
 **Links** | [**Links**](Links.md) |  | [optional] 
+**Flags** | [**List&lt;FlagListItem&gt;**](FlagListItem.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
