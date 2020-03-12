@@ -52,7 +52,7 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="inlineRole", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "inlineRole")]
-    public Statements InlineRole { get; set; }
+    public List<Statement> InlineRole { get; set; }
 
 
     /// <summary>

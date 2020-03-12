@@ -57,7 +57,7 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="statements", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "statements")]
-    public Statements Statements { get; set; }
+    public List<Statement> Statements { get; set; }
 
     /// <summary>
     /// Tags for the webhook.
