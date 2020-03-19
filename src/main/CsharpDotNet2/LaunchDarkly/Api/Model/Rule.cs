@@ -27,6 +27,13 @@ namespace LaunchDarkly.Api.Model {
     public int? Variation { get; set; }
 
     /// <summary>
+    /// Gets or Sets TrackEvents
+    /// </summary>
+    [DataMember(Name="trackEvents", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "trackEvents")]
+    public bool? TrackEvents { get; set; }
+
+    /// <summary>
     /// Gets or Sets Rollout
     /// </summary>
     [DataMember(Name="rollout", EmitDefaultValue=false)]
@@ -50,6 +57,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("class Rule {\n");
       sb.Append("  Id: ").Append(Id).Append("\n");
       sb.Append("  Variation: ").Append(Variation).Append("\n");
+      sb.Append("  TrackEvents: ").Append(TrackEvents).Append("\n");
       sb.Append("  Rollout: ").Append(Rollout).Append("\n");
       sb.Append("  Clauses: ").Append(Clauses).Append("\n");
       sb.Append("}\n");

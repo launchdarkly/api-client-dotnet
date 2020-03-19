@@ -23,9 +23,9 @@ namespace LaunchDarkly.Api.Model {
     /// Targeted resource will be those resources NOT in this list. The \"resources`\" field must be empty to use this field.
     /// </summary>
     /// <value>Targeted resource will be those resources NOT in this list. The \"resources`\" field must be empty to use this field.</value>
-    [DataMember(Name="notresources", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "notresources")]
-    public List<string> Notresources { get; set; }
+    [DataMember(Name="notResources", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "notResources")]
+    public List<string> NotResources { get; set; }
 
     /// <summary>
     /// Gets or Sets Actions
@@ -38,9 +38,9 @@ namespace LaunchDarkly.Api.Model {
     /// Targeted actions will be those actions NOT in this list. The \"actions\" field must be empty to use this field.
     /// </summary>
     /// <value>Targeted actions will be those actions NOT in this list. The \"actions\" field must be empty to use this field.</value>
-    [DataMember(Name="notactions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "notactions")]
-    public List<string> Notactions { get; set; }
+    [DataMember(Name="notActions", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "notActions")]
+    public List<string> NotActions { get; set; }
 
     /// <summary>
     /// Gets or Sets Effect
@@ -58,9 +58,9 @@ namespace LaunchDarkly.Api.Model {
       var sb = new StringBuilder();
       sb.Append("class Statement {\n");
       sb.Append("  Resources: ").Append(Resources).Append("\n");
-      sb.Append("  Notresources: ").Append(Notresources).Append("\n");
+      sb.Append("  NotResources: ").Append(NotResources).Append("\n");
       sb.Append("  Actions: ").Append(Actions).Append("\n");
-      sb.Append("  Notactions: ").Append(Notactions).Append("\n");
+      sb.Append("  NotActions: ").Append(NotActions).Append("\n");
       sb.Append("  Effect: ").Append(Effect).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

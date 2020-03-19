@@ -90,6 +90,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "_links")]
     public Links Links { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Flags
+    /// </summary>
+    [DataMember(Name="_flags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_flags")]
+    public List<FlagListItem> Flags { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -108,6 +115,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Rules: ").Append(Rules).Append("\n");
       sb.Append("  Version: ").Append(Version).Append("\n");
       sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("  Flags: ").Append(Flags).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

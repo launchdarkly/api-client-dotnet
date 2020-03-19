@@ -68,6 +68,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "includeInSnippet")]
     public bool? IncludeInSnippet { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Defaults
+    /// </summary>
+    [DataMember(Name="defaults", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "defaults")]
+    public Defaults Defaults { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -83,6 +90,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Temporary: ").Append(Temporary).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  IncludeInSnippet: ").Append(IncludeInSnippet).Append("\n");
+      sb.Append("  Defaults: ").Append(Defaults).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

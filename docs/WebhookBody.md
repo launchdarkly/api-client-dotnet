@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Sign** | **bool?** | If sign is false, the webhook will not include a signature header, and the secret can be omitted. | 
 **On** | **bool?** | Whether this webhook is enabled or not. | 
 **Name** | **string** | The name of the webhook. | [optional] 
-**Statements** | [**Statements**](Statements.md) |  | [optional] 
+**Statements** | [**List&lt;Statement&gt;**](Statement.md) |  | [optional] 
 **Tags** | **List&lt;string&gt;** | Tags for the webhook. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

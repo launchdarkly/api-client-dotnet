@@ -150,6 +150,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "archived")]
     public bool? Archived { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Defaults
+    /// </summary>
+    [DataMember(Name="defaults", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "defaults")]
+    public Defaults Defaults { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -176,6 +183,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Environments: ").Append(Environments).Append("\n");
       sb.Append("  ArchivedDate: ").Append(ArchivedDate).Append("\n");
       sb.Append("  Archived: ").Append(Archived).Append("\n");
+      sb.Append("  Defaults: ").Append(Defaults).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

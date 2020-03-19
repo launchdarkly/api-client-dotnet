@@ -97,6 +97,14 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "trackEvents")]
     public bool? TrackEvents { get; set; }
 
+    /// <summary>
+    /// Set to true to send detailed event information when targeting is enabled but no individual targeting rule is matched.
+    /// </summary>
+    /// <value>Set to true to send detailed event information when targeting is enabled but no individual targeting rule is matched.</value>
+    [DataMember(Name="trackEventsFallthrough", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "trackEventsFallthrough")]
+    public bool? TrackEventsFallthrough { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -117,6 +125,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  OffVariation: ").Append(OffVariation).Append("\n");
       sb.Append("  Prerequisites: ").Append(Prerequisites).Append("\n");
       sb.Append("  TrackEvents: ").Append(TrackEvents).Append("\n");
+      sb.Append("  TrackEventsFallthrough: ").Append(TrackEventsFallthrough).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

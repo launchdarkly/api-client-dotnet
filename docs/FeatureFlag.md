@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Environments** | [**Dictionary&lt;string, FeatureFlagConfig&gt;**](FeatureFlagConfig.md) |  | [optional] 
 **ArchivedDate** | **decimal?** | A unix epoch time in milliseconds specifying the archived time of this flag. | [optional] 
 **Archived** | **bool?** | Whether or not this flag is archived. | [optional] 
+**Defaults** | [**Defaults**](Defaults.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
