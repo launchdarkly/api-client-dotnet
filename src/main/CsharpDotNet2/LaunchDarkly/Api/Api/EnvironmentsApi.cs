@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RestSharp;
 using LaunchDarkly.Api.Client;
 using LaunchDarkly.Api.Model;
+using Environment = LaunchDarkly.Api.Model.Environment;
 
 namespace LaunchDarkly.Api.Api
 {
