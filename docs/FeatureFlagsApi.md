@@ -152,7 +152,7 @@ void (empty response body)
 
 <a name="getfeatureflag"></a>
 # **GetFeatureFlag**
-> FeatureFlag GetFeatureFlag (string projectKey, string featureFlagKey, string env)
+> FeatureFlag GetFeatureFlag (string projectKey, string featureFlagKey, List<string> env)
 
 Get a single feature flag by key.
 
@@ -179,7 +179,7 @@ namespace Example
             var apiInstance = new FeatureFlagsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
-            var env = env_example;  // string | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment. (optional) 
+            var env = new List<string>(); // List<string> | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=[\"production\"] will restrict the returned configurations to just your production environment. (optional) 
 
             try
             {
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
- **env** | **string**| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment. | [optional] 
+ **env** | [**List<string>**](string.md)| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment. | [optional] 
 
 ### Return type
 
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 <a name="getfeatureflags"></a>
 # **GetFeatureFlags**
-> FeatureFlags GetFeatureFlags (string projectKey, string env, bool? summary, bool? archived, string tag)
+> FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, bool? number, string filter, string sort, string tag)
 
 Get a list of all features in the given project.
 
@@ -450,15 +450,19 @@ namespace Example
 
             var apiInstance = new FeatureFlagsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
-            var env = env_example;  // string | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment. (optional) 
+            var env = new List<string>(); // List<string> | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=[\"production\"] will restrict the returned configurations to just your production environment. (optional) 
             var summary = true;  // bool? | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned. (optional) 
             var archived = true;  // bool? | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. (optional) 
+            var limit = 8.14;  // decimal? | The number of objects to return. Defaults to -1, which returns everything. (optional) 
+            var number = true;  // bool? | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. (optional) 
+            var filter = filter_example;  // string | A comma-separated list of filters. Each filter is of the form field:value. (optional) 
+            var sort = sort_example;  // string | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. (optional) 
             var tag = tag_example;  // string | Filter by tag. A tag can be used to group flags across projects. (optional) 
 
             try
             {
                 // Get a list of all features in the given project.
-                FeatureFlags result = apiInstance.GetFeatureFlags(projectKey, env, summary, archived, tag);
+                FeatureFlags result = apiInstance.GetFeatureFlags(projectKey, env, summary, archived, limit, number, filter, sort, tag);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -475,9 +479,13 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
- **env** | **string**| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment. | [optional] 
+ **env** | [**List<string>**](string.md)| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment. | [optional] 
  **summary** | **bool?**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional] 
  **archived** | **bool?**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional] 
+ **limit** | **decimal?**| The number of objects to return. Defaults to -1, which returns everything. | [optional] 
+ **number** | **bool?**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional] 
+ **sort** | **string**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional] 
  **tag** | **string**| Filter by tag. A tag can be used to group flags across projects. | [optional] 
 
 ### Return type

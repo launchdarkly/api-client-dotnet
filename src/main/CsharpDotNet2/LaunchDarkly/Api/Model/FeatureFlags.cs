@@ -26,6 +26,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "items")]
     public List<FeatureFlag> Items { get; set; }
 
+    /// <summary>
+    /// Gets or Sets TotalCount
+    /// </summary>
+    [DataMember(Name="totalCount", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "totalCount")]
+    public decimal? TotalCount { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -36,6 +43,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("class FeatureFlags {\n");
       sb.Append("  Links: ").Append(Links).Append("\n");
       sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

@@ -18,6 +18,11 @@ namespace LaunchDarkly.Api.Api
         /// <returns></returns>
         void DeleteMember (string memberId);
         /// <summary>
+        /// Get the current team member associated with the token 
+        /// </summary>
+        /// <returns>Member</returns>
+        Member GetMe ();
+        /// <summary>
         /// Get a single team member by ID. 
         /// </summary>
         /// <param name="memberId">The member ID.</param>
@@ -26,8 +31,12 @@ namespace LaunchDarkly.Api.Api
         /// <summary>
         /// Returns a list of all members in the account. 
         /// </summary>
+        /// <param name="limit">The number of objects to return. Defaults to -1, which returns everything.</param>
+        /// <param name="number">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param>
+        /// <param name="filter">A comma-separated list of filters. Each filter is of the form field:value.</param>
+        /// <param name="sort">A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.</param>
         /// <returns>Members</returns>
-        Members GetMembers ();
+        Members GetMembers (decimal? limit, bool? number, string filter, string sort);
         /// <summary>
         /// Modify a team member by ID. 
         /// </summary>
@@ -134,6 +143,38 @@ namespace LaunchDarkly.Api.Api
         }
     
         /// <summary>
+        /// Get the current team member associated with the token 
+        /// </summary>
+        /// <returns>Member</returns>            
+        public Member GetMe ()
+        {
+            
+    
+            var path = "/members/me";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetMe: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetMe: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (Member) ApiClient.Deserialize(response.Content, typeof(Member), response.Headers);
+        }
+    
+        /// <summary>
         /// Get a single team member by ID. 
         /// </summary>
         /// <param name="memberId">The member ID.</param> 
@@ -173,8 +214,12 @@ namespace LaunchDarkly.Api.Api
         /// <summary>
         /// Returns a list of all members in the account. 
         /// </summary>
+        /// <param name="limit">The number of objects to return. Defaults to -1, which returns everything.</param> 
+        /// <param name="number">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param> 
+        /// <param name="filter">A comma-separated list of filters. Each filter is of the form field:value.</param> 
+        /// <param name="sort">A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.</param> 
         /// <returns>Members</returns>            
-        public Members GetMembers ()
+        public Members GetMembers (decimal? limit, bool? number, string filter, string sort)
         {
             
     
@@ -187,7 +232,11 @@ namespace LaunchDarkly.Api.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+             if (limit != null) queryParams.Add("limit", ApiClient.ParameterToString(limit)); // query parameter
+ if (number != null) queryParams.Add("number", ApiClient.ParameterToString(number)); // query parameter
+ if (filter != null) queryParams.Add("filter", ApiClient.ParameterToString(filter)); // query parameter
+ if (sort != null) queryParams.Add("sort", ApiClient.ParameterToString(sort)); // query parameter
+                                        
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
     

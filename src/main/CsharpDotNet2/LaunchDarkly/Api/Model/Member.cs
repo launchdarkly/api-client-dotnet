@@ -56,6 +56,13 @@ namespace LaunchDarkly.Api.Model {
     public string LastName { get; set; }
 
     /// <summary>
+    /// Gets or Sets Verified
+    /// </summary>
+    [DataMember(Name="_verified", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_verified")]
+    public bool? Verified { get; set; }
+
+    /// <summary>
     /// Gets or Sets PendingInvite
     /// </summary>
     [DataMember(Name="_pendingInvite", EmitDefaultValue=false)]
@@ -90,6 +97,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Email: ").Append(Email).Append("\n");
       sb.Append("  FirstName: ").Append(FirstName).Append("\n");
       sb.Append("  LastName: ").Append(LastName).Append("\n");
+      sb.Append("  Verified: ").Append(Verified).Append("\n");
       sb.Append("  PendingInvite: ").Append(PendingInvite).Append("\n");
       sb.Append("  IsBeta: ").Append(IsBeta).Append("\n");
       sb.Append("  CustomRoles: ").Append(CustomRoles).Append("\n");
