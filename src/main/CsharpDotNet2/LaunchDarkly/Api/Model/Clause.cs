@@ -13,6 +13,13 @@ namespace LaunchDarkly.Api.Model {
   [DataContract]
   public class Clause {
     /// <summary>
+    /// Gets or Sets Id
+    /// </summary>
+    [DataMember(Name="_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_id")]
+    public string Id { get; set; }
+
+    /// <summary>
     /// Gets or Sets Attribute
     /// </summary>
     [DataMember(Name="attribute", EmitDefaultValue=false)]
@@ -48,6 +55,7 @@ namespace LaunchDarkly.Api.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Clause {\n");
+      sb.Append("  Id: ").Append(Id).Append("\n");
       sb.Append("  Attribute: ").Append(Attribute).Append("\n");
       sb.Append("  Op: ").Append(Op).Append("\n");
       sb.Append("  Values: ").Append(Values).Append("\n");

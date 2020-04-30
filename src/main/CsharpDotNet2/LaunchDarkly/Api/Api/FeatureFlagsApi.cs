@@ -27,6 +27,14 @@ namespace LaunchDarkly.Api.Api
         /// <returns></returns>
         void DeleteFeatureFlag (string projectKey, string featureFlagKey);
         /// <summary>
+        /// Get expiring user targets for feature flag 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <returns>UserTargetingExpirationForFlags</returns>
+        UserTargetingExpirationForFlags GetExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey);
+        /// <summary>
         /// Get a single feature flag by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -70,6 +78,15 @@ namespace LaunchDarkly.Api.Api
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param>
         /// <returns>FeatureFlags</returns>
         FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, bool? number, string filter, string sort, string tag);
+        /// <summary>
+        /// Update, add, or delete expiring user targets on feature flag 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="patchComment">Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported.</param>
+        /// <returns>UserTargetingExpirationForFlags</returns>
+        UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, PatchComment patchComment);
         /// <summary>
         /// Perform a partial update to a feature. 
         /// </summary>
@@ -228,6 +245,53 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
                 throw new ApiException ((int)response.StatusCode, "Error calling DeleteFeatureFlag: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
+        }
+    
+        /// <summary>
+        /// Get expiring user targets for feature flag 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <returns>UserTargetingExpirationForFlags</returns>            
+        public UserTargetingExpirationForFlags GetExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetExpiringUserTargets");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetExpiringUserTargets");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetExpiringUserTargets");
+            
+    
+            var path = "/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetExpiringUserTargets: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetExpiringUserTargets: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (UserTargetingExpirationForFlags) ApiClient.Deserialize(response.Content, typeof(UserTargetingExpirationForFlags), response.Headers);
         }
     
         /// <summary>
@@ -456,6 +520,58 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
                 throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlags: " + response.ErrorMessage, response.ErrorMessage);
     
             return (FeatureFlags) ApiClient.Deserialize(response.Content, typeof(FeatureFlags), response.Headers);
+        }
+    
+        /// <summary>
+        /// Update, add, or delete expiring user targets on feature flag 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="patchComment">Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported.</param> 
+        /// <returns>UserTargetingExpirationForFlags</returns>            
+        public UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, PatchComment patchComment)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PatchExpiringUserTargets");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PatchExpiringUserTargets");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PatchExpiringUserTargets");
+            
+            // verify the required parameter 'patchComment' is set
+            if (patchComment == null) throw new ApiException(400, "Missing required parameter 'patchComment' when calling PatchExpiringUserTargets");
+            
+    
+            var path = "/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(patchComment); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PATCH, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchExpiringUserTargets: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchExpiringUserTargets: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (UserTargetingExpirationForFlags) ApiClient.Deserialize(response.Content, typeof(UserTargetingExpirationForFlags), response.Headers);
         }
     
         /// <summary>

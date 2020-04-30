@@ -6,11 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CopyFeatureFlag**](FeatureFlagsApi.md#copyfeatureflag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**DeleteFeatureFlag**](FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application.
+[**GetExpiringUserTargets**](FeatureFlagsApi.md#getexpiringusertargets) | **GET** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
 [**GetFeatureFlag**](FeatureFlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
 [**GetFeatureFlagStatusAcrossEnvironments**](FeatureFlagsApi.md#getfeatureflagstatusacrossenvironments) | **GET** /flag-status/{projectKey}/{featureFlagKey} | Get the status for a particular feature flag across environments
 [**GetFeatureFlagStatuses**](FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**GetFeatureFlags**](FeatureFlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
+[**PatchExpiringUserTargets**](FeatureFlagsApi.md#patchexpiringusertargets) | **PATCH** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on feature flag
 [**PatchFeatureFlag**](FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
 [**PostFeatureFlag**](FeatureFlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 
@@ -138,6 +140,75 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getexpiringusertargets"></a>
+# **GetExpiringUserTargets**
+> UserTargetingExpirationForFlags GetExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey)
+
+Get expiring user targets for feature flag
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
+
+namespace Example
+{
+    public class GetExpiringUserTargetsExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: Token
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new FeatureFlagsApi();
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
+
+            try
+            {
+                // Get expiring user targets for feature flag
+                UserTargetingExpirationForFlags result = apiInstance.GetExpiringUserTargets(projectKey, environmentKey, featureFlagKey);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling FeatureFlagsApi.GetExpiringUserTargets: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+[**UserTargetingExpirationForFlags**](UserTargetingExpirationForFlags.md)
 
 ### Authorization
 
@@ -491,6 +562,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FeatureFlags**](FeatureFlags.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="patchexpiringusertargets"></a>
+# **PatchExpiringUserTargets**
+> UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, PatchComment patchComment)
+
+Update, add, or delete expiring user targets on feature flag
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
+
+namespace Example
+{
+    public class PatchExpiringUserTargetsExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: Token
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new FeatureFlagsApi();
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
+            var patchComment = new PatchComment(); // PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+
+            try
+            {
+                // Update, add, or delete expiring user targets on feature flag
+                UserTargetingExpirationForFlags result = apiInstance.PatchExpiringUserTargets(projectKey, environmentKey, featureFlagKey, patchComment);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling FeatureFlagsApi.PatchExpiringUserTargets: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+ **patchComment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+
+### Return type
+
+[**UserTargetingExpirationForFlags**](UserTargetingExpirationForFlags.md)
 
 ### Authorization
 

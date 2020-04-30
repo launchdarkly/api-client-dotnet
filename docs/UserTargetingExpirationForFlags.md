@@ -1,13 +1,10 @@
-# LaunchDarkly.Api.Model.Clause
+# LaunchDarkly.Api.Model.UserTargetingExpirationForFlags
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] 
-**Attribute** | **string** |  | [optional] 
-**Op** | **string** |  | [optional] 
-**Values** | **List&lt;Object&gt;** |  | [optional] 
-**Negate** | **bool?** |  | [optional] 
+**Links** | [**Links**](Links.md) |  | [optional] 
+**Items** | [**List&lt;UserTargetingExpirationForFlag&gt;**](UserTargetingExpirationForFlag.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
