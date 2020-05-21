@@ -20,6 +20,14 @@ namespace LaunchDarkly.Api.Api
         /// <returns></returns>
         void DeleteUserSegment (string projectKey, string environmentKey, string userSegmentKey);
         /// <summary>
+        /// Get expiring user targets for user segment 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param>
+        /// <returns>UserTargetingExpirationForSegment</returns>
+        UserTargetingExpirationForSegment GetExpiringUserTargetsOnSegment (string projectKey, string environmentKey, string userSegmentKey);
+        /// <summary>
         /// Get a single user segment by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -35,6 +43,15 @@ namespace LaunchDarkly.Api.Api
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param>
         /// <returns>UserSegments</returns>
         UserSegments GetUserSegments (string projectKey, string environmentKey, string tag);
+        /// <summary>
+        /// Update, add, or delete expiring user targets on user segment 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param>
+        /// <param name="semanticPatchWithComment">Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported.</param>
+        /// <returns>UserTargetingExpirationForSegment</returns>
+        UserTargetingExpirationForSegment PatchExpiringUserTargetsOnSegment (string projectKey, string environmentKey, string userSegmentKey, Object semanticPatchWithComment);
         /// <summary>
         /// Perform a partial update to a user segment. 
         /// </summary>
@@ -155,6 +172,53 @@ path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(us
         }
     
         /// <summary>
+        /// Get expiring user targets for user segment 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param> 
+        /// <returns>UserTargetingExpirationForSegment</returns>            
+        public UserTargetingExpirationForSegment GetExpiringUserTargetsOnSegment (string projectKey, string environmentKey, string userSegmentKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetExpiringUserTargetsOnSegment");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetExpiringUserTargetsOnSegment");
+            
+            // verify the required parameter 'userSegmentKey' is set
+            if (userSegmentKey == null) throw new ApiException(400, "Missing required parameter 'userSegmentKey' when calling GetExpiringUserTargetsOnSegment");
+            
+    
+            var path = "/segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(userSegmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetExpiringUserTargetsOnSegment: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetExpiringUserTargetsOnSegment: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (UserTargetingExpirationForSegment) ApiClient.Deserialize(response.Content, typeof(UserTargetingExpirationForSegment), response.Headers);
+        }
+    
+        /// <summary>
         /// Get a single user segment by key. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
@@ -243,6 +307,58 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
                 throw new ApiException ((int)response.StatusCode, "Error calling GetUserSegments: " + response.ErrorMessage, response.ErrorMessage);
     
             return (UserSegments) ApiClient.Deserialize(response.Content, typeof(UserSegments), response.Headers);
+        }
+    
+        /// <summary>
+        /// Update, add, or delete expiring user targets on user segment 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param> 
+        /// <param name="semanticPatchWithComment">Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported.</param> 
+        /// <returns>UserTargetingExpirationForSegment</returns>            
+        public UserTargetingExpirationForSegment PatchExpiringUserTargetsOnSegment (string projectKey, string environmentKey, string userSegmentKey, Object semanticPatchWithComment)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PatchExpiringUserTargetsOnSegment");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PatchExpiringUserTargetsOnSegment");
+            
+            // verify the required parameter 'userSegmentKey' is set
+            if (userSegmentKey == null) throw new ApiException(400, "Missing required parameter 'userSegmentKey' when calling PatchExpiringUserTargetsOnSegment");
+            
+            // verify the required parameter 'semanticPatchWithComment' is set
+            if (semanticPatchWithComment == null) throw new ApiException(400, "Missing required parameter 'semanticPatchWithComment' when calling PatchExpiringUserTargetsOnSegment");
+            
+    
+            var path = "/segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(userSegmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(semanticPatchWithComment); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PATCH, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchExpiringUserTargetsOnSegment: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchExpiringUserTargetsOnSegment: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (UserTargetingExpirationForSegment) ApiClient.Deserialize(response.Content, typeof(UserTargetingExpirationForSegment), response.Headers);
         }
     
         /// <summary>

@@ -72,21 +72,21 @@ namespace LaunchDarkly.Api.Api
         /// <param name="summary">By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned.</param>
         /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param>
         /// <param name="limit">The number of objects to return. Defaults to -1, which returns everything.</param>
-        /// <param name="number">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param>
+        /// <param name="offset">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param>
         /// <param name="filter">A comma-separated list of filters. Each filter is of the form field:value.</param>
         /// <param name="sort">A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.</param>
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param>
         /// <returns>FeatureFlags</returns>
-        FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, bool? number, string filter, string sort, string tag);
+        FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, decimal? offset, string filter, string sort, string tag);
         /// <summary>
         /// Update, add, or delete expiring user targets on feature flag 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
-        /// <param name="patchComment">Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported.</param>
+        /// <param name="semanticPatchWithComment">Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported.</param>
         /// <returns>UserTargetingExpirationForFlags</returns>
-        UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, PatchComment patchComment);
+        UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, Object semanticPatchWithComment);
         /// <summary>
         /// Perform a partial update to a feature. 
         /// </summary>
@@ -477,12 +477,12 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <param name="summary">By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned.</param> 
         /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param> 
         /// <param name="limit">The number of objects to return. Defaults to -1, which returns everything.</param> 
-        /// <param name="number">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param> 
+        /// <param name="offset">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param> 
         /// <param name="filter">A comma-separated list of filters. Each filter is of the form field:value.</param> 
         /// <param name="sort">A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.</param> 
         /// <param name="tag">Filter by tag. A tag can be used to group flags across projects.</param> 
         /// <returns>FeatureFlags</returns>            
-        public FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, bool? number, string filter, string sort, string tag)
+        public FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, decimal? offset, string filter, string sort, string tag)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -503,7 +503,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
  if (summary != null) queryParams.Add("summary", ApiClient.ParameterToString(summary)); // query parameter
  if (archived != null) queryParams.Add("archived", ApiClient.ParameterToString(archived)); // query parameter
  if (limit != null) queryParams.Add("limit", ApiClient.ParameterToString(limit)); // query parameter
- if (number != null) queryParams.Add("number", ApiClient.ParameterToString(number)); // query parameter
+ if (offset != null) queryParams.Add("offset", ApiClient.ParameterToString(offset)); // query parameter
  if (filter != null) queryParams.Add("filter", ApiClient.ParameterToString(filter)); // query parameter
  if (sort != null) queryParams.Add("sort", ApiClient.ParameterToString(sort)); // query parameter
  if (tag != null) queryParams.Add("tag", ApiClient.ParameterToString(tag)); // query parameter
@@ -528,9 +528,9 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
-        /// <param name="patchComment">Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported.</param> 
+        /// <param name="semanticPatchWithComment">Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported.</param> 
         /// <returns>UserTargetingExpirationForFlags</returns>            
-        public UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, PatchComment patchComment)
+        public UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, Object semanticPatchWithComment)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -542,8 +542,8 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
             // verify the required parameter 'featureFlagKey' is set
             if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PatchExpiringUserTargets");
             
-            // verify the required parameter 'patchComment' is set
-            if (patchComment == null) throw new ApiException(400, "Missing required parameter 'patchComment' when calling PatchExpiringUserTargets");
+            // verify the required parameter 'semanticPatchWithComment' is set
+            if (semanticPatchWithComment == null) throw new ApiException(400, "Missing required parameter 'semanticPatchWithComment' when calling PatchExpiringUserTargets");
             
     
             var path = "/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey}";
@@ -558,7 +558,7 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(patchComment); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(semanticPatchWithComment); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };

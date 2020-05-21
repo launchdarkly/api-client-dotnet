@@ -42,9 +42,9 @@ namespace LaunchDarkly.Api.Api
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <param name="userKey">The user&#39;s key.</param>
-        /// <param name="patchComment">Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported.</param>
+        /// <param name="semanticPatchWithComment">Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported.</param>
         /// <returns>UserTargetingExpirationOnFlagsForUser</returns>
-        UserTargetingExpirationOnFlagsForUser PatchExpiringUserTargetsForFlags (string projectKey, string environmentKey, string userKey, PatchComment patchComment);
+        UserTargetingExpirationOnFlagsForUser PatchExpiringUserTargetsForFlags (string projectKey, string environmentKey, string userKey, Object semanticPatchWithComment);
         /// <summary>
         /// Specifically enable or disable a feature flag for a user based on their key. 
         /// </summary>
@@ -262,9 +262,9 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <param name="userKey">The user&#39;s key.</param> 
-        /// <param name="patchComment">Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported.</param> 
+        /// <param name="semanticPatchWithComment">Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported.</param> 
         /// <returns>UserTargetingExpirationOnFlagsForUser</returns>            
-        public UserTargetingExpirationOnFlagsForUser PatchExpiringUserTargetsForFlags (string projectKey, string environmentKey, string userKey, PatchComment patchComment)
+        public UserTargetingExpirationOnFlagsForUser PatchExpiringUserTargetsForFlags (string projectKey, string environmentKey, string userKey, Object semanticPatchWithComment)
         {
             
             // verify the required parameter 'projectKey' is set
@@ -276,8 +276,8 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
             // verify the required parameter 'userKey' is set
             if (userKey == null) throw new ApiException(400, "Missing required parameter 'userKey' when calling PatchExpiringUserTargetsForFlags");
             
-            // verify the required parameter 'patchComment' is set
-            if (patchComment == null) throw new ApiException(400, "Missing required parameter 'patchComment' when calling PatchExpiringUserTargetsForFlags");
+            // verify the required parameter 'semanticPatchWithComment' is set
+            if (semanticPatchWithComment == null) throw new ApiException(400, "Missing required parameter 'semanticPatchWithComment' when calling PatchExpiringUserTargetsForFlags");
             
     
             var path = "/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey}";
@@ -292,7 +292,7 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(patchComment); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(semanticPatchWithComment); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };

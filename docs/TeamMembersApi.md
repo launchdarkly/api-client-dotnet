@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 <a name="getmembers"></a>
 # **GetMembers**
-> Members GetMembers (decimal? limit, bool? number, string filter, string sort)
+> Members GetMembers (decimal? limit, decimal? offset, string filter, string sort)
 
 Returns a list of all members in the account.
 
@@ -230,14 +230,14 @@ namespace Example
 
             var apiInstance = new TeamMembersApi();
             var limit = 8.14;  // decimal? | The number of objects to return. Defaults to -1, which returns everything. (optional) 
-            var number = true;  // bool? | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. (optional) 
+            var offset = 8.14;  // decimal? | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. (optional) 
             var filter = filter_example;  // string | A comma-separated list of filters. Each filter is of the form field:value. (optional) 
             var sort = sort_example;  // string | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. (optional) 
 
             try
             {
                 // Returns a list of all members in the account.
-                Members result = apiInstance.GetMembers(limit, number, filter, sort);
+                Members result = apiInstance.GetMembers(limit, offset, filter, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -254,7 +254,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **decimal?**| The number of objects to return. Defaults to -1, which returns everything. | [optional] 
- **number** | **bool?**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
+ **offset** | **decimal?**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
  **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional] 
  **sort** | **string**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional] 
 

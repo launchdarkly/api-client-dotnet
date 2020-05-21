@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="patchexpiringusertargetsforflags"></a>
 # **PatchExpiringUserTargetsForFlags**
-> UserTargetingExpirationOnFlagsForUser PatchExpiringUserTargetsForFlags (string projectKey, string environmentKey, string userKey, PatchComment patchComment)
+> UserTargetingExpirationOnFlagsForUser PatchExpiringUserTargetsForFlags (string projectKey, string environmentKey, string userKey, Object semanticPatchWithComment)
 
 Update, add, or delete expiring user targets for a single user on all flags
 
@@ -250,12 +250,12 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
             var userKey = userKey_example;  // string | The user's key.
-            var patchComment = new PatchComment(); // PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+            var semanticPatchWithComment = ;  // Object | Requires a Semantic Patch representation of the desired changes to the resource. 'https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches'. The addition of comments is also supported.
 
             try
             {
                 // Update, add, or delete expiring user targets for a single user on all flags
-                UserTargetingExpirationOnFlagsForUser result = apiInstance.PatchExpiringUserTargetsForFlags(projectKey, environmentKey, userKey, patchComment);
+                UserTargetingExpirationOnFlagsForUser result = apiInstance.PatchExpiringUserTargetsForFlags(projectKey, environmentKey, userKey, semanticPatchWithComment);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **userKey** | **string**| The user&#39;s key. | 
- **patchComment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+ **semanticPatchWithComment** | **Object**| Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported. | 
 
 ### Return type
 

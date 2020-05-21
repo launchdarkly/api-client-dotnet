@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 
 <a name="getfeatureflags"></a>
 # **GetFeatureFlags**
-> FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, bool? number, string filter, string sort, string tag)
+> FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, decimal? offset, string filter, string sort, string tag)
 
 Get a list of all features in the given project.
 
@@ -525,7 +525,7 @@ namespace Example
             var summary = true;  // bool? | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned. (optional) 
             var archived = true;  // bool? | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. (optional) 
             var limit = 8.14;  // decimal? | The number of objects to return. Defaults to -1, which returns everything. (optional) 
-            var number = true;  // bool? | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. (optional) 
+            var offset = 8.14;  // decimal? | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. (optional) 
             var filter = filter_example;  // string | A comma-separated list of filters. Each filter is of the form field:value. (optional) 
             var sort = sort_example;  // string | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. (optional) 
             var tag = tag_example;  // string | Filter by tag. A tag can be used to group flags across projects. (optional) 
@@ -533,7 +533,7 @@ namespace Example
             try
             {
                 // Get a list of all features in the given project.
-                FeatureFlags result = apiInstance.GetFeatureFlags(projectKey, env, summary, archived, limit, number, filter, sort, tag);
+                FeatureFlags result = apiInstance.GetFeatureFlags(projectKey, env, summary, archived, limit, offset, filter, sort, tag);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
  **summary** | **bool?**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional] 
  **archived** | **bool?**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional] 
  **limit** | **decimal?**| The number of objects to return. Defaults to -1, which returns everything. | [optional] 
- **number** | **bool?**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
+ **offset** | **decimal?**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional] 
  **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional] 
  **sort** | **string**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional] 
  **tag** | **string**| Filter by tag. A tag can be used to group flags across projects. | [optional] 
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 
 <a name="patchexpiringusertargets"></a>
 # **PatchExpiringUserTargets**
-> UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, PatchComment patchComment)
+> UserTargetingExpirationForFlags PatchExpiringUserTargets (string projectKey, string environmentKey, string featureFlagKey, Object semanticPatchWithComment)
 
 Update, add, or delete expiring user targets on feature flag
 
@@ -604,12 +604,12 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
-            var patchComment = new PatchComment(); // PatchComment | Requires a JSON Patch representation of the desired changes to the project, and an optional comment. 'http://jsonpatch.com/' Feature flag patches also support JSON Merge Patch format. 'https://tools.ietf.org/html/rfc7386' The addition of comments is also supported.
+            var semanticPatchWithComment = ;  // Object | Requires a Semantic Patch representation of the desired changes to the resource. 'https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches'. The addition of comments is also supported.
 
             try
             {
                 // Update, add, or delete expiring user targets on feature flag
-                UserTargetingExpirationForFlags result = apiInstance.PatchExpiringUserTargets(projectKey, environmentKey, featureFlagKey, patchComment);
+                UserTargetingExpirationForFlags result = apiInstance.PatchExpiringUserTargets(projectKey, environmentKey, featureFlagKey, semanticPatchWithComment);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -628,7 +628,7 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
- **patchComment** | [**PatchComment**](PatchComment.md)| Requires a JSON Patch representation of the desired changes to the project, and an optional comment. &#39;http://jsonpatch.com/&#39; Feature flag patches also support JSON Merge Patch format. &#39;https://tools.ietf.org/html/rfc7386&#39; The addition of comments is also supported. | 
+ **semanticPatchWithComment** | **Object**| Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported. | 
 
 ### Return type
 
