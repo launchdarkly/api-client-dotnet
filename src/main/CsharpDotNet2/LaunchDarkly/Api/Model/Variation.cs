@@ -13,6 +13,13 @@ namespace LaunchDarkly.Api.Model {
   [DataContract]
   public class Variation {
     /// <summary>
+    /// Gets or Sets Id
+    /// </summary>
+    [DataMember(Name="_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_id")]
+    public string Id { get; set; }
+
+    /// <summary>
     /// Gets or Sets Name
     /// </summary>
     [DataMember(Name="name", EmitDefaultValue=false)]
@@ -41,6 +48,7 @@ namespace LaunchDarkly.Api.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Variation {\n");
+      sb.Append("  Id: ").Append(Id).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
       sb.Append("  Description: ").Append(Description).Append("\n");
       sb.Append("  Value: ").Append(Value).Append("\n");
