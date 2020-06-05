@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExpirationDate** | **int?** | Date scheduled for expiration | [optional] 
+**ExpirationDate** | **decimal?** | Unix epoch time in milliseconds specifying the expiration date | [optional] 
 **VariationId** | **string** | the ID of the variation that the user is targeted on a flag | [optional] 
 **UserKey** | **string** | Unique identifier for the user | [optional] 
 **Id** | **string** |  | [optional] 

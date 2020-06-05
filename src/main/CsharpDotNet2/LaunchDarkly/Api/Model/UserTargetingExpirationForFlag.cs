@@ -13,12 +13,12 @@ namespace LaunchDarkly.Api.Model {
   [DataContract]
   public class UserTargetingExpirationForFlag {
     /// <summary>
-    /// Date scheduled for expiration
+    /// Unix epoch time in milliseconds specifying the expiration date
     /// </summary>
-    /// <value>Date scheduled for expiration</value>
+    /// <value>Unix epoch time in milliseconds specifying the expiration date</value>
     [DataMember(Name="expirationDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "expirationDate")]
-    public int? ExpirationDate { get; set; }
+    public decimal? ExpirationDate { get; set; }
 
     /// <summary>
     /// the ID of the variation that the user is targeted on a flag
