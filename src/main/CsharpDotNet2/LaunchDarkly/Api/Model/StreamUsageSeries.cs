@@ -18,7 +18,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>A key corresponding to a time series data point.</value>
     [DataMember(Name="0", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "0")]
-    public decimal? _0 { get; set; }
+    public long? _0 { get; set; }
 
     /// <summary>
     /// A unix epoch time in milliseconds specifying the creation time of this flag.
@@ -26,7 +26,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>A unix epoch time in milliseconds specifying the creation time of this flag.</value>
     [DataMember(Name="time", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "time")]
-    public decimal? Time { get; set; }
+    public long? Time { get; set; }
 
 
     /// <summary>

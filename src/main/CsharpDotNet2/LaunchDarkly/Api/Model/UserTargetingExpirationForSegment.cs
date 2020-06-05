@@ -18,7 +18,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>Unix epoch time in milliseconds specifying the expiration date</value>
     [DataMember(Name="expirationDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "expirationDate")]
-    public decimal? ExpirationDate { get; set; }
+    public long? ExpirationDate { get; set; }
 
     /// <summary>
     /// either the included or excluded variation that the user is targeted on a segment

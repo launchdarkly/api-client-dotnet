@@ -36,8 +36,8 @@ namespace Example
 
             var apiInstance = new AuditLogApi();
             var before = 789;  // long? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. (optional) 
-            var after = 789;  // long? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional) 
-            var q = q_example;  // string | Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change. (optional) 
+            var after = 789;  // long? | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occurred after this timestamp. (optional) 
+            var q = q_example;  // string | Text to search for. You can search for the full or partial name of the resource involved or full or partial email address of the member who made the change. (optional) 
             var limit = 8.14;  // decimal? | A limit on the number of audit log entries to be returned, between 1 and 20. (optional) 
             var spec = spec_example;  // string | A resource specifier, allowing you to filter audit log listings by resource. (optional) 
 
@@ -61,8 +61,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **before** | **long?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have before this timestamp. | [optional] 
- **after** | **long?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional] 
- **q** | **string**| Text to search for. You can search for the full or partial name of the resource involved or fullpartial email address of the member who made the change. | [optional] 
+ **after** | **long?**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occurred after this timestamp. | [optional] 
+ **q** | **string**| Text to search for. You can search for the full or partial name of the resource involved or full or partial email address of the member who made the change. | [optional] 
  **limit** | **decimal?**| A limit on the number of audit log entries to be returned, between 1 and 20. | [optional] 
  **spec** | **string**| A resource specifier, allowing you to filter audit log listings by resource. | [optional] 
 

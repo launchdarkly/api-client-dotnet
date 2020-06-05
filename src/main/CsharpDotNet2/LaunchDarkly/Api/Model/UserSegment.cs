@@ -50,7 +50,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>A unix epoch time in milliseconds specifying the creation time of this flag.</value>
     [DataMember(Name="creationDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "creationDate")]
-    public decimal? CreationDate { get; set; }
+    public long? CreationDate { get; set; }
 
     /// <summary>
     /// An array of user keys that are included in this segment.

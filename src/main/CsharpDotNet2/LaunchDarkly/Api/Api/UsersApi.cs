@@ -27,7 +27,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="q">Search query.</param>
         /// <param name="limit">Pagination limit.</param>
         /// <param name="offset">Specifies the first item to return in the collection.</param>
-        /// <param name="after">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.</param>
+        /// <param name="after">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occurred after this timestamp.</param>
         /// <returns>Users</returns>
         Users GetSearchUsers (string projectKey, string environmentKey, string q, int? limit, int? offset, long? after);
         /// <summary>
@@ -158,7 +158,7 @@ path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey))
         /// <param name="q">Search query.</param> 
         /// <param name="limit">Pagination limit.</param> 
         /// <param name="offset">Specifies the first item to return in the collection.</param> 
-        /// <param name="after">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.</param> 
+        /// <param name="after">A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occurred after this timestamp.</param> 
         /// <returns>Users</returns>            
         public Users GetSearchUsers (string projectKey, string environmentKey, string q, int? limit, int? offset, long? after)
         {

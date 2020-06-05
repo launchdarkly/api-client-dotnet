@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExpirationDate** | **decimal?** | Unix epoch time in milliseconds specifying the expiration date | [optional] 
+**ExpirationDate** | **long?** | Unix epoch time in milliseconds specifying the expiration date | [optional] 
 **TargetType** | **string** | either the included or excluded variation that the user is targeted on a segment | [optional] 
 **UserKey** | **string** | Unique identifier for the user | [optional] 
 **Id** | **string** |  | [optional] 

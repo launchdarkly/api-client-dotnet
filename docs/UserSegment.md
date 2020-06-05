@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the user segment. | 
 **Description** | **string** | Description of the user segment. | [optional] 
 **Tags** | **List&lt;string&gt;** | An array of tags for this user segment. | [optional] 
-**CreationDate** | **decimal?** | A unix epoch time in milliseconds specifying the creation time of this flag. | 
+**CreationDate** | **long?** | A unix epoch time in milliseconds specifying the creation time of this flag. | 
 **Included** | **List&lt;string&gt;** | An array of user keys that are included in this segment. | [optional] 
 **Excluded** | **List&lt;string&gt;** | An array of user keys that should not be included in this segment, unless they are also listed in \&quot;included\&quot;. | [optional] 
 **Rules** | [**List&lt;UserSegmentRule&gt;**](UserSegmentRule.md) | An array of rules that can cause a user to be included in this segment. | [optional] 

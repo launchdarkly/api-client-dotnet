@@ -49,7 +49,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>A unix epoch time in milliseconds specifying the creation time of this flag.</value>
     [DataMember(Name="creationDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "creationDate")]
-    public decimal? CreationDate { get; set; }
+    public long? CreationDate { get; set; }
 
     /// <summary>
     /// Gets or Sets IncludeInSnippet
@@ -140,7 +140,7 @@ namespace LaunchDarkly.Api.Model {
     /// <value>A unix epoch time in milliseconds specifying the archived time of this flag.</value>
     [DataMember(Name="archivedDate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "archivedDate")]
-    public decimal? ArchivedDate { get; set; }
+    public long? ArchivedDate { get; set; }
 
     /// <summary>
     /// Whether or not this flag is archived.
