@@ -70,7 +70,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="env">By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment.</param>
         /// <param name="summary">By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned.</param>
-        /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param>
+        /// <param name="archived">When set to 1, only archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param>
         /// <param name="limit">The number of objects to return. Defaults to -1, which returns everything.</param>
         /// <param name="offset">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param>
         /// <param name="filter">A comma-separated list of filters. Each filter is of the form field:value.</param>
@@ -475,7 +475,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="env">By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment.</param> 
         /// <param name="summary">By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned.</param> 
-        /// <param name="archived">When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param> 
+        /// <param name="archived">When set to 1, only archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.</param> 
         /// <param name="limit">The number of objects to return. Defaults to -1, which returns everything.</param> 
         /// <param name="offset">Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.</param> 
         /// <param name="filter">A comma-separated list of filters. Each filter is of the form field:value.</param> 
