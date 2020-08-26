@@ -69,6 +69,13 @@ namespace LaunchDarkly.Api.Model {
     public bool? IncludeInSnippet { get; set; }
 
     /// <summary>
+    /// Gets or Sets ClientSideAvailability
+    /// </summary>
+    [DataMember(Name="clientSideAvailability", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "clientSideAvailability")]
+    public ClientSideAvailability ClientSideAvailability { get; set; }
+
+    /// <summary>
     /// Gets or Sets Defaults
     /// </summary>
     [DataMember(Name="defaults", EmitDefaultValue=false)]
@@ -90,6 +97,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Temporary: ").Append(Temporary).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  IncludeInSnippet: ").Append(IncludeInSnippet).Append("\n");
+      sb.Append("  ClientSideAvailability: ").Append(ClientSideAvailability).Append("\n");
       sb.Append("  Defaults: ").Append(Defaults).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

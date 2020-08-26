@@ -151,6 +151,13 @@ namespace LaunchDarkly.Api.Model {
     public bool? Archived { get; set; }
 
     /// <summary>
+    /// Gets or Sets ClientSideAvailability
+    /// </summary>
+    [DataMember(Name="clientSideAvailability", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "clientSideAvailability")]
+    public ClientSideAvailability ClientSideAvailability { get; set; }
+
+    /// <summary>
     /// Gets or Sets Defaults
     /// </summary>
     [DataMember(Name="defaults", EmitDefaultValue=false)]
@@ -183,6 +190,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Environments: ").Append(Environments).Append("\n");
       sb.Append("  ArchivedDate: ").Append(ArchivedDate).Append("\n");
       sb.Append("  Archived: ").Append(Archived).Append("\n");
+      sb.Append("  ClientSideAvailability: ").Append(ClientSideAvailability).Append("\n");
       sb.Append("  Defaults: ").Append(Defaults).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

@@ -47,6 +47,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "environments")]
     public List<EnvironmentPost> Environments { get; set; }
 
+    /// <summary>
+    /// Gets or Sets DefaultClientSideAvailability
+    /// </summary>
+    [DataMember(Name="defaultClientSideAvailability", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "defaultClientSideAvailability")]
+    public ClientSideAvailability DefaultClientSideAvailability { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -60,6 +67,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  IncludeInSnippetByDefault: ").Append(IncludeInSnippetByDefault).Append("\n");
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  Environments: ").Append(Environments).Append("\n");
+      sb.Append("  DefaultClientSideAvailability: ").Append(DefaultClientSideAvailability).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
