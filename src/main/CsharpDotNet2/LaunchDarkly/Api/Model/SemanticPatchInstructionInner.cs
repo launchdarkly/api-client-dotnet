@@ -11,20 +11,14 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class SemanticPatchOperation {
+  public class SemanticPatchInstructionInner {
     /// <summary>
-    /// Gets or Sets Comment
+    /// The name of the modification you would like to perform on a resource.
     /// </summary>
-    [DataMember(Name="comment", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "comment")]
-    public string Comment { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Instructions
-    /// </summary>
-    [DataMember(Name="instructions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "instructions")]
-    public SemanticPatchInstruction Instructions { get; set; }
+    /// <value>The name of the modification you would like to perform on a resource.</value>
+    [DataMember(Name="kind", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "kind")]
+    public string Kind { get; set; }
 
 
     /// <summary>
@@ -33,9 +27,8 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class SemanticPatchOperation {\n");
-      sb.Append("  Comment: ").Append(Comment).Append("\n");
-      sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+      sb.Append("class SemanticPatchInstructionInner {\n");
+      sb.Append("  Kind: ").Append(Kind).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

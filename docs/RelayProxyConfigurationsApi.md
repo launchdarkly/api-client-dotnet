@@ -1,22 +1,22 @@
-# LaunchDarkly.Api.Api.AccessTokensApi
+# LaunchDarkly.Api.Api.RelayProxyConfigurationsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteToken**](AccessTokensApi.md#deletetoken) | **DELETE** /tokens/{tokenId} | Delete an access token by ID.
-[**GetToken**](AccessTokensApi.md#gettoken) | **GET** /tokens/{tokenId} | Get a single access token by ID.
-[**GetTokens**](AccessTokensApi.md#gettokens) | **GET** /tokens | Returns a list of tokens in the account.
-[**PatchToken**](AccessTokensApi.md#patchtoken) | **PATCH** /tokens/{tokenId} | Modify an access token by ID.
-[**PostToken**](AccessTokensApi.md#posttoken) | **POST** /tokens | Create a new token.
-[**ResetToken**](AccessTokensApi.md#resettoken) | **POST** /tokens/{tokenId}/reset | Reset an access token&#39;s secret key with an optional expiry time for the old key.
+[**DeleteRelayProxyConfig**](RelayProxyConfigurationsApi.md#deleterelayproxyconfig) | **DELETE** /account/relay-auto-configs/{id} | Delete a relay proxy configuration by ID.
+[**GetRelayProxyConfig**](RelayProxyConfigurationsApi.md#getrelayproxyconfig) | **GET** /account/relay-auto-configs/{id} | Get a single relay proxy configuration by ID.
+[**GetRelayProxyConfigs**](RelayProxyConfigurationsApi.md#getrelayproxyconfigs) | **GET** /account/relay-auto-configs | Returns a list of relay proxy configurations in the account.
+[**PatchRelayProxyConfig**](RelayProxyConfigurationsApi.md#patchrelayproxyconfig) | **PATCH** /account/relay-auto-configs/{id} | Modify a relay proxy configuration by ID.
+[**PostRelayAutoConfig**](RelayProxyConfigurationsApi.md#postrelayautoconfig) | **POST** /account/relay-auto-configs | Create a new relay proxy config.
+[**ResetRelayProxyConfig**](RelayProxyConfigurationsApi.md#resetrelayproxyconfig) | **POST** /account/relay-auto-configs/{id}/reset | Reset a relay proxy configuration&#39;s secret key with an optional expiry time for the old key.
 
 
-<a name="deletetoken"></a>
-# **DeleteToken**
-> void DeleteToken (string tokenId)
+<a name="deleterelayproxyconfig"></a>
+# **DeleteRelayProxyConfig**
+> void DeleteRelayProxyConfig (string id)
 
-Delete an access token by ID.
+Delete a relay proxy configuration by ID.
 
 ### Example
 ```csharp
@@ -28,7 +28,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class DeleteTokenExample
+    public class DeleteRelayProxyConfigExample
     {
         public void main()
         {
@@ -38,17 +38,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new AccessTokensApi();
-            var tokenId = tokenId_example;  // string | The access token ID.
+            var apiInstance = new RelayProxyConfigurationsApi();
+            var id = id_example;  // string | The relay proxy configuration ID
 
             try
             {
-                // Delete an access token by ID.
-                apiInstance.DeleteToken(tokenId);
+                // Delete a relay proxy configuration by ID.
+                apiInstance.DeleteRelayProxyConfig(id);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AccessTokensApi.DeleteToken: " + e.Message );
+                Debug.Print("Exception when calling RelayProxyConfigurationsApi.DeleteRelayProxyConfig: " + e.Message );
             }
         }
     }
@@ -59,7 +59,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **string**| The access token ID. | 
+ **id** | **string**| The relay proxy configuration ID | 
 
 ### Return type
 
@@ -76,11 +76,11 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="gettoken"></a>
-# **GetToken**
-> Token GetToken (string tokenId)
+<a name="getrelayproxyconfig"></a>
+# **GetRelayProxyConfig**
+> RelayProxyConfig GetRelayProxyConfig (string id)
 
-Get a single access token by ID.
+Get a single relay proxy configuration by ID.
 
 ### Example
 ```csharp
@@ -92,7 +92,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class GetTokenExample
+    public class GetRelayProxyConfigExample
     {
         public void main()
         {
@@ -102,18 +102,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new AccessTokensApi();
-            var tokenId = tokenId_example;  // string | The access token ID.
+            var apiInstance = new RelayProxyConfigurationsApi();
+            var id = id_example;  // string | The relay proxy configuration ID
 
             try
             {
-                // Get a single access token by ID.
-                Token result = apiInstance.GetToken(tokenId);
+                // Get a single relay proxy configuration by ID.
+                RelayProxyConfig result = apiInstance.GetRelayProxyConfig(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AccessTokensApi.GetToken: " + e.Message );
+                Debug.Print("Exception when calling RelayProxyConfigurationsApi.GetRelayProxyConfig: " + e.Message );
             }
         }
     }
@@ -124,11 +124,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **string**| The access token ID. | 
+ **id** | **string**| The relay proxy configuration ID | 
 
 ### Return type
 
-[**Token**](Token.md)
+[**RelayProxyConfig**](RelayProxyConfig.md)
 
 ### Authorization
 
@@ -141,11 +141,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="gettokens"></a>
-# **GetTokens**
-> Tokens GetTokens (bool? showAll)
+<a name="getrelayproxyconfigs"></a>
+# **GetRelayProxyConfigs**
+> RelayProxyConfigs GetRelayProxyConfigs ()
 
-Returns a list of tokens in the account.
+Returns a list of relay proxy configurations in the account.
 
 ### Example
 ```csharp
@@ -157,7 +157,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class GetTokensExample
+    public class GetRelayProxyConfigsExample
     {
         public void main()
         {
@@ -167,18 +167,17 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new AccessTokensApi();
-            var showAll = true;  // bool? | If set to true, and the authentication access token has the \"Admin\" role, personal access tokens for all members will be retrieved. (optional) 
+            var apiInstance = new RelayProxyConfigurationsApi();
 
             try
             {
-                // Returns a list of tokens in the account.
-                Tokens result = apiInstance.GetTokens(showAll);
+                // Returns a list of relay proxy configurations in the account.
+                RelayProxyConfigs result = apiInstance.GetRelayProxyConfigs();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AccessTokensApi.GetTokens: " + e.Message );
+                Debug.Print("Exception when calling RelayProxyConfigurationsApi.GetRelayProxyConfigs: " + e.Message );
             }
         }
     }
@@ -186,14 +185,11 @@ namespace Example
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **showAll** | **bool?**| If set to true, and the authentication access token has the \&quot;Admin\&quot; role, personal access tokens for all members will be retrieved. | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**Tokens**](Tokens.md)
+[**RelayProxyConfigs**](RelayProxyConfigs.md)
 
 ### Authorization
 
@@ -206,11 +202,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="patchtoken"></a>
-# **PatchToken**
-> Token PatchToken (string tokenId, List<PatchOperation> patchDelta)
+<a name="patchrelayproxyconfig"></a>
+# **PatchRelayProxyConfig**
+> RelayProxyConfig PatchRelayProxyConfig (string id, List<PatchOperation> patchDelta)
 
-Modify an access token by ID.
+Modify a relay proxy configuration by ID.
 
 ### Example
 ```csharp
@@ -222,7 +218,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class PatchTokenExample
+    public class PatchRelayProxyConfigExample
     {
         public void main()
         {
@@ -232,19 +228,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new AccessTokensApi();
-            var tokenId = tokenId_example;  // string | The access token ID.
+            var apiInstance = new RelayProxyConfigurationsApi();
+            var id = id_example;  // string | The relay proxy configuration ID
             var patchDelta = new List<PatchOperation>(); // List<PatchOperation> | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
             try
             {
-                // Modify an access token by ID.
-                Token result = apiInstance.PatchToken(tokenId, patchDelta);
+                // Modify a relay proxy configuration by ID.
+                RelayProxyConfig result = apiInstance.PatchRelayProxyConfig(id, patchDelta);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AccessTokensApi.PatchToken: " + e.Message );
+                Debug.Print("Exception when calling RelayProxyConfigurationsApi.PatchRelayProxyConfig: " + e.Message );
             }
         }
     }
@@ -255,12 +251,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **string**| The access token ID. | 
+ **id** | **string**| The relay proxy configuration ID | 
  **patchDelta** | [**List<PatchOperation>**](PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; | 
 
 ### Return type
 
-[**Token**](Token.md)
+[**RelayProxyConfig**](RelayProxyConfig.md)
 
 ### Authorization
 
@@ -273,11 +269,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="posttoken"></a>
-# **PostToken**
-> Token PostToken (TokenBody tokenBody)
+<a name="postrelayautoconfig"></a>
+# **PostRelayAutoConfig**
+> RelayProxyConfig PostRelayAutoConfig (RelayProxyConfigBody relayProxyConfigBody)
 
-Create a new token.
+Create a new relay proxy config.
 
 ### Example
 ```csharp
@@ -289,7 +285,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class PostTokenExample
+    public class PostRelayAutoConfigExample
     {
         public void main()
         {
@@ -299,18 +295,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new AccessTokensApi();
-            var tokenBody = new TokenBody(); // TokenBody | Create a new access token.
+            var apiInstance = new RelayProxyConfigurationsApi();
+            var relayProxyConfigBody = new RelayProxyConfigBody(); // RelayProxyConfigBody | Create a new relay proxy configuration
 
             try
             {
-                // Create a new token.
-                Token result = apiInstance.PostToken(tokenBody);
+                // Create a new relay proxy config.
+                RelayProxyConfig result = apiInstance.PostRelayAutoConfig(relayProxyConfigBody);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AccessTokensApi.PostToken: " + e.Message );
+                Debug.Print("Exception when calling RelayProxyConfigurationsApi.PostRelayAutoConfig: " + e.Message );
             }
         }
     }
@@ -321,11 +317,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenBody** | [**TokenBody**](TokenBody.md)| Create a new access token. | 
+ **relayProxyConfigBody** | [**RelayProxyConfigBody**](RelayProxyConfigBody.md)| Create a new relay proxy configuration | 
 
 ### Return type
 
-[**Token**](Token.md)
+[**RelayProxyConfig**](RelayProxyConfig.md)
 
 ### Authorization
 
@@ -338,11 +334,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="resettoken"></a>
-# **ResetToken**
-> Token ResetToken (string tokenId, long? expiry)
+<a name="resetrelayproxyconfig"></a>
+# **ResetRelayProxyConfig**
+> RelayProxyConfig ResetRelayProxyConfig (string id, long? expiry)
 
-Reset an access token's secret key with an optional expiry time for the old key.
+Reset a relay proxy configuration's secret key with an optional expiry time for the old key.
 
 ### Example
 ```csharp
@@ -354,7 +350,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class ResetTokenExample
+    public class ResetRelayProxyConfigExample
     {
         public void main()
         {
@@ -364,19 +360,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
-            var apiInstance = new AccessTokensApi();
-            var tokenId = tokenId_example;  // string | The access token ID.
-            var expiry = 789;  // long? | An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately. (optional) 
+            var apiInstance = new RelayProxyConfigurationsApi();
+            var id = id_example;  // string | The relay proxy configuration ID
+            var expiry = 789;  // long? | An expiration time for the old relay proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the relay proxy configuration will expire immediately (optional) 
 
             try
             {
-                // Reset an access token's secret key with an optional expiry time for the old key.
-                Token result = apiInstance.ResetToken(tokenId, expiry);
+                // Reset a relay proxy configuration's secret key with an optional expiry time for the old key.
+                RelayProxyConfig result = apiInstance.ResetRelayProxyConfig(id, expiry);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AccessTokensApi.ResetToken: " + e.Message );
+                Debug.Print("Exception when calling RelayProxyConfigurationsApi.ResetRelayProxyConfig: " + e.Message );
             }
         }
     }
@@ -387,12 +383,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenId** | **string**| The access token ID. | 
- **expiry** | **long?**| An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately. | [optional] 
+ **id** | **string**| The relay proxy configuration ID | 
+ **expiry** | **long?**| An expiration time for the old relay proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the relay proxy configuration will expire immediately | [optional] 
 
 ### Return type
 
-[**Token**](Token.md)
+[**RelayProxyConfig**](RelayProxyConfig.md)
 
 ### Authorization
 

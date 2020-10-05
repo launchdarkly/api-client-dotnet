@@ -11,20 +11,22 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class SemanticPatchOperation {
+  public class ScheduledChangesFeatureFlagConflict {
     /// <summary>
-    /// Gets or Sets Comment
+    /// Feature flag scheduled change id this change will conflict with
     /// </summary>
-    [DataMember(Name="comment", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "comment")]
-    public string Comment { get; set; }
+    /// <value>Feature flag scheduled change id this change will conflict with</value>
+    [DataMember(Name="_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_id")]
+    public string Id { get; set; }
 
     /// <summary>
-    /// Gets or Sets Instructions
+    /// Feature flag scheduled change conflict reason
     /// </summary>
-    [DataMember(Name="instructions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "instructions")]
-    public SemanticPatchInstruction Instructions { get; set; }
+    /// <value>Feature flag scheduled change conflict reason</value>
+    [DataMember(Name="reason", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "reason")]
+    public string Reason { get; set; }
 
 
     /// <summary>
@@ -33,9 +35,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class SemanticPatchOperation {\n");
-      sb.Append("  Comment: ").Append(Comment).Append("\n");
-      sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+      sb.Append("class ScheduledChangesFeatureFlagConflict {\n");
+      sb.Append("  Id: ").Append(Id).Append("\n");
+      sb.Append("  Reason: ").Append(Reason).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

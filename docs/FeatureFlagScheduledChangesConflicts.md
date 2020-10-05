@@ -1,10 +1,9 @@
-# LaunchDarkly.Api.Model.SemanticPatchOperation
+# LaunchDarkly.Api.Model.FeatureFlagScheduledChangesConflicts
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | **string** |  | [optional] 
-**Instructions** | [**SemanticPatchInstruction**](SemanticPatchInstruction.md) |  | 
+**Instructions** | [**List&lt;FeatureFlagScheduledChangesConflictsInstructions&gt;**](FeatureFlagScheduledChangesConflictsInstructions.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

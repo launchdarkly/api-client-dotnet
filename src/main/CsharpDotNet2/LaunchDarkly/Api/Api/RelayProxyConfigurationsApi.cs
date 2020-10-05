@@ -9,59 +9,58 @@ namespace LaunchDarkly.Api.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAccessTokensApi
+    public interface IRelayProxyConfigurationsApi
     {
         /// <summary>
-        /// Delete an access token by ID. 
+        /// Delete a relay proxy configuration by ID. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param>
+        /// <param name="id">The relay proxy configuration ID</param>
         /// <returns></returns>
-        void DeleteToken (string tokenId);
+        void DeleteRelayProxyConfig (string id);
         /// <summary>
-        /// Get a single access token by ID. 
+        /// Get a single relay proxy configuration by ID. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param>
-        /// <returns>Token</returns>
-        Token GetToken (string tokenId);
+        /// <param name="id">The relay proxy configuration ID</param>
+        /// <returns>RelayProxyConfig</returns>
+        RelayProxyConfig GetRelayProxyConfig (string id);
         /// <summary>
-        /// Returns a list of tokens in the account. 
+        /// Returns a list of relay proxy configurations in the account. 
         /// </summary>
-        /// <param name="showAll">If set to true, and the authentication access token has the \&quot;Admin\&quot; role, personal access tokens for all members will be retrieved.</param>
-        /// <returns>Tokens</returns>
-        Tokens GetTokens (bool? showAll);
+        /// <returns>RelayProxyConfigs</returns>
+        RelayProxyConfigs GetRelayProxyConfigs ();
         /// <summary>
-        /// Modify an access token by ID. 
+        /// Modify a relay proxy configuration by ID. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param>
+        /// <param name="id">The relay proxy configuration ID</param>
         /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param>
-        /// <returns>Token</returns>
-        Token PatchToken (string tokenId, List<PatchOperation> patchDelta);
+        /// <returns>RelayProxyConfig</returns>
+        RelayProxyConfig PatchRelayProxyConfig (string id, List<PatchOperation> patchDelta);
         /// <summary>
-        /// Create a new token. 
+        /// Create a new relay proxy config. 
         /// </summary>
-        /// <param name="tokenBody">Create a new access token.</param>
-        /// <returns>Token</returns>
-        Token PostToken (TokenBody tokenBody);
+        /// <param name="relayProxyConfigBody">Create a new relay proxy configuration</param>
+        /// <returns>RelayProxyConfig</returns>
+        RelayProxyConfig PostRelayAutoConfig (RelayProxyConfigBody relayProxyConfigBody);
         /// <summary>
-        /// Reset an access token&#39;s secret key with an optional expiry time for the old key. 
+        /// Reset a relay proxy configuration&#39;s secret key with an optional expiry time for the old key. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param>
-        /// <param name="expiry">An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately.</param>
-        /// <returns>Token</returns>
-        Token ResetToken (string tokenId, long? expiry);
+        /// <param name="id">The relay proxy configuration ID</param>
+        /// <param name="expiry">An expiration time for the old relay proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the relay proxy configuration will expire immediately</param>
+        /// <returns>RelayProxyConfig</returns>
+        RelayProxyConfig ResetRelayProxyConfig (string id, long? expiry);
     }
   
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class AccessTokensApi : IAccessTokensApi
+    public class RelayProxyConfigurationsApi : IRelayProxyConfigurationsApi
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessTokensApi"/> class.
+        /// Initializes a new instance of the <see cref="RelayProxyConfigurationsApi"/> class.
         /// </summary>
         /// <param name="apiClient"> an instance of ApiClient (optional)</param>
         /// <returns></returns>
-        public AccessTokensApi(ApiClient apiClient = null)
+        public RelayProxyConfigurationsApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
                 this.ApiClient = Configuration.DefaultApiClient; 
@@ -70,10 +69,10 @@ namespace LaunchDarkly.Api.Api
         }
     
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessTokensApi"/> class.
+        /// Initializes a new instance of the <see cref="RelayProxyConfigurationsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AccessTokensApi(String basePath)
+        public RelayProxyConfigurationsApi(String basePath)
         {
             this.ApiClient = new ApiClient(basePath);
         }
@@ -105,20 +104,20 @@ namespace LaunchDarkly.Api.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Delete an access token by ID. 
+        /// Delete a relay proxy configuration by ID. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param> 
+        /// <param name="id">The relay proxy configuration ID</param> 
         /// <returns></returns>            
-        public void DeleteToken (string tokenId)
+        public void DeleteRelayProxyConfig (string id)
         {
             
-            // verify the required parameter 'tokenId' is set
-            if (tokenId == null) throw new ApiException(400, "Missing required parameter 'tokenId' when calling DeleteToken");
+            // verify the required parameter 'id' is set
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling DeleteRelayProxyConfig");
             
     
-            var path = "/tokens/{tokenId}";
+            var path = "/account/relay-auto-configs/{id}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "tokenId" + "}", ApiClient.ParameterToString(tokenId));
+            path = path.Replace("{" + "id" + "}", ApiClient.ParameterToString(id));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -134,28 +133,28 @@ namespace LaunchDarkly.Api.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DeleteToken: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteRelayProxyConfig: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling DeleteToken: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteRelayProxyConfig: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
         }
     
         /// <summary>
-        /// Get a single access token by ID. 
+        /// Get a single relay proxy configuration by ID. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param> 
-        /// <returns>Token</returns>            
-        public Token GetToken (string tokenId)
+        /// <param name="id">The relay proxy configuration ID</param> 
+        /// <returns>RelayProxyConfig</returns>            
+        public RelayProxyConfig GetRelayProxyConfig (string id)
         {
             
-            // verify the required parameter 'tokenId' is set
-            if (tokenId == null) throw new ApiException(400, "Missing required parameter 'tokenId' when calling GetToken");
+            // verify the required parameter 'id' is set
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetRelayProxyConfig");
             
     
-            var path = "/tokens/{tokenId}";
+            var path = "/account/relay-auto-configs/{id}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "tokenId" + "}", ApiClient.ParameterToString(tokenId));
+            path = path.Replace("{" + "id" + "}", ApiClient.ParameterToString(id));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -171,23 +170,22 @@ namespace LaunchDarkly.Api.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetToken: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRelayProxyConfig: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetToken: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRelayProxyConfig: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Token) ApiClient.Deserialize(response.Content, typeof(Token), response.Headers);
+            return (RelayProxyConfig) ApiClient.Deserialize(response.Content, typeof(RelayProxyConfig), response.Headers);
         }
     
         /// <summary>
-        /// Returns a list of tokens in the account. 
+        /// Returns a list of relay proxy configurations in the account. 
         /// </summary>
-        /// <param name="showAll">If set to true, and the authentication access token has the \&quot;Admin\&quot; role, personal access tokens for all members will be retrieved.</param> 
-        /// <returns>Tokens</returns>            
-        public Tokens GetTokens (bool? showAll)
+        /// <returns>RelayProxyConfigs</returns>            
+        public RelayProxyConfigs GetRelayProxyConfigs ()
         {
             
     
-            var path = "/tokens";
+            var path = "/account/relay-auto-configs";
             path = path.Replace("{format}", "json");
                 
             var queryParams = new Dictionary<String, String>();
@@ -196,8 +194,7 @@ namespace LaunchDarkly.Api.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-             if (showAll != null) queryParams.Add("showAll", ApiClient.ParameterToString(showAll)); // query parameter
-                                        
+                                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
     
@@ -205,32 +202,32 @@ namespace LaunchDarkly.Api.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokens: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRelayProxyConfigs: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokens: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRelayProxyConfigs: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Tokens) ApiClient.Deserialize(response.Content, typeof(Tokens), response.Headers);
+            return (RelayProxyConfigs) ApiClient.Deserialize(response.Content, typeof(RelayProxyConfigs), response.Headers);
         }
     
         /// <summary>
-        /// Modify an access token by ID. 
+        /// Modify a relay proxy configuration by ID. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param> 
+        /// <param name="id">The relay proxy configuration ID</param> 
         /// <param name="patchDelta">Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39;</param> 
-        /// <returns>Token</returns>            
-        public Token PatchToken (string tokenId, List<PatchOperation> patchDelta)
+        /// <returns>RelayProxyConfig</returns>            
+        public RelayProxyConfig PatchRelayProxyConfig (string id, List<PatchOperation> patchDelta)
         {
             
-            // verify the required parameter 'tokenId' is set
-            if (tokenId == null) throw new ApiException(400, "Missing required parameter 'tokenId' when calling PatchToken");
+            // verify the required parameter 'id' is set
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling PatchRelayProxyConfig");
             
             // verify the required parameter 'patchDelta' is set
-            if (patchDelta == null) throw new ApiException(400, "Missing required parameter 'patchDelta' when calling PatchToken");
+            if (patchDelta == null) throw new ApiException(400, "Missing required parameter 'patchDelta' when calling PatchRelayProxyConfig");
             
     
-            var path = "/tokens/{tokenId}";
+            var path = "/account/relay-auto-configs/{id}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "tokenId" + "}", ApiClient.ParameterToString(tokenId));
+            path = path.Replace("{" + "id" + "}", ApiClient.ParameterToString(id));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -247,26 +244,26 @@ namespace LaunchDarkly.Api.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PATCH, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PatchToken: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchRelayProxyConfig: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PatchToken: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchRelayProxyConfig: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Token) ApiClient.Deserialize(response.Content, typeof(Token), response.Headers);
+            return (RelayProxyConfig) ApiClient.Deserialize(response.Content, typeof(RelayProxyConfig), response.Headers);
         }
     
         /// <summary>
-        /// Create a new token. 
+        /// Create a new relay proxy config. 
         /// </summary>
-        /// <param name="tokenBody">Create a new access token.</param> 
-        /// <returns>Token</returns>            
-        public Token PostToken (TokenBody tokenBody)
+        /// <param name="relayProxyConfigBody">Create a new relay proxy configuration</param> 
+        /// <returns>RelayProxyConfig</returns>            
+        public RelayProxyConfig PostRelayAutoConfig (RelayProxyConfigBody relayProxyConfigBody)
         {
             
-            // verify the required parameter 'tokenBody' is set
-            if (tokenBody == null) throw new ApiException(400, "Missing required parameter 'tokenBody' when calling PostToken");
+            // verify the required parameter 'relayProxyConfigBody' is set
+            if (relayProxyConfigBody == null) throw new ApiException(400, "Missing required parameter 'relayProxyConfigBody' when calling PostRelayAutoConfig");
             
     
-            var path = "/tokens";
+            var path = "/account/relay-auto-configs";
             path = path.Replace("{format}", "json");
                 
             var queryParams = new Dictionary<String, String>();
@@ -275,7 +272,7 @@ namespace LaunchDarkly.Api.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(tokenBody); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(relayProxyConfigBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
@@ -284,29 +281,29 @@ namespace LaunchDarkly.Api.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostToken: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostRelayAutoConfig: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostToken: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostRelayAutoConfig: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Token) ApiClient.Deserialize(response.Content, typeof(Token), response.Headers);
+            return (RelayProxyConfig) ApiClient.Deserialize(response.Content, typeof(RelayProxyConfig), response.Headers);
         }
     
         /// <summary>
-        /// Reset an access token&#39;s secret key with an optional expiry time for the old key. 
+        /// Reset a relay proxy configuration&#39;s secret key with an optional expiry time for the old key. 
         /// </summary>
-        /// <param name="tokenId">The access token ID.</param> 
-        /// <param name="expiry">An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately.</param> 
-        /// <returns>Token</returns>            
-        public Token ResetToken (string tokenId, long? expiry)
+        /// <param name="id">The relay proxy configuration ID</param> 
+        /// <param name="expiry">An expiration time for the old relay proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the relay proxy configuration will expire immediately</param> 
+        /// <returns>RelayProxyConfig</returns>            
+        public RelayProxyConfig ResetRelayProxyConfig (string id, long? expiry)
         {
             
-            // verify the required parameter 'tokenId' is set
-            if (tokenId == null) throw new ApiException(400, "Missing required parameter 'tokenId' when calling ResetToken");
+            // verify the required parameter 'id' is set
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling ResetRelayProxyConfig");
             
     
-            var path = "/tokens/{tokenId}/reset";
+            var path = "/account/relay-auto-configs/{id}/reset";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "tokenId" + "}", ApiClient.ParameterToString(tokenId));
+            path = path.Replace("{" + "id" + "}", ApiClient.ParameterToString(id));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -323,11 +320,11 @@ namespace LaunchDarkly.Api.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ResetToken: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling ResetRelayProxyConfig: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ResetToken: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling ResetRelayProxyConfig: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Token) ApiClient.Deserialize(response.Content, typeof(Token), response.Headers);
+            return (RelayProxyConfig) ApiClient.Deserialize(response.Content, typeof(RelayProxyConfig), response.Headers);
         }
     
     }

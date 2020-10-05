@@ -77,6 +77,14 @@ namespace LaunchDarkly.Api.Model {
     public List<UserSegmentRule> Rules { get; set; }
 
     /// <summary>
+    /// Controls whether this segment can support unlimited numbers of users. Requires the beta API and additional setup. Include/exclude lists in this payload are not used in unbounded segments.
+    /// </summary>
+    /// <value>Controls whether this segment can support unlimited numbers of users. Requires the beta API and additional setup. Include/exclude lists in this payload are not used in unbounded segments.</value>
+    [DataMember(Name="unbounded", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "unbounded")]
+    public bool? Unbounded { get; set; }
+
+    /// <summary>
     /// Gets or Sets Version
     /// </summary>
     [DataMember(Name="version", EmitDefaultValue=false)]
@@ -113,6 +121,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Included: ").Append(Included).Append("\n");
       sb.Append("  Excluded: ").Append(Excluded).Append("\n");
       sb.Append("  Rules: ").Append(Rules).Append("\n");
+      sb.Append("  Unbounded: ").Append(Unbounded).Append("\n");
       sb.Append("  Version: ").Append(Version).Append("\n");
       sb.Append("  Links: ").Append(Links).Append("\n");
       sb.Append("  Flags: ").Append(Flags).Append("\n");

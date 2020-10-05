@@ -11,20 +11,20 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class SemanticPatchOperation {
+  public class UnboundedSegmentTargetsBody {
     /// <summary>
-    /// Gets or Sets Comment
+    /// Gets or Sets Included
     /// </summary>
-    [DataMember(Name="comment", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "comment")]
-    public string Comment { get; set; }
+    [DataMember(Name="included", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "included")]
+    public UnboundedSegmentTargetChanges Included { get; set; }
 
     /// <summary>
-    /// Gets or Sets Instructions
+    /// Gets or Sets Excluded
     /// </summary>
-    [DataMember(Name="instructions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "instructions")]
-    public SemanticPatchInstruction Instructions { get; set; }
+    [DataMember(Name="excluded", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "excluded")]
+    public UnboundedSegmentTargetChanges Excluded { get; set; }
 
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class SemanticPatchOperation {\n");
-      sb.Append("  Comment: ").Append(Comment).Append("\n");
-      sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+      sb.Append("class UnboundedSegmentTargetsBody {\n");
+      sb.Append("  Included: ").Append(Included).Append("\n");
+      sb.Append("  Excluded: ").Append(Excluded).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

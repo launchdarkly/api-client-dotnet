@@ -11,20 +11,20 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class SemanticPatchOperation {
+  public class FeatureFlagScheduledChanges {
     /// <summary>
-    /// Gets or Sets Comment
+    /// Gets or Sets Links
     /// </summary>
-    [DataMember(Name="comment", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "comment")]
-    public string Comment { get; set; }
+    [DataMember(Name="_links", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_links")]
+    public Links Links { get; set; }
 
     /// <summary>
-    /// Gets or Sets Instructions
+    /// Gets or Sets Items
     /// </summary>
-    [DataMember(Name="instructions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "instructions")]
-    public SemanticPatchInstruction Instructions { get; set; }
+    [DataMember(Name="items", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "items")]
+    public List<FeatureFlagScheduledChange> Items { get; set; }
 
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class SemanticPatchOperation {\n");
-      sb.Append("  Comment: ").Append(Comment).Append("\n");
-      sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+      sb.Append("class FeatureFlagScheduledChanges {\n");
+      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("  Items: ").Append(Items).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
