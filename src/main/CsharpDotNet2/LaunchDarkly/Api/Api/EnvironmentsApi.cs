@@ -40,6 +40,22 @@ namespace LaunchDarkly.Api.Api
         /// <param name="environmentBody">New environment.</param>
         /// <returns>Environment</returns>
         Environment PostEnvironment (string projectKey, EnvironmentPost environmentBody);
+        /// <summary>
+        /// Reset an environment&#39;s mobile key with an optional expiry time for the old key. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param>
+        /// <returns>Environment</returns>
+        Environment ResetEnvironmentMobileKey (string projectKey, string environmentKey, long? expiry);
+        /// <summary>
+        /// Reset an environment&#39;s SDK key with an optional expiry time for the old key. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param>
+        /// <returns>Environment</returns>
+        Environment ResetEnvironmentSDKKey (string projectKey, string environmentKey, long? expiry);
     }
   
     /// <summary>
@@ -264,6 +280,94 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
                 throw new ApiException ((int)response.StatusCode, "Error calling PostEnvironment: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostEnvironment: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (Environment) ApiClient.Deserialize(response.Content, typeof(Environment), response.Headers);
+        }
+    
+        /// <summary>
+        /// Reset an environment&#39;s mobile key with an optional expiry time for the old key. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param> 
+        /// <returns>Environment</returns>            
+        public Environment ResetEnvironmentMobileKey (string projectKey, string environmentKey, long? expiry)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling ResetEnvironmentMobileKey");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling ResetEnvironmentMobileKey");
+            
+    
+            var path = "/projects/{projectKey}/environments/{environmentKey}/mobileKey";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+             if (expiry != null) queryParams.Add("expiry", ApiClient.ParameterToString(expiry)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ResetEnvironmentMobileKey: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ResetEnvironmentMobileKey: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (Environment) ApiClient.Deserialize(response.Content, typeof(Environment), response.Headers);
+        }
+    
+        /// <summary>
+        /// Reset an environment&#39;s SDK key with an optional expiry time for the old key. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param> 
+        /// <returns>Environment</returns>            
+        public Environment ResetEnvironmentSDKKey (string projectKey, string environmentKey, long? expiry)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling ResetEnvironmentSDKKey");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling ResetEnvironmentSDKKey");
+            
+    
+            var path = "/projects/{projectKey}/environments/{environmentKey}/apiKey";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+             if (expiry != null) queryParams.Add("expiry", ApiClient.ParameterToString(expiry)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ResetEnvironmentSDKKey: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ResetEnvironmentSDKKey: " + response.ErrorMessage, response.ErrorMessage);
     
             return (Environment) ApiClient.Deserialize(response.Content, typeof(Environment), response.Headers);
         }
