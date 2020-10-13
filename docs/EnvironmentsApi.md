@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**GetEnvironment**](EnvironmentsApi.md#getenvironment) | **GET** /projects/{projectKey}/environments/{environmentKey} | Get an environment given a project and key.
 [**PatchEnvironment**](EnvironmentsApi.md#patchenvironment) | **PATCH** /projects/{projectKey}/environments/{environmentKey} | Modify an environment by ID.
 [**PostEnvironment**](EnvironmentsApi.md#postenvironment) | **POST** /projects/{projectKey}/environments | Create a new environment in a specified project with a given name, key, and swatch color.
-[**ResetEnvironmentMobileKey**](EnvironmentsApi.md#resetenvironmentmobilekey) | **POST** /projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset an environment&#39;s mobile key with an optional expiry time for the old key.
+[**ResetEnvironmentMobileKey**](EnvironmentsApi.md#resetenvironmentmobilekey) | **POST** /projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset an environment&#39;s mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
 [**ResetEnvironmentSDKKey**](EnvironmentsApi.md#resetenvironmentsdkkey) | **POST** /projects/{projectKey}/environments/{environmentKey}/apiKey | Reset an environment&#39;s SDK key with an optional expiry time for the old key.
 
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 # **ResetEnvironmentMobileKey**
 > Environment ResetEnvironmentMobileKey (string projectKey, string environmentKey, long? expiry)
 
-Reset an environment's mobile key with an optional expiry time for the old key.
+Reset an environment's mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
 
 ### Example
 ```csharp
@@ -310,11 +310,11 @@ namespace Example
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var expiry = 789;  // long? | An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately (optional) 
+            var expiry = 789;  // long? | The expiry parameter is deprecated for this endpoint, so the old mobile key will always expire immediately. This parameter will be removed in an upcoming major API client version. (optional) 
 
             try
             {
-                // Reset an environment's mobile key with an optional expiry time for the old key.
+                // Reset an environment's mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
                 Environment result = apiInstance.ResetEnvironmentMobileKey(projectKey, environmentKey, expiry);
                 Debug.WriteLine(result);
             }
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **expiry** | **long?**| An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately | [optional] 
+ **expiry** | **long?**| The expiry parameter is deprecated for this endpoint, so the old mobile key will always expire immediately. This parameter will be removed in an upcoming major API client version. | [optional] 
 
 ### Return type
 
@@ -379,7 +379,7 @@ namespace Example
             var apiInstance = new EnvironmentsApi();
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var expiry = 789;  // long? | An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately (optional) 
+            var expiry = 789;  // long? | An expiration time for the old environment SDK key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately. (optional) 
 
             try
             {
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **expiry** | **long?**| An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately | [optional] 
+ **expiry** | **long?**| An expiration time for the old environment SDK key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately. | [optional] 
 
 ### Return type
 

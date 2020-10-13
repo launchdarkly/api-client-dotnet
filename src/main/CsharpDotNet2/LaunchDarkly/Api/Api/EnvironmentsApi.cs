@@ -41,11 +41,11 @@ namespace LaunchDarkly.Api.Api
         /// <returns>Environment</returns>
         Environment PostEnvironment (string projectKey, EnvironmentPost environmentBody);
         /// <summary>
-        /// Reset an environment&#39;s mobile key with an optional expiry time for the old key. 
+        /// Reset an environment&#39;s mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param>
+        /// <param name="expiry">The expiry parameter is deprecated for this endpoint, so the old mobile key will always expire immediately. This parameter will be removed in an upcoming major API client version.</param>
         /// <returns>Environment</returns>
         Environment ResetEnvironmentMobileKey (string projectKey, string environmentKey, long? expiry);
         /// <summary>
@@ -53,7 +53,7 @@ namespace LaunchDarkly.Api.Api
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param>
+        /// <param name="expiry">An expiration time for the old environment SDK key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately.</param>
         /// <returns>Environment</returns>
         Environment ResetEnvironmentSDKKey (string projectKey, string environmentKey, long? expiry);
     }
@@ -285,11 +285,11 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
-        /// Reset an environment&#39;s mobile key with an optional expiry time for the old key. 
+        /// Reset an environment&#39;s mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param> 
+        /// <param name="expiry">The expiry parameter is deprecated for this endpoint, so the old mobile key will always expire immediately. This parameter will be removed in an upcoming major API client version.</param> 
         /// <returns>Environment</returns>            
         public Environment ResetEnvironmentMobileKey (string projectKey, string environmentKey, long? expiry)
         {
@@ -333,7 +333,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="expiry">An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately</param> 
+        /// <param name="expiry">An expiration time for the old environment SDK key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately.</param> 
         /// <returns>Environment</returns>            
         public Environment ResetEnvironmentSDKKey (string projectKey, string environmentKey, long? expiry)
         {
