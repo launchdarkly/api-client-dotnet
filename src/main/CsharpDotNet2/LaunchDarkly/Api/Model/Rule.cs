@@ -47,6 +47,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "clauses")]
     public List<Clause> Clauses { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Description
+    /// </summary>
+    [DataMember(Name="description", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "description")]
+    public string Description { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -60,6 +67,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  TrackEvents: ").Append(TrackEvents).Append("\n");
       sb.Append("  Rollout: ").Append(Rollout).Append("\n");
       sb.Append("  Clauses: ").Append(Clauses).Append("\n");
+      sb.Append("  Description: ").Append(Description).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
