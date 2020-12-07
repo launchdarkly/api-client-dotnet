@@ -105,6 +105,20 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "trackEventsFallthrough")]
     public bool? TrackEventsFallthrough { get; set; }
 
+    /// <summary>
+    /// Gets or Sets Site
+    /// </summary>
+    [DataMember(Name="_site", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_site")]
+    public Site Site { get; set; }
+
+    /// <summary>
+    /// Gets or Sets EnvironmentName
+    /// </summary>
+    [DataMember(Name="_environmentName", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_environmentName")]
+    public string EnvironmentName { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -126,6 +140,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Prerequisites: ").Append(Prerequisites).Append("\n");
       sb.Append("  TrackEvents: ").Append(TrackEvents).Append("\n");
       sb.Append("  TrackEventsFallthrough: ").Append(TrackEventsFallthrough).Append("\n");
+      sb.Append("  Site: ").Append(Site).Append("\n");
+      sb.Append("  EnvironmentName: ").Append(EnvironmentName).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
