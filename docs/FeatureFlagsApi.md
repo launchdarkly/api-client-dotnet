@@ -6,20 +6,21 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CopyFeatureFlag**](FeatureFlagsApi.md#copyfeatureflag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**DeleteFeatureFlag**](FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application.
+[**DeleteFeatureFlagApprovalRequest**](FeatureFlagsApi.md#deletefeatureflagapprovalrequest) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Delete an approval request for a feature flag
 [**GetExpiringUserTargets**](FeatureFlagsApi.md#getexpiringusertargets) | **GET** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
 [**GetFeatureFlag**](FeatureFlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
-[**GetFeatureFlagChangeRequest**](FeatureFlagsApi.md#getfeatureflagchangerequest) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagChangeRequestId} | Get a single change request for a feature flag
-[**GetFeatureFlagChangeRequests**](FeatureFlagsApi.md#getfeatureflagchangerequests) | **GET** /{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all change requests for a feature flag
+[**GetFeatureFlagApprovalRequest**](FeatureFlagsApi.md#getfeatureflagapprovalrequest) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Get a single approval request for a feature flag
+[**GetFeatureFlagApprovalRequests**](FeatureFlagsApi.md#getfeatureflagapprovalrequests) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all approval requests for a feature flag
 [**GetFeatureFlagStatus**](FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
 [**GetFeatureFlagStatusAcrossEnvironments**](FeatureFlagsApi.md#getfeatureflagstatusacrossenvironments) | **GET** /flag-status/{projectKey}/{featureFlagKey} | Get the status for a particular feature flag across environments
 [**GetFeatureFlagStatuses**](FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**GetFeatureFlags**](FeatureFlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 [**PatchExpiringUserTargets**](FeatureFlagsApi.md#patchexpiringusertargets) | **PATCH** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on feature flag
 [**PatchFeatureFlag**](FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
-[**PostApplyFeatureFlagChangeRequest**](FeatureFlagsApi.md#postapplyfeatureflagchangerequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagChangeRequestId}/apply | Apply change request for a feature flag
+[**PostApplyFeatureFlagApprovalRequest**](FeatureFlagsApi.md#postapplyfeatureflagapprovalrequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/apply | Apply approval request for a feature flag
 [**PostFeatureFlag**](FeatureFlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
-[**PostFeatureFlagChangeRequest**](FeatureFlagsApi.md#postfeatureflagchangerequest) | **POST** /{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | 
-[**PostReviewFeatureFlagChangeRequest**](FeatureFlagsApi.md#postreviewfeatureflagchangerequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagChangeRequestId}/review | Review change request for a feature flag
+[**PostFeatureFlagApprovalRequest**](FeatureFlagsApi.md#postfeatureflagapprovalrequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Create an approval request for a feature flag
+[**PostReviewFeatureFlagApprovalRequest**](FeatureFlagsApi.md#postreviewfeatureflagapprovalrequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/review | Review approval request for a feature flag
 
 
 <a name="copyfeatureflag"></a>
@@ -141,6 +142,78 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deletefeatureflagapprovalrequest"></a>
+# **DeleteFeatureFlagApprovalRequest**
+> void DeleteFeatureFlagApprovalRequest (string projectKey, string environmentKey, string featureFlagKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestConfigBody featureFlagApprovalRequestConfigBody)
+
+Delete an approval request for a feature flag
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using LaunchDarkly.Api.Api;
+using LaunchDarkly.Api.Client;
+using LaunchDarkly.Api.Model;
+
+namespace Example
+{
+    public class DeleteFeatureFlagApprovalRequestExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: Token
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new FeatureFlagsApi();
+            var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
+            var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+            var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
+            var featureFlagApprovalRequestId = featureFlagApprovalRequestId_example;  // string | The feature flag approval request ID
+            var featureFlagApprovalRequestConfigBody = new FeatureFlagApprovalRequestConfigBody(); // FeatureFlagApprovalRequestConfigBody | Create a new feature flag approval request (optional) 
+
+            try
+            {
+                // Delete an approval request for a feature flag
+                apiInstance.DeleteFeatureFlagApprovalRequest(projectKey, environmentKey, featureFlagKey, featureFlagApprovalRequestId, featureFlagApprovalRequestConfigBody);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling FeatureFlagsApi.DeleteFeatureFlagApprovalRequest: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
+ **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
+ **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
+ **featureFlagApprovalRequestId** | **string**| The feature flag approval request ID | 
+ **featureFlagApprovalRequestConfigBody** | [**FeatureFlagApprovalRequestConfigBody**](FeatureFlagApprovalRequestConfigBody.md)| Create a new feature flag approval request | [optional] 
 
 ### Return type
 
@@ -295,11 +368,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getfeatureflagchangerequest"></a>
-# **GetFeatureFlagChangeRequest**
-> FeatureFlagChangeRequests GetFeatureFlagChangeRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagChangeRequestId)
+<a name="getfeatureflagapprovalrequest"></a>
+# **GetFeatureFlagApprovalRequest**
+> FeatureFlagApprovalRequests GetFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId)
 
-Get a single change request for a feature flag
+Get a single approval request for a feature flag
 
 ### Example
 ```csharp
@@ -311,7 +384,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class GetFeatureFlagChangeRequestExample
+    public class GetFeatureFlagApprovalRequestExample
     {
         public void main()
         {
@@ -325,17 +398,17 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var featureFlagChangeRequestId = featureFlagChangeRequestId_example;  // string | The feature flag change request ID
+            var featureFlagApprovalRequestId = featureFlagApprovalRequestId_example;  // string | The feature flag approval request ID
 
             try
             {
-                // Get a single change request for a feature flag
-                FeatureFlagChangeRequests result = apiInstance.GetFeatureFlagChangeRequest(projectKey, featureFlagKey, environmentKey, featureFlagChangeRequestId);
+                // Get a single approval request for a feature flag
+                FeatureFlagApprovalRequests result = apiInstance.GetFeatureFlagApprovalRequest(projectKey, featureFlagKey, environmentKey, featureFlagApprovalRequestId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagChangeRequest: " + e.Message );
+                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagApprovalRequest: " + e.Message );
             }
         }
     }
@@ -349,11 +422,11 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **featureFlagChangeRequestId** | **string**| The feature flag change request ID | 
+ **featureFlagApprovalRequestId** | **string**| The feature flag approval request ID | 
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -366,11 +439,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getfeatureflagchangerequests"></a>
-# **GetFeatureFlagChangeRequests**
-> FeatureFlagChangeRequests GetFeatureFlagChangeRequests (string projectKey, string featureFlagKey, string environmentKey)
+<a name="getfeatureflagapprovalrequests"></a>
+# **GetFeatureFlagApprovalRequests**
+> FeatureFlagApprovalRequests GetFeatureFlagApprovalRequests (string projectKey, string featureFlagKey, string environmentKey)
 
-Get all change requests for a feature flag
+Get all approval requests for a feature flag
 
 ### Example
 ```csharp
@@ -382,7 +455,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class GetFeatureFlagChangeRequestsExample
+    public class GetFeatureFlagApprovalRequestsExample
     {
         public void main()
         {
@@ -399,13 +472,13 @@ namespace Example
 
             try
             {
-                // Get all change requests for a feature flag
-                FeatureFlagChangeRequests result = apiInstance.GetFeatureFlagChangeRequests(projectKey, featureFlagKey, environmentKey);
+                // Get all approval requests for a feature flag
+                FeatureFlagApprovalRequests result = apiInstance.GetFeatureFlagApprovalRequests(projectKey, featureFlagKey, environmentKey);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagChangeRequests: " + e.Message );
+                Debug.Print("Exception when calling FeatureFlagsApi.GetFeatureFlagApprovalRequests: " + e.Message );
             }
         }
     }
@@ -422,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -859,11 +932,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postapplyfeatureflagchangerequest"></a>
-# **PostApplyFeatureFlagChangeRequest**
-> FeatureFlagChangeRequests PostApplyFeatureFlagChangeRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagChangeRequestId, FeatureFlagChangeRequestApplyConfigBody featureFlagChangeRequestApplyConfigBody)
+<a name="postapplyfeatureflagapprovalrequest"></a>
+# **PostApplyFeatureFlagApprovalRequest**
+> FeatureFlagApprovalRequests PostApplyFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestApplyConfigBody featureFlagApprovalRequestApplyConfigBody)
 
-Apply change request for a feature flag
+Apply approval request for a feature flag
 
 ### Example
 ```csharp
@@ -875,7 +948,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class PostApplyFeatureFlagChangeRequestExample
+    public class PostApplyFeatureFlagApprovalRequestExample
     {
         public void main()
         {
@@ -889,18 +962,18 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var featureFlagChangeRequestId = featureFlagChangeRequestId_example;  // string | The feature flag change request ID
-            var featureFlagChangeRequestApplyConfigBody = new FeatureFlagChangeRequestApplyConfigBody(); // FeatureFlagChangeRequestApplyConfigBody | Apply a new feature flag change request
+            var featureFlagApprovalRequestId = featureFlagApprovalRequestId_example;  // string | The feature flag approval request ID
+            var featureFlagApprovalRequestApplyConfigBody = new FeatureFlagApprovalRequestApplyConfigBody(); // FeatureFlagApprovalRequestApplyConfigBody | Apply a new feature flag approval request
 
             try
             {
-                // Apply change request for a feature flag
-                FeatureFlagChangeRequests result = apiInstance.PostApplyFeatureFlagChangeRequest(projectKey, featureFlagKey, environmentKey, featureFlagChangeRequestId, featureFlagChangeRequestApplyConfigBody);
+                // Apply approval request for a feature flag
+                FeatureFlagApprovalRequests result = apiInstance.PostApplyFeatureFlagApprovalRequest(projectKey, featureFlagKey, environmentKey, featureFlagApprovalRequestId, featureFlagApprovalRequestApplyConfigBody);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FeatureFlagsApi.PostApplyFeatureFlagChangeRequest: " + e.Message );
+                Debug.Print("Exception when calling FeatureFlagsApi.PostApplyFeatureFlagApprovalRequest: " + e.Message );
             }
         }
     }
@@ -914,12 +987,12 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **featureFlagChangeRequestId** | **string**| The feature flag change request ID | 
- **featureFlagChangeRequestApplyConfigBody** | [**FeatureFlagChangeRequestApplyConfigBody**](FeatureFlagChangeRequestApplyConfigBody.md)| Apply a new feature flag change request | 
+ **featureFlagApprovalRequestId** | **string**| The feature flag approval request ID | 
+ **featureFlagApprovalRequestApplyConfigBody** | [**FeatureFlagApprovalRequestApplyConfigBody**](FeatureFlagApprovalRequestApplyConfigBody.md)| Apply a new feature flag approval request | 
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -1001,11 +1074,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postfeatureflagchangerequest"></a>
-# **PostFeatureFlagChangeRequest**
-> FeatureFlagChangeRequest PostFeatureFlagChangeRequest (string projectKey, string featureFlagKey, string environmentKey, FeatureFlagChangeRequestConfigBody featureFlagChangeRequestConfigBody)
+<a name="postfeatureflagapprovalrequest"></a>
+# **PostFeatureFlagApprovalRequest**
+> FeatureFlagApprovalRequest PostFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestConfigBody featureFlagApprovalRequestConfigBody)
 
-
+Create an approval request for a feature flag
 
 ### Example
 ```csharp
@@ -1017,7 +1090,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class PostFeatureFlagChangeRequestExample
+    public class PostFeatureFlagApprovalRequestExample
     {
         public void main()
         {
@@ -1031,16 +1104,18 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var featureFlagChangeRequestConfigBody = new FeatureFlagChangeRequestConfigBody(); // FeatureFlagChangeRequestConfigBody | Create a new feature flag change request (optional) 
+            var featureFlagApprovalRequestId = featureFlagApprovalRequestId_example;  // string | The feature flag approval request ID
+            var featureFlagApprovalRequestConfigBody = new FeatureFlagApprovalRequestConfigBody(); // FeatureFlagApprovalRequestConfigBody | Create a new feature flag approval request (optional) 
 
             try
             {
-                FeatureFlagChangeRequest result = apiInstance.PostFeatureFlagChangeRequest(projectKey, featureFlagKey, environmentKey, featureFlagChangeRequestConfigBody);
+                // Create an approval request for a feature flag
+                FeatureFlagApprovalRequest result = apiInstance.PostFeatureFlagApprovalRequest(projectKey, featureFlagKey, environmentKey, featureFlagApprovalRequestId, featureFlagApprovalRequestConfigBody);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FeatureFlagsApi.PostFeatureFlagChangeRequest: " + e.Message );
+                Debug.Print("Exception when calling FeatureFlagsApi.PostFeatureFlagApprovalRequest: " + e.Message );
             }
         }
     }
@@ -1054,11 +1129,12 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **featureFlagChangeRequestConfigBody** | [**FeatureFlagChangeRequestConfigBody**](FeatureFlagChangeRequestConfigBody.md)| Create a new feature flag change request | [optional] 
+ **featureFlagApprovalRequestId** | **string**| The feature flag approval request ID | 
+ **featureFlagApprovalRequestConfigBody** | [**FeatureFlagApprovalRequestConfigBody**](FeatureFlagApprovalRequestConfigBody.md)| Create a new feature flag approval request | [optional] 
 
 ### Return type
 
-[**FeatureFlagChangeRequest**](FeatureFlagChangeRequest.md)
+[**FeatureFlagApprovalRequest**](FeatureFlagApprovalRequest.md)
 
 ### Authorization
 
@@ -1071,11 +1147,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postreviewfeatureflagchangerequest"></a>
-# **PostReviewFeatureFlagChangeRequest**
-> FeatureFlagChangeRequests PostReviewFeatureFlagChangeRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagChangeRequestId, FeatureFlagChangeRequestReviewConfigBody featureFlagChangeRequestReviewConfigBody)
+<a name="postreviewfeatureflagapprovalrequest"></a>
+# **PostReviewFeatureFlagApprovalRequest**
+> FeatureFlagApprovalRequests PostReviewFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestReviewConfigBody featureFlagApprovalRequestReviewConfigBody)
 
-Review change request for a feature flag
+Review approval request for a feature flag
 
 ### Example
 ```csharp
@@ -1087,7 +1163,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class PostReviewFeatureFlagChangeRequestExample
+    public class PostReviewFeatureFlagApprovalRequestExample
     {
         public void main()
         {
@@ -1101,18 +1177,18 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var featureFlagKey = featureFlagKey_example;  // string | The feature flag's key. The key identifies the flag in your code.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-            var featureFlagChangeRequestId = featureFlagChangeRequestId_example;  // string | The feature flag change request ID
-            var featureFlagChangeRequestReviewConfigBody = new FeatureFlagChangeRequestReviewConfigBody(); // FeatureFlagChangeRequestReviewConfigBody | Review a feature flag change request
+            var featureFlagApprovalRequestId = featureFlagApprovalRequestId_example;  // string | The feature flag approval request ID
+            var featureFlagApprovalRequestReviewConfigBody = new FeatureFlagApprovalRequestReviewConfigBody(); // FeatureFlagApprovalRequestReviewConfigBody | Review a feature flag approval request
 
             try
             {
-                // Review change request for a feature flag
-                FeatureFlagChangeRequests result = apiInstance.PostReviewFeatureFlagChangeRequest(projectKey, featureFlagKey, environmentKey, featureFlagChangeRequestId, featureFlagChangeRequestReviewConfigBody);
+                // Review approval request for a feature flag
+                FeatureFlagApprovalRequests result = apiInstance.PostReviewFeatureFlagApprovalRequest(projectKey, featureFlagKey, environmentKey, featureFlagApprovalRequestId, featureFlagApprovalRequestReviewConfigBody);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FeatureFlagsApi.PostReviewFeatureFlagChangeRequest: " + e.Message );
+                Debug.Print("Exception when calling FeatureFlagsApi.PostReviewFeatureFlagApprovalRequest: " + e.Message );
             }
         }
     }
@@ -1126,12 +1202,12 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **featureFlagKey** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
- **featureFlagChangeRequestId** | **string**| The feature flag change request ID | 
- **featureFlagChangeRequestReviewConfigBody** | [**FeatureFlagChangeRequestReviewConfigBody**](FeatureFlagChangeRequestReviewConfigBody.md)| Review a feature flag change request | 
+ **featureFlagApprovalRequestId** | **string**| The feature flag approval request ID | 
+ **featureFlagApprovalRequestReviewConfigBody** | [**FeatureFlagApprovalRequestReviewConfigBody**](FeatureFlagApprovalRequestReviewConfigBody.md)| Review a feature flag approval request | 
 
 ### Return type
 
-[**FeatureFlagChangeRequests**](FeatureFlagChangeRequests.md)
+[**FeatureFlagApprovalRequests**](FeatureFlagApprovalRequests.md)
 
 ### Authorization
 

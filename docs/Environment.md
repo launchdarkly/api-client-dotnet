@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Tags** | **List&lt;string&gt;** | An array of tags for this environment. | [optional] 
 **RequireComments** | **bool?** | Determines if this environment requires comments for flag and segment changes. | [optional] 
 **ConfirmChanges** | **bool?** | Determines if this environment requires confirmation for flag and segment changes. | [optional] 
+**ApprovalSettings** | [**EnvironmentApprovalSettings**](EnvironmentApprovalSettings.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

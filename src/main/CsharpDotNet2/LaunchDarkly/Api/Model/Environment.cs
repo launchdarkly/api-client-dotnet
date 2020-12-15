@@ -115,6 +115,13 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "confirmChanges")]
     public bool? ConfirmChanges { get; set; }
 
+    /// <summary>
+    /// Gets or Sets ApprovalSettings
+    /// </summary>
+    [DataMember(Name="approvalSettings", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "approvalSettings")]
+    public EnvironmentApprovalSettings ApprovalSettings { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -136,6 +143,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Tags: ").Append(Tags).Append("\n");
       sb.Append("  RequireComments: ").Append(RequireComments).Append("\n");
       sb.Append("  ConfirmChanges: ").Append(ConfirmChanges).Append("\n");
+      sb.Append("  ApprovalSettings: ").Append(ApprovalSettings).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
