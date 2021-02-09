@@ -31,14 +31,6 @@ namespace LaunchDarkly.Api.Api
         /// <returns>Users</returns>
         Users GetSearchUsers (string projectKey, string environmentKey, string q, int? limit, int? offset, long? after);
         /// <summary>
-        /// Get a user by key. 
-        /// </summary>
-        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="userKey">The user&#39;s key.</param>
-        /// <returns>User</returns>
-        User GetUser (string projectKey, string environmentKey, string userKey);
-        /// <summary>
         /// List all users in the environment. Includes the total count of users. In each page, there will be up to &#39;limit&#39; users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -198,53 +190,6 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
                 throw new ApiException ((int)response.StatusCode, "Error calling GetSearchUsers: " + response.ErrorMessage, response.ErrorMessage);
     
             return (Users) ApiClient.Deserialize(response.Content, typeof(Users), response.Headers);
-        }
-    
-        /// <summary>
-        /// Get a user by key. 
-        /// </summary>
-        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="userKey">The user&#39;s key.</param> 
-        /// <returns>User</returns>            
-        public User GetUser (string projectKey, string environmentKey, string userKey)
-        {
-            
-            // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetUser");
-            
-            // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetUser");
-            
-            // verify the required parameter 'userKey' is set
-            if (userKey == null) throw new ApiException(400, "Missing required parameter 'userKey' when calling GetUser");
-            
-    
-            var path = "/users/{projectKey}/{environmentKey}/{userKey}";
-            path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
-path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
-path = path.Replace("{" + "userKey" + "}", ApiClient.ParameterToString(userKey));
-    
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                                    
-            // authentication setting, if any
-            String[] authSettings = new String[] { "Token" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetUser: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetUser: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (User) ApiClient.Deserialize(response.Content, typeof(User), response.Headers);
         }
     
         /// <summary>

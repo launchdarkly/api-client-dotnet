@@ -83,6 +83,21 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "customRoles")]
     public List<string> CustomRoles { get; set; }
 
+    /// <summary>
+    /// A unix epoch time in milliseconds specifying the last time this member was active in LaunchDarkly.
+    /// </summary>
+    /// <value>A unix epoch time in milliseconds specifying the last time this member was active in LaunchDarkly.</value>
+    [DataMember(Name="_lastSeen", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_lastSeen")]
+    public long? LastSeen { get; set; }
+
+    /// <summary>
+    /// Gets or Sets LastSeenMetadata
+    /// </summary>
+    [DataMember(Name="_lastSeenMetadata", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_lastSeenMetadata")]
+    public MemberLastSeenMetadata LastSeenMetadata { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -101,6 +116,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  PendingInvite: ").Append(PendingInvite).Append("\n");
       sb.Append("  IsBeta: ").Append(IsBeta).Append("\n");
       sb.Append("  CustomRoles: ").Append(CustomRoles).Append("\n");
+      sb.Append("  LastSeen: ").Append(LastSeen).Append("\n");
+      sb.Append("  LastSeenMetadata: ").Append(LastSeenMetadata).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

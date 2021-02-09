@@ -20,6 +20,16 @@ namespace LaunchDarkly.Api.Api
         /// <returns>FeatureFlag</returns>
         FeatureFlag CopyFeatureFlag (string projectKey, string featureFlagKey, FeatureFlagCopyBody featureFlagCopyBody);
         /// <summary>
+        /// Delete an approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="approvalRequestId">The approval request ID</param>
+        /// <param name="approvalRequestConfigBody">Create a new approval request</param>
+        /// <returns></returns>
+        void DeleteApprovalRequest (string projectKey, string environmentKey, string featureFlagKey, string approvalRequestId, ApprovalRequestConfigBody approvalRequestConfigBody);
+        /// <summary>
         /// Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -27,15 +37,31 @@ namespace LaunchDarkly.Api.Api
         /// <returns></returns>
         void DeleteFeatureFlag (string projectKey, string featureFlagKey);
         /// <summary>
-        /// Delete an approval request for a feature flag 
+        /// Delete a scheduled change on a feature flag in an environment. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param>
-        /// <param name="featureFlagApprovalRequestConfigBody">Create a new feature flag approval request</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="scheduledChangeId">The id of the scheduled change</param>
         /// <returns></returns>
-        void DeleteFeatureFlagApprovalRequest (string projectKey, string environmentKey, string featureFlagKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestConfigBody featureFlagApprovalRequestConfigBody);
+        void DeleteFlagConfigScheduledChanges (string projectKey, string featureFlagKey, string environmentKey, string scheduledChangeId);
+        /// <summary>
+        /// Get a single approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="approvalRequestId">The approval request ID</param>
+        /// <returns>ApprovalRequests</returns>
+        ApprovalRequests GetApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId);
+        /// <summary>
+        /// Get all approval requests for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <returns>ApprovalRequests</returns>
+        ApprovalRequests GetApprovalRequests (string projectKey, string featureFlagKey, string environmentKey);
         /// <summary>
         /// Get expiring user targets for feature flag 
         /// </summary>
@@ -52,23 +78,6 @@ namespace LaunchDarkly.Api.Api
         /// <param name="env">By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment.</param>
         /// <returns>FeatureFlag</returns>
         FeatureFlag GetFeatureFlag (string projectKey, string featureFlagKey, List<string> env);
-        /// <summary>
-        /// Get a single approval request for a feature flag 
-        /// </summary>
-        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param>
-        /// <returns>FeatureFlagApprovalRequests</returns>
-        FeatureFlagApprovalRequests GetFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId);
-        /// <summary>
-        /// Get all approval requests for a feature flag 
-        /// </summary>
-        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
-        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <returns>FeatureFlagApprovalRequests</returns>
-        FeatureFlagApprovalRequests GetFeatureFlagApprovalRequests (string projectKey, string featureFlagKey, string environmentKey);
         /// <summary>
         /// Get the status for a particular feature flag. 
         /// </summary>
@@ -106,6 +115,32 @@ namespace LaunchDarkly.Api.Api
         /// <returns>FeatureFlags</returns>
         FeatureFlags GetFeatureFlags (string projectKey, List<string> env, bool? summary, bool? archived, decimal? limit, decimal? offset, string filter, string sort, string tag);
         /// <summary>
+        /// Get a scheduled change on a feature flag by id. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="scheduledChangeId">The id of the scheduled change</param>
+        /// <returns>FeatureFlagScheduledChange</returns>
+        FeatureFlagScheduledChange GetFlagConfigScheduledChange (string projectKey, string featureFlagKey, string environmentKey, string scheduledChangeId);
+        /// <summary>
+        /// Get all scheduled workflows for a feature flag by key. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <returns>FeatureFlagScheduledChanges</returns>
+        FeatureFlagScheduledChanges GetFlagConfigScheduledChanges (string projectKey, string featureFlagKey, string environmentKey);
+        /// <summary>
+        /// Lists conflicts between the given instructions and any existing scheduled changes for the feature flag. The actual HTTP verb should be REPORT, not POST. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="flagConfigScheduledChangesConflictsBody">Used to determine if a semantic patch will result in conflicts with scheduled changes on a feature flag.</param>
+        /// <returns>FeatureFlagScheduledChangesConflicts</returns>
+        FeatureFlagScheduledChangesConflicts GetFlagConfigScheduledChangesConflicts (string projectKey, string featureFlagKey, string environmentKey, FlagConfigScheduledChangesConflictsBody flagConfigScheduledChangesConflictsBody);
+        /// <summary>
         /// Update, add, or delete expiring user targets on feature flag 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -123,15 +158,35 @@ namespace LaunchDarkly.Api.Api
         /// <returns>FeatureFlag</returns>
         FeatureFlag PatchFeatureFlag (string projectKey, string featureFlagKey, PatchComment patchComment);
         /// <summary>
-        /// Apply approval request for a feature flag 
+        /// Updates an existing scheduled-change on a feature flag in an environment. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="flagConfigScheduledChangesPatchBody">Update scheduled changes on a feature flag.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="scheduledChangeId">The id of the scheduled change</param>
+        /// <returns>FeatureFlagScheduledChange</returns>
+        FeatureFlagScheduledChange PatchFlagConfigScheduledChange (string projectKey, string featureFlagKey, FlagConfigScheduledChangesPatchBody flagConfigScheduledChangesPatchBody, string environmentKey, string scheduledChangeId);
+        /// <summary>
+        /// Apply approval request for a feature flag config 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param>
-        /// <param name="featureFlagApprovalRequestApplyConfigBody">Apply a new feature flag approval request</param>
-        /// <returns>FeatureFlagApprovalRequests</returns>
-        FeatureFlagApprovalRequests PostApplyFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestApplyConfigBody featureFlagApprovalRequestApplyConfigBody);
+        /// <param name="approvalRequestId">The approval request ID</param>
+        /// <param name="approvalRequestApplyConfigBody">Apply an approval request</param>
+        /// <returns>ApprovalRequests</returns>
+        ApprovalRequests PostApplyApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId, ApprovalRequestApplyConfigBody approvalRequestApplyConfigBody);
+        /// <summary>
+        /// Create an approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="approvalRequestId">The approval request ID</param>
+        /// <param name="approvalRequestConfigBody">Create a new approval request</param>
+        /// <returns>ApprovalRequest</returns>
+        ApprovalRequest PostApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId, ApprovalRequestConfigBody approvalRequestConfigBody);
         /// <summary>
         /// Creates a new feature flag. 
         /// </summary>
@@ -141,25 +196,24 @@ namespace LaunchDarkly.Api.Api
         /// <returns>FeatureFlag</returns>
         FeatureFlag PostFeatureFlag (string projectKey, FeatureFlagBody featureFlagBody, string clone);
         /// <summary>
-        /// Create an approval request for a feature flag 
+        /// Creates a new scheduled change for a feature flag. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="flagConfigScheduledChangesPostBody">Create scheduled changes on a feature flag.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param>
-        /// <param name="featureFlagApprovalRequestConfigBody">Create a new feature flag approval request</param>
-        /// <returns>FeatureFlagApprovalRequest</returns>
-        FeatureFlagApprovalRequest PostFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestConfigBody featureFlagApprovalRequestConfigBody);
+        /// <returns>FeatureFlagScheduledChange</returns>
+        FeatureFlagScheduledChange PostFlagConfigScheduledChanges (string projectKey, FlagConfigScheduledChangesPostBody flagConfigScheduledChangesPostBody, string featureFlagKey, string environmentKey);
         /// <summary>
-        /// Review approval request for a feature flag 
+        /// Review approval request for a feature flag config 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param>
-        /// <param name="featureFlagApprovalRequestReviewConfigBody">Review a feature flag approval request</param>
-        /// <returns>FeatureFlagApprovalRequests</returns>
-        FeatureFlagApprovalRequests PostReviewFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestReviewConfigBody featureFlagApprovalRequestReviewConfigBody);
+        /// <param name="approvalRequestId">The approval request ID</param>
+        /// <param name="approvalRequestReviewConfigBody">Review an approval request</param>
+        /// <returns>ApprovalRequests</returns>
+        ApprovalRequests PostReviewApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId, ApprovalRequestReviewConfigBody approvalRequestReviewConfigBody);
     }
   
     /// <summary>
@@ -263,6 +317,60 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
+        /// Delete an approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="approvalRequestId">The approval request ID</param> 
+        /// <param name="approvalRequestConfigBody">Create a new approval request</param> 
+        /// <returns></returns>            
+        public void DeleteApprovalRequest (string projectKey, string environmentKey, string featureFlagKey, string approvalRequestId, ApprovalRequestConfigBody approvalRequestConfigBody)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling DeleteApprovalRequest");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling DeleteApprovalRequest");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling DeleteApprovalRequest");
+            
+            // verify the required parameter 'approvalRequestId' is set
+            if (approvalRequestId == null) throw new ApiException(400, "Missing required parameter 'approvalRequestId' when calling DeleteApprovalRequest");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "approvalRequestId" + "}", ApiClient.ParameterToString(approvalRequestId));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(approvalRequestConfigBody); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteApprovalRequest: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return;
+        }
+    
+        /// <summary>
         /// Delete a feature flag in all environments. Be careful- - only delete feature flags that are no longer being used by your application. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
@@ -305,36 +413,35 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
-        /// Delete an approval request for a feature flag 
+        /// Delete a scheduled change on a feature flag in an environment. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param> 
-        /// <param name="featureFlagApprovalRequestConfigBody">Create a new feature flag approval request</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="scheduledChangeId">The id of the scheduled change</param> 
         /// <returns></returns>            
-        public void DeleteFeatureFlagApprovalRequest (string projectKey, string environmentKey, string featureFlagKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestConfigBody featureFlagApprovalRequestConfigBody)
+        public void DeleteFlagConfigScheduledChanges (string projectKey, string featureFlagKey, string environmentKey, string scheduledChangeId)
         {
             
             // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling DeleteFeatureFlagApprovalRequest");
-            
-            // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling DeleteFeatureFlagApprovalRequest");
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling DeleteFlagConfigScheduledChanges");
             
             // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling DeleteFeatureFlagApprovalRequest");
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling DeleteFlagConfigScheduledChanges");
             
-            // verify the required parameter 'featureFlagApprovalRequestId' is set
-            if (featureFlagApprovalRequestId == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestId' when calling DeleteFeatureFlagApprovalRequest");
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling DeleteFlagConfigScheduledChanges");
+            
+            // verify the required parameter 'scheduledChangeId' is set
+            if (scheduledChangeId == null) throw new ApiException(400, "Missing required parameter 'scheduledChangeId' when calling DeleteFlagConfigScheduledChanges");
             
     
-            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}";
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId}";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
-path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
 path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
-path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.ParameterToString(featureFlagApprovalRequestId));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "scheduledChangeId" + "}", ApiClient.ParameterToString(scheduledChangeId));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -342,8 +449,7 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(featureFlagApprovalRequestConfigBody); // http body (model) parameter
-    
+                                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
     
@@ -351,11 +457,110 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DeleteFeatureFlagApprovalRequest: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteFlagConfigScheduledChanges: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling DeleteFeatureFlagApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling DeleteFlagConfigScheduledChanges: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
+        }
+    
+        /// <summary>
+        /// Get a single approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="approvalRequestId">The approval request ID</param> 
+        /// <returns>ApprovalRequests</returns>            
+        public ApprovalRequests GetApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetApprovalRequest");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetApprovalRequest");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetApprovalRequest");
+            
+            // verify the required parameter 'approvalRequestId' is set
+            if (approvalRequestId == null) throw new ApiException(400, "Missing required parameter 'approvalRequestId' when calling GetApprovalRequest");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "approvalRequestId" + "}", ApiClient.ParameterToString(approvalRequestId));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetApprovalRequest: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (ApprovalRequests) ApiClient.Deserialize(response.Content, typeof(ApprovalRequests), response.Headers);
+        }
+    
+        /// <summary>
+        /// Get all approval requests for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <returns>ApprovalRequests</returns>            
+        public ApprovalRequests GetApprovalRequests (string projectKey, string featureFlagKey, string environmentKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetApprovalRequests");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetApprovalRequests");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetApprovalRequests");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetApprovalRequests: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetApprovalRequests: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (ApprovalRequests) ApiClient.Deserialize(response.Content, typeof(ApprovalRequests), response.Headers);
         }
     
         /// <summary>
@@ -447,105 +652,6 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
                 throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlag: " + response.ErrorMessage, response.ErrorMessage);
     
             return (FeatureFlag) ApiClient.Deserialize(response.Content, typeof(FeatureFlag), response.Headers);
-        }
-    
-        /// <summary>
-        /// Get a single approval request for a feature flag 
-        /// </summary>
-        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param> 
-        /// <returns>FeatureFlagApprovalRequests</returns>            
-        public FeatureFlagApprovalRequests GetFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId)
-        {
-            
-            // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetFeatureFlagApprovalRequest");
-            
-            // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetFeatureFlagApprovalRequest");
-            
-            // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetFeatureFlagApprovalRequest");
-            
-            // verify the required parameter 'featureFlagApprovalRequestId' is set
-            if (featureFlagApprovalRequestId == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestId' when calling GetFeatureFlagApprovalRequest");
-            
-    
-            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}";
-            path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
-path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
-path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
-path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.ParameterToString(featureFlagApprovalRequestId));
-    
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                                    
-            // authentication setting, if any
-            String[] authSettings = new String[] { "Token" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagApprovalRequest: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (FeatureFlagApprovalRequests) ApiClient.Deserialize(response.Content, typeof(FeatureFlagApprovalRequests), response.Headers);
-        }
-    
-        /// <summary>
-        /// Get all approval requests for a feature flag 
-        /// </summary>
-        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
-        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
-        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <returns>FeatureFlagApprovalRequests</returns>            
-        public FeatureFlagApprovalRequests GetFeatureFlagApprovalRequests (string projectKey, string featureFlagKey, string environmentKey)
-        {
-            
-            // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetFeatureFlagApprovalRequests");
-            
-            // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetFeatureFlagApprovalRequests");
-            
-            // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetFeatureFlagApprovalRequests");
-            
-    
-            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests";
-            path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
-path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
-path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
-    
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                                    
-            // authentication setting, if any
-            String[] authSettings = new String[] { "Token" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagApprovalRequests: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetFeatureFlagApprovalRequests: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (FeatureFlagApprovalRequests) ApiClient.Deserialize(response.Content, typeof(FeatureFlagApprovalRequests), response.Headers);
         }
     
         /// <summary>
@@ -733,6 +839,157 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
+        /// Get a scheduled change on a feature flag by id. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="scheduledChangeId">The id of the scheduled change</param> 
+        /// <returns>FeatureFlagScheduledChange</returns>            
+        public FeatureFlagScheduledChange GetFlagConfigScheduledChange (string projectKey, string featureFlagKey, string environmentKey, string scheduledChangeId)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetFlagConfigScheduledChange");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetFlagConfigScheduledChange");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetFlagConfigScheduledChange");
+            
+            // verify the required parameter 'scheduledChangeId' is set
+            if (scheduledChangeId == null) throw new ApiException(400, "Missing required parameter 'scheduledChangeId' when calling GetFlagConfigScheduledChange");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "scheduledChangeId" + "}", ApiClient.ParameterToString(scheduledChangeId));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFlagConfigScheduledChange: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFlagConfigScheduledChange: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (FeatureFlagScheduledChange) ApiClient.Deserialize(response.Content, typeof(FeatureFlagScheduledChange), response.Headers);
+        }
+    
+        /// <summary>
+        /// Get all scheduled workflows for a feature flag by key. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <returns>FeatureFlagScheduledChanges</returns>            
+        public FeatureFlagScheduledChanges GetFlagConfigScheduledChanges (string projectKey, string featureFlagKey, string environmentKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetFlagConfigScheduledChanges");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetFlagConfigScheduledChanges");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetFlagConfigScheduledChanges");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFlagConfigScheduledChanges: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFlagConfigScheduledChanges: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (FeatureFlagScheduledChanges) ApiClient.Deserialize(response.Content, typeof(FeatureFlagScheduledChanges), response.Headers);
+        }
+    
+        /// <summary>
+        /// Lists conflicts between the given instructions and any existing scheduled changes for the feature flag. The actual HTTP verb should be REPORT, not POST. 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="flagConfigScheduledChangesConflictsBody">Used to determine if a semantic patch will result in conflicts with scheduled changes on a feature flag.</param> 
+        /// <returns>FeatureFlagScheduledChangesConflicts</returns>            
+        public FeatureFlagScheduledChangesConflicts GetFlagConfigScheduledChangesConflicts (string projectKey, string featureFlagKey, string environmentKey, FlagConfigScheduledChangesConflictsBody flagConfigScheduledChangesConflictsBody)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling GetFlagConfigScheduledChangesConflicts");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling GetFlagConfigScheduledChangesConflicts");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling GetFlagConfigScheduledChangesConflicts");
+            
+            // verify the required parameter 'flagConfigScheduledChangesConflictsBody' is set
+            if (flagConfigScheduledChangesConflictsBody == null) throw new ApiException(400, "Missing required parameter 'flagConfigScheduledChangesConflictsBody' when calling GetFlagConfigScheduledChangesConflicts");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes-conflicts";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(flagConfigScheduledChangesConflictsBody); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFlagConfigScheduledChangesConflicts: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetFlagConfigScheduledChangesConflicts: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (FeatureFlagScheduledChangesConflicts) ApiClient.Deserialize(response.Content, typeof(FeatureFlagScheduledChangesConflicts), response.Headers);
+        }
+    
+        /// <summary>
         /// Update, add, or delete expiring user targets on feature flag 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
@@ -832,39 +1089,39 @@ path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(fe
         }
     
         /// <summary>
-        /// Apply approval request for a feature flag 
+        /// Updates an existing scheduled-change on a feature flag in an environment. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="flagConfigScheduledChangesPatchBody">Update scheduled changes on a feature flag.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param> 
-        /// <param name="featureFlagApprovalRequestApplyConfigBody">Apply a new feature flag approval request</param> 
-        /// <returns>FeatureFlagApprovalRequests</returns>            
-        public FeatureFlagApprovalRequests PostApplyFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestApplyConfigBody featureFlagApprovalRequestApplyConfigBody)
+        /// <param name="scheduledChangeId">The id of the scheduled change</param> 
+        /// <returns>FeatureFlagScheduledChange</returns>            
+        public FeatureFlagScheduledChange PatchFlagConfigScheduledChange (string projectKey, string featureFlagKey, FlagConfigScheduledChangesPatchBody flagConfigScheduledChangesPatchBody, string environmentKey, string scheduledChangeId)
         {
             
             // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostApplyFeatureFlagApprovalRequest");
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PatchFlagConfigScheduledChange");
             
             // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostApplyFeatureFlagApprovalRequest");
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PatchFlagConfigScheduledChange");
+            
+            // verify the required parameter 'flagConfigScheduledChangesPatchBody' is set
+            if (flagConfigScheduledChangesPatchBody == null) throw new ApiException(400, "Missing required parameter 'flagConfigScheduledChangesPatchBody' when calling PatchFlagConfigScheduledChange");
             
             // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostApplyFeatureFlagApprovalRequest");
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PatchFlagConfigScheduledChange");
             
-            // verify the required parameter 'featureFlagApprovalRequestId' is set
-            if (featureFlagApprovalRequestId == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestId' when calling PostApplyFeatureFlagApprovalRequest");
-            
-            // verify the required parameter 'featureFlagApprovalRequestApplyConfigBody' is set
-            if (featureFlagApprovalRequestApplyConfigBody == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestApplyConfigBody' when calling PostApplyFeatureFlagApprovalRequest");
+            // verify the required parameter 'scheduledChangeId' is set
+            if (scheduledChangeId == null) throw new ApiException(400, "Missing required parameter 'scheduledChangeId' when calling PatchFlagConfigScheduledChange");
             
     
-            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/apply";
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId}";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
-path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.ParameterToString(featureFlagApprovalRequestId));
+path = path.Replace("{" + "scheduledChangeId" + "}", ApiClient.ParameterToString(scheduledChangeId));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -872,7 +1129,64 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(featureFlagApprovalRequestApplyConfigBody); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(flagConfigScheduledChangesPatchBody); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PATCH, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchFlagConfigScheduledChange: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling PatchFlagConfigScheduledChange: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (FeatureFlagScheduledChange) ApiClient.Deserialize(response.Content, typeof(FeatureFlagScheduledChange), response.Headers);
+        }
+    
+        /// <summary>
+        /// Apply approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="approvalRequestId">The approval request ID</param> 
+        /// <param name="approvalRequestApplyConfigBody">Apply an approval request</param> 
+        /// <returns>ApprovalRequests</returns>            
+        public ApprovalRequests PostApplyApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId, ApprovalRequestApplyConfigBody approvalRequestApplyConfigBody)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostApplyApprovalRequest");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostApplyApprovalRequest");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostApplyApprovalRequest");
+            
+            // verify the required parameter 'approvalRequestId' is set
+            if (approvalRequestId == null) throw new ApiException(400, "Missing required parameter 'approvalRequestId' when calling PostApplyApprovalRequest");
+            
+            // verify the required parameter 'approvalRequestApplyConfigBody' is set
+            if (approvalRequestApplyConfigBody == null) throw new ApiException(400, "Missing required parameter 'approvalRequestApplyConfigBody' when calling PostApplyApprovalRequest");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}/apply";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "approvalRequestId" + "}", ApiClient.ParameterToString(approvalRequestId));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(approvalRequestApplyConfigBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
@@ -881,11 +1195,65 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostApplyFeatureFlagApprovalRequest: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostApplyApprovalRequest: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostApplyFeatureFlagApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostApplyApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (FeatureFlagApprovalRequests) ApiClient.Deserialize(response.Content, typeof(FeatureFlagApprovalRequests), response.Headers);
+            return (ApprovalRequests) ApiClient.Deserialize(response.Content, typeof(ApprovalRequests), response.Headers);
+        }
+    
+        /// <summary>
+        /// Create an approval request for a feature flag config 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="approvalRequestId">The approval request ID</param> 
+        /// <param name="approvalRequestConfigBody">Create a new approval request</param> 
+        /// <returns>ApprovalRequest</returns>            
+        public ApprovalRequest PostApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId, ApprovalRequestConfigBody approvalRequestConfigBody)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostApprovalRequest");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostApprovalRequest");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostApprovalRequest");
+            
+            // verify the required parameter 'approvalRequestId' is set
+            if (approvalRequestId == null) throw new ApiException(400, "Missing required parameter 'approvalRequestId' when calling PostApprovalRequest");
+            
+    
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "approvalRequestId" + "}", ApiClient.ParameterToString(approvalRequestId));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(approvalRequestConfigBody); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling PostApprovalRequest: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling PostApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (ApprovalRequest) ApiClient.Deserialize(response.Content, typeof(ApprovalRequest), response.Headers);
         }
     
         /// <summary>
@@ -933,36 +1301,34 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
         }
     
         /// <summary>
-        /// Create an approval request for a feature flag 
+        /// Creates a new scheduled change for a feature flag. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="flagConfigScheduledChangesPostBody">Create scheduled changes on a feature flag.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param> 
-        /// <param name="featureFlagApprovalRequestConfigBody">Create a new feature flag approval request</param> 
-        /// <returns>FeatureFlagApprovalRequest</returns>            
-        public FeatureFlagApprovalRequest PostFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestConfigBody featureFlagApprovalRequestConfigBody)
+        /// <returns>FeatureFlagScheduledChange</returns>            
+        public FeatureFlagScheduledChange PostFlagConfigScheduledChanges (string projectKey, FlagConfigScheduledChangesPostBody flagConfigScheduledChangesPostBody, string featureFlagKey, string environmentKey)
         {
             
             // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostFeatureFlagApprovalRequest");
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostFlagConfigScheduledChanges");
+            
+            // verify the required parameter 'flagConfigScheduledChangesPostBody' is set
+            if (flagConfigScheduledChangesPostBody == null) throw new ApiException(400, "Missing required parameter 'flagConfigScheduledChangesPostBody' when calling PostFlagConfigScheduledChanges");
             
             // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostFeatureFlagApprovalRequest");
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostFlagConfigScheduledChanges");
             
             // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostFeatureFlagApprovalRequest");
-            
-            // verify the required parameter 'featureFlagApprovalRequestId' is set
-            if (featureFlagApprovalRequestId == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestId' when calling PostFeatureFlagApprovalRequest");
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostFlagConfigScheduledChanges");
             
     
-            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}";
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
-path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.ParameterToString(featureFlagApprovalRequestId));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -970,7 +1336,7 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(featureFlagApprovalRequestConfigBody); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(flagConfigScheduledChangesPostBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
@@ -979,47 +1345,47 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostFeatureFlagApprovalRequest: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostFlagConfigScheduledChanges: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostFeatureFlagApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostFlagConfigScheduledChanges: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (FeatureFlagApprovalRequest) ApiClient.Deserialize(response.Content, typeof(FeatureFlagApprovalRequest), response.Headers);
+            return (FeatureFlagScheduledChange) ApiClient.Deserialize(response.Content, typeof(FeatureFlagScheduledChange), response.Headers);
         }
     
         /// <summary>
-        /// Review approval request for a feature flag 
+        /// Review approval request for a feature flag config 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
-        /// <param name="featureFlagApprovalRequestId">The feature flag approval request ID</param> 
-        /// <param name="featureFlagApprovalRequestReviewConfigBody">Review a feature flag approval request</param> 
-        /// <returns>FeatureFlagApprovalRequests</returns>            
-        public FeatureFlagApprovalRequests PostReviewFeatureFlagApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string featureFlagApprovalRequestId, FeatureFlagApprovalRequestReviewConfigBody featureFlagApprovalRequestReviewConfigBody)
+        /// <param name="approvalRequestId">The approval request ID</param> 
+        /// <param name="approvalRequestReviewConfigBody">Review an approval request</param> 
+        /// <returns>ApprovalRequests</returns>            
+        public ApprovalRequests PostReviewApprovalRequest (string projectKey, string featureFlagKey, string environmentKey, string approvalRequestId, ApprovalRequestReviewConfigBody approvalRequestReviewConfigBody)
         {
             
             // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostReviewFeatureFlagApprovalRequest");
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling PostReviewApprovalRequest");
             
             // verify the required parameter 'featureFlagKey' is set
-            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostReviewFeatureFlagApprovalRequest");
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling PostReviewApprovalRequest");
             
             // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostReviewFeatureFlagApprovalRequest");
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling PostReviewApprovalRequest");
             
-            // verify the required parameter 'featureFlagApprovalRequestId' is set
-            if (featureFlagApprovalRequestId == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestId' when calling PostReviewFeatureFlagApprovalRequest");
+            // verify the required parameter 'approvalRequestId' is set
+            if (approvalRequestId == null) throw new ApiException(400, "Missing required parameter 'approvalRequestId' when calling PostReviewApprovalRequest");
             
-            // verify the required parameter 'featureFlagApprovalRequestReviewConfigBody' is set
-            if (featureFlagApprovalRequestReviewConfigBody == null) throw new ApiException(400, "Missing required parameter 'featureFlagApprovalRequestReviewConfigBody' when calling PostReviewFeatureFlagApprovalRequest");
+            // verify the required parameter 'approvalRequestReviewConfigBody' is set
+            if (approvalRequestReviewConfigBody == null) throw new ApiException(400, "Missing required parameter 'approvalRequestReviewConfigBody' when calling PostReviewApprovalRequest");
             
     
-            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/review";
+            var path = "/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}/review";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
-path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.ParameterToString(featureFlagApprovalRequestId));
+path = path.Replace("{" + "approvalRequestId" + "}", ApiClient.ParameterToString(approvalRequestId));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -1027,7 +1393,7 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(featureFlagApprovalRequestReviewConfigBody); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(approvalRequestReviewConfigBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
@@ -1036,11 +1402,11 @@ path = path.Replace("{" + "featureFlagApprovalRequestId" + "}", ApiClient.Parame
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostReviewFeatureFlagApprovalRequest: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostReviewApprovalRequest: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PostReviewFeatureFlagApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling PostReviewApprovalRequest: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (FeatureFlagApprovalRequests) ApiClient.Deserialize(response.Content, typeof(FeatureFlagApprovalRequests), response.Headers);
+            return (ApprovalRequests) ApiClient.Deserialize(response.Content, typeof(ApprovalRequests), response.Headers);
         }
     
     }
