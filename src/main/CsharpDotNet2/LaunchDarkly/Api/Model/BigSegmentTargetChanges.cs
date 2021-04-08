@@ -11,20 +11,22 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatuses {
+  public class BigSegmentTargetChanges {
     /// <summary>
-    /// Gets or Sets Links
+    /// Users to add to this list of targets
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public FeatureFlagStatusLinks Links { get; set; }
+    /// <value>Users to add to this list of targets</value>
+    [DataMember(Name="add", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "add")]
+    public List<string> Add { get; set; }
 
     /// <summary>
-    /// Gets or Sets Items
+    /// Users to remove from this list of targets
     /// </summary>
-    [DataMember(Name="items", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "items")]
-    public List<FeatureFlagStatus> Items { get; set; }
+    /// <value>Users to remove from this list of targets</value>
+    [DataMember(Name="remove", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "remove")]
+    public List<string> Remove { get; set; }
 
 
     /// <summary>
@@ -33,9 +35,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatuses {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
-      sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("class BigSegmentTargetChanges {\n");
+      sb.Append("  Add: ").Append(Add).Append("\n");
+      sb.Append("  Remove: ").Append(Remove).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

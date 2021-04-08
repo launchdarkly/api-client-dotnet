@@ -51,9 +51,9 @@ namespace LaunchDarkly.Api.Model {
     public ApprovalRequestReviewStatus ReviewStatus { get; set; }
 
     /// <summary>
-    /// | Name     | Description | | - -- -- -- -:| - -- -- -- -- -- | | pending  | the approval request has not been applied yet | | completed| the approval request has been applied successfully | | failed   | the approval request has been applied but the changes were not applied successfully | 
+    /// | Name      | Description | | - -- -- -- --:| - -- -- -- -- -- | | pending   | the approval request has not been applied yet | | completed | the approval request has been applied successfully | | scheduled | the approval request for a scheduled change has been applied successfully | | failed    | the approval request has been applied but the changes were not applied successfully | 
     /// </summary>
-    /// <value>| Name     | Description | | - -- -- -- -:| - -- -- -- -- -- | | pending  | the approval request has not been applied yet | | completed| the approval request has been applied successfully | | failed   | the approval request has been applied but the changes were not applied successfully | </value>
+    /// <value>| Name      | Description | | - -- -- -- --:| - -- -- -- -- -- | | pending   | the approval request has not been applied yet | | completed | the approval request has been applied successfully | | scheduled | the approval request for a scheduled change has been applied successfully | | failed    | the approval request has been applied but the changes were not applied successfully | </value>
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public string Status { get; set; }
@@ -95,6 +95,22 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "instructions")]
     public SemanticPatchInstruction Instructions { get; set; }
 
+    /// <summary>
+    /// Timestamp for when instructions will be executed
+    /// </summary>
+    /// <value>Timestamp for when instructions will be executed</value>
+    [DataMember(Name="executionDate", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "executionDate")]
+    public long? ExecutionDate { get; set; }
+
+    /// <summary>
+    /// ID of scheduled change to edit or delete
+    /// </summary>
+    /// <value>ID of scheduled change to edit or delete</value>
+    [DataMember(Name="operatingOnId", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "operatingOnId")]
+    public string OperatingOnId { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -114,6 +130,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  AllReviews: ").Append(AllReviews).Append("\n");
       sb.Append("  NotifyMemberIds: ").Append(NotifyMemberIds).Append("\n");
       sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+      sb.Append("  ExecutionDate: ").Append(ExecutionDate).Append("\n");
+      sb.Append("  OperatingOnId: ").Append(OperatingOnId).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

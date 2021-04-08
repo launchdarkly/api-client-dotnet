@@ -70,14 +70,14 @@ namespace LaunchDarkly.Api.Api
         /// <returns>UserSegment</returns>
         UserSegment PostUserSegment (string projectKey, string environmentKey, UserSegmentBody userSegmentBody);
         /// <summary>
-        /// Update targets included or excluded in an unbounded segment 
+        /// Update targets included or excluded in a big segment 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
         /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param>
-        /// <param name="unboundedSegmentTargetsBody">Add or remove user targets to the included or excluded lists on an unbounded segment</param>
+        /// <param name="bigSegmentTargetsBody">Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.</param>
         /// <returns></returns>
-        void UpdatedUnboundedSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, UnboundedSegmentTargetsBody unboundedSegmentTargetsBody);
+        void UpdatedBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody);
     }
   
     /// <summary>
@@ -470,30 +470,30 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
-        /// Update targets included or excluded in an unbounded segment 
+        /// Update targets included or excluded in a big segment 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
         /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param> 
-        /// <param name="unboundedSegmentTargetsBody">Add or remove user targets to the included or excluded lists on an unbounded segment</param> 
+        /// <param name="bigSegmentTargetsBody">Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.</param> 
         /// <returns></returns>            
-        public void UpdatedUnboundedSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, UnboundedSegmentTargetsBody unboundedSegmentTargetsBody)
+        public void UpdatedBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody)
         {
             
             // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling UpdatedUnboundedSegmentTargets");
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling UpdatedBigSegmentTargets");
             
             // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling UpdatedUnboundedSegmentTargets");
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling UpdatedBigSegmentTargets");
             
             // verify the required parameter 'userSegmentKey' is set
-            if (userSegmentKey == null) throw new ApiException(400, "Missing required parameter 'userSegmentKey' when calling UpdatedUnboundedSegmentTargets");
+            if (userSegmentKey == null) throw new ApiException(400, "Missing required parameter 'userSegmentKey' when calling UpdatedBigSegmentTargets");
             
-            // verify the required parameter 'unboundedSegmentTargetsBody' is set
-            if (unboundedSegmentTargetsBody == null) throw new ApiException(400, "Missing required parameter 'unboundedSegmentTargetsBody' when calling UpdatedUnboundedSegmentTargets");
+            // verify the required parameter 'bigSegmentTargetsBody' is set
+            if (bigSegmentTargetsBody == null) throw new ApiException(400, "Missing required parameter 'bigSegmentTargetsBody' when calling UpdatedBigSegmentTargets");
             
     
-            var path = "/segments/{projectKey}/{environmentKey}/{userSegmentKey}/unbounded-users";
+            var path = "/segments/{projectKey}/{environmentKey}/{userSegmentKey}/users";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
 path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
@@ -505,7 +505,7 @@ path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(us
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(unboundedSegmentTargetsBody); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(bigSegmentTargetsBody); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "Token" };
@@ -514,9 +514,9 @@ path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(us
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling UpdatedUnboundedSegmentTargets: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling UpdatedBigSegmentTargets: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling UpdatedUnboundedSegmentTargets: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling UpdatedBigSegmentTargets: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
         }

@@ -42,6 +42,22 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "comment")]
     public string Comment { get; set; }
 
+    /// <summary>
+    /// Timestamp for when instructions will be executed
+    /// </summary>
+    /// <value>Timestamp for when instructions will be executed</value>
+    [DataMember(Name="executionDate", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "executionDate")]
+    public long? ExecutionDate { get; set; }
+
+    /// <summary>
+    /// ID of scheduled change to edit or delete
+    /// </summary>
+    /// <value>ID of scheduled change to edit or delete</value>
+    [DataMember(Name="operatingOnId", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "operatingOnId")]
+    public string OperatingOnId { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -54,6 +70,8 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  Instructions: ").Append(Instructions).Append("\n");
       sb.Append("  NotifyMemberIds: ").Append(NotifyMemberIds).Append("\n");
       sb.Append("  Comment: ").Append(Comment).Append("\n");
+      sb.Append("  ExecutionDate: ").Append(ExecutionDate).Append("\n");
+      sb.Append("  OperatingOnId: ").Append(OperatingOnId).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

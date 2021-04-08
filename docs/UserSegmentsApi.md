@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**PatchExpiringUserTargetsOnSegment**](UserSegmentsApi.md#patchexpiringusertargetsonsegment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**PatchUserSegment**](UserSegmentsApi.md#patchusersegment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**PostUserSegment**](UserSegmentsApi.md#postusersegment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
-[**UpdatedUnboundedSegmentTargets**](UserSegmentsApi.md#updatedunboundedsegmenttargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/unbounded-users | Update targets included or excluded in an unbounded segment
+[**UpdatedBigSegmentTargets**](UserSegmentsApi.md#updatedbigsegmenttargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
 
 
 <a name="deleteusersegment"></a>
@@ -500,11 +500,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="updatedunboundedsegmenttargets"></a>
-# **UpdatedUnboundedSegmentTargets**
-> void UpdatedUnboundedSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, UnboundedSegmentTargetsBody unboundedSegmentTargetsBody)
+<a name="updatedbigsegmenttargets"></a>
+# **UpdatedBigSegmentTargets**
+> void UpdatedBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody)
 
-Update targets included or excluded in an unbounded segment
+Update targets included or excluded in a big segment
 
 ### Example
 ```csharp
@@ -516,7 +516,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class UpdatedUnboundedSegmentTargetsExample
+    public class UpdatedBigSegmentTargetsExample
     {
         public void main()
         {
@@ -530,16 +530,16 @@ namespace Example
             var projectKey = projectKey_example;  // string | The project key, used to tie the flags together under one project so they can be managed together.
             var environmentKey = environmentKey_example;  // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
             var userSegmentKey = userSegmentKey_example;  // string | The user segment's key. The key identifies the user segment in your code.
-            var unboundedSegmentTargetsBody = new UnboundedSegmentTargetsBody(); // UnboundedSegmentTargetsBody | Add or remove user targets to the included or excluded lists on an unbounded segment
+            var bigSegmentTargetsBody = new BigSegmentTargetsBody(); // BigSegmentTargetsBody | Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.
 
             try
             {
-                // Update targets included or excluded in an unbounded segment
-                apiInstance.UpdatedUnboundedSegmentTargets(projectKey, environmentKey, userSegmentKey, unboundedSegmentTargetsBody);
+                // Update targets included or excluded in a big segment
+                apiInstance.UpdatedBigSegmentTargets(projectKey, environmentKey, userSegmentKey, bigSegmentTargetsBody);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UserSegmentsApi.UpdatedUnboundedSegmentTargets: " + e.Message );
+                Debug.Print("Exception when calling UserSegmentsApi.UpdatedBigSegmentTargets: " + e.Message );
             }
         }
     }
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
  **projectKey** | **string**| The project key, used to tie the flags together under one project so they can be managed together. | 
  **environmentKey** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. | 
  **userSegmentKey** | **string**| The user segment&#39;s key. The key identifies the user segment in your code. | 
- **unboundedSegmentTargetsBody** | [**UnboundedSegmentTargetsBody**](UnboundedSegmentTargetsBody.md)| Add or remove user targets to the included or excluded lists on an unbounded segment | 
+ **bigSegmentTargetsBody** | [**BigSegmentTargetsBody**](BigSegmentTargetsBody.md)| Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature. | 
 
 ### Return type
 

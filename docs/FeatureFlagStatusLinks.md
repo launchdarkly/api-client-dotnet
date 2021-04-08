@@ -1,10 +1,10 @@
-# LaunchDarkly.Api.Model.FeatureFlagStatuses
+# LaunchDarkly.Api.Model.FeatureFlagStatusLinks
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | [**FeatureFlagStatusLinks**](FeatureFlagStatusLinks.md) |  | [optional] 
-**Items** | [**List&lt;FeatureFlagStatus&gt;**](FeatureFlagStatus.md) |  | [optional] 
+**Parent** | [**Link**](Link.md) |  | [optional] 
+**Self** | [**Link**](Link.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

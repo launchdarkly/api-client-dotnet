@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Instructions** | [**SemanticPatchInstruction**](SemanticPatchInstruction.md) |  | 
 **NotifyMemberIds** | **List&lt;string&gt;** |  | 
 **Comment** | **string** | comment will be included in audit log item for change. | [optional] 
+**ExecutionDate** | **long?** | Timestamp for when instructions will be executed | [optional] 
+**OperatingOnId** | **string** | ID of scheduled change to edit or delete | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

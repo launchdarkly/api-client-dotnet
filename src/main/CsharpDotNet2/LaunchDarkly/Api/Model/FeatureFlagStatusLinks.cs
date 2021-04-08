@@ -11,20 +11,20 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatuses {
+  public class FeatureFlagStatusLinks {
     /// <summary>
-    /// Gets or Sets Links
+    /// Gets or Sets Parent
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public FeatureFlagStatusLinks Links { get; set; }
+    [DataMember(Name="parent", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "parent")]
+    public Link Parent { get; set; }
 
     /// <summary>
-    /// Gets or Sets Items
+    /// Gets or Sets Self
     /// </summary>
-    [DataMember(Name="items", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "items")]
-    public List<FeatureFlagStatus> Items { get; set; }
+    [DataMember(Name="self", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "self")]
+    public Link Self { get; set; }
 
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatuses {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
-      sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("class FeatureFlagStatusLinks {\n");
+      sb.Append("  Parent: ").Append(Parent).Append("\n");
+      sb.Append("  Self: ").Append(Self).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

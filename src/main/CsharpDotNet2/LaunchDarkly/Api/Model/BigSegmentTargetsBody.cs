@@ -11,20 +11,20 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class FeatureFlagStatuses {
+  public class BigSegmentTargetsBody {
     /// <summary>
-    /// Gets or Sets Links
+    /// Gets or Sets Included
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public FeatureFlagStatusLinks Links { get; set; }
+    [DataMember(Name="included", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "included")]
+    public BigSegmentTargetChanges Included { get; set; }
 
     /// <summary>
-    /// Gets or Sets Items
+    /// Gets or Sets Excluded
     /// </summary>
-    [DataMember(Name="items", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "items")]
-    public List<FeatureFlagStatus> Items { get; set; }
+    [DataMember(Name="excluded", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "excluded")]
+    public BigSegmentTargetChanges Excluded { get; set; }
 
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class FeatureFlagStatuses {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
-      sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("class BigSegmentTargetsBody {\n");
+      sb.Append("  Included: ").Append(Included).Append("\n");
+      sb.Append("  Excluded: ").Append(Excluded).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

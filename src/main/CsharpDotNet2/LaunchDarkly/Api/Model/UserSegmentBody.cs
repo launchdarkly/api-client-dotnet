@@ -37,9 +37,9 @@ namespace LaunchDarkly.Api.Model {
     public string Description { get; set; }
 
     /// <summary>
-    /// Controls whether this segment can support unlimited numbers of users. Requires the beta API and additional setup. Include/exclude lists in this payload are not used in unbounded segments.
+    /// Controls whether this is considered a \"big segment\" which can support an unlimited numbers of users. Include/exclude lists sent with this payload are not used in big segments. Contact your account manager for early access to this feature.
     /// </summary>
-    /// <value>Controls whether this segment can support unlimited numbers of users. Requires the beta API and additional setup. Include/exclude lists in this payload are not used in unbounded segments.</value>
+    /// <value>Controls whether this is considered a \"big segment\" which can support an unlimited numbers of users. Include/exclude lists sent with this payload are not used in big segments. Contact your account manager for early access to this feature.</value>
     [DataMember(Name="unbounded", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "unbounded")]
     public bool? Unbounded { get; set; }

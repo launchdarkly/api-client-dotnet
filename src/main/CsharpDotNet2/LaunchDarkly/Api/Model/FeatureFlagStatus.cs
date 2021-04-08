@@ -39,7 +39,7 @@ namespace LaunchDarkly.Api.Model {
     /// </summary>
     [DataMember(Name="_links", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "_links")]
-    public Links Links { get; set; }
+    public FeatureFlagStatusLinks Links { get; set; }
 
 
     /// <summary>
