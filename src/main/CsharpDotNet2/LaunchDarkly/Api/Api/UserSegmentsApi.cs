@@ -77,7 +77,7 @@ namespace LaunchDarkly.Api.Api
         /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param>
         /// <param name="bigSegmentTargetsBody">Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.</param>
         /// <returns></returns>
-        void UpdatedBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody);
+        void UpdateBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody);
     }
   
     /// <summary>
@@ -477,20 +477,20 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         /// <param name="userSegmentKey">The user segment&#39;s key. The key identifies the user segment in your code.</param> 
         /// <param name="bigSegmentTargetsBody">Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.</param> 
         /// <returns></returns>            
-        public void UpdatedBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody)
+        public void UpdateBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody)
         {
             
             // verify the required parameter 'projectKey' is set
-            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling UpdatedBigSegmentTargets");
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling UpdateBigSegmentTargets");
             
             // verify the required parameter 'environmentKey' is set
-            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling UpdatedBigSegmentTargets");
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling UpdateBigSegmentTargets");
             
             // verify the required parameter 'userSegmentKey' is set
-            if (userSegmentKey == null) throw new ApiException(400, "Missing required parameter 'userSegmentKey' when calling UpdatedBigSegmentTargets");
+            if (userSegmentKey == null) throw new ApiException(400, "Missing required parameter 'userSegmentKey' when calling UpdateBigSegmentTargets");
             
             // verify the required parameter 'bigSegmentTargetsBody' is set
-            if (bigSegmentTargetsBody == null) throw new ApiException(400, "Missing required parameter 'bigSegmentTargetsBody' when calling UpdatedBigSegmentTargets");
+            if (bigSegmentTargetsBody == null) throw new ApiException(400, "Missing required parameter 'bigSegmentTargetsBody' when calling UpdateBigSegmentTargets");
             
     
             var path = "/segments/{projectKey}/{environmentKey}/{userSegmentKey}/users";
@@ -514,9 +514,9 @@ path = path.Replace("{" + "userSegmentKey" + "}", ApiClient.ParameterToString(us
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling UpdatedBigSegmentTargets: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling UpdateBigSegmentTargets: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling UpdatedBigSegmentTargets: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling UpdateBigSegmentTargets: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
         }

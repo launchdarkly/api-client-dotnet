@@ -11,20 +11,27 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Integration {
-    /// <summary>
-    /// Gets or Sets Links
-    /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public DependentFlagLinks Links { get; set; }
-
+  public class MultiEnvironmentDependentFlags {
     /// <summary>
     /// Gets or Sets Items
     /// </summary>
     [DataMember(Name="items", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "items")]
-    public List<IntegrationSubscription> Items { get; set; }
+    public List<MultiEnvironmentDependentFlag> Items { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Links
+    /// </summary>
+    [DataMember(Name="_links", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_links")]
+    public DependentFlagsLinks Links { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Site
+    /// </summary>
+    [DataMember(Name="_site", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "_site")]
+    public Site Site { get; set; }
 
 
     /// <summary>
@@ -33,9 +40,10 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Integration {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("class MultiEnvironmentDependentFlags {\n");
       sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("  Links: ").Append(Links).Append("\n");
+      sb.Append("  Site: ").Append(Site).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

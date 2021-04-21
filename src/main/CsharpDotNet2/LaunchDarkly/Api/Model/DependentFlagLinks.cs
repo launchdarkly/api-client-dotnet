@@ -11,20 +11,13 @@ namespace LaunchDarkly.Api.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Integration {
+  public class DependentFlagLinks {
     /// <summary>
-    /// Gets or Sets Links
+    /// Gets or Sets Self
     /// </summary>
-    [DataMember(Name="_links", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "_links")]
-    public DependentFlagLinks Links { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Items
-    /// </summary>
-    [DataMember(Name="items", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "items")]
-    public List<IntegrationSubscription> Items { get; set; }
+    [DataMember(Name="self", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "self")]
+    public Link Self { get; set; }
 
 
     /// <summary>
@@ -33,9 +26,8 @@ namespace LaunchDarkly.Api.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Integration {\n");
-      sb.Append("  Links: ").Append(Links).Append("\n");
-      sb.Append("  Items: ").Append(Items).Append("\n");
+      sb.Append("class DependentFlagLinks {\n");
+      sb.Append("  Self: ").Append(Self).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

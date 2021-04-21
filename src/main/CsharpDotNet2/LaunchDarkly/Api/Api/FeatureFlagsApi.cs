@@ -46,6 +46,21 @@ namespace LaunchDarkly.Api.Api
         /// <returns></returns>
         void DeleteFlagConfigScheduledChanges (string projectKey, string featureFlagKey, string environmentKey, string scheduledChangeId);
         /// <summary>
+        /// Get dependent flags for the flag in the environment specified in path parameters 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <returns>DependentFlagsByEnvironment</returns>
+        DependentFlagsByEnvironment FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet (string projectKey, string environmentKey, string featureFlagKey);
+        /// <summary>
+        /// Get dependent flags across all environments for the flag specified in the path parameters 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param>
+        /// <returns>MultiEnvironmentDependentFlags</returns>
+        MultiEnvironmentDependentFlags FlagsProjectKeyFeatureFlagKeyDependentFlagsGet (string projectKey, string featureFlagKey);
+        /// <summary>
         /// Get a single approval request for a feature flag config 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
@@ -462,6 +477,95 @@ path = path.Replace("{" + "scheduledChangeId" + "}", ApiClient.ParameterToString
                 throw new ApiException ((int)response.StatusCode, "Error calling DeleteFlagConfigScheduledChanges: " + response.ErrorMessage, response.ErrorMessage);
     
             return;
+        }
+    
+        /// <summary>
+        /// Get dependent flags for the flag in the environment specified in path parameters 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <returns>DependentFlagsByEnvironment</returns>            
+        public DependentFlagsByEnvironment FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet (string projectKey, string environmentKey, string featureFlagKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet");
+            
+            // verify the required parameter 'environmentKey' is set
+            if (environmentKey == null) throw new ApiException(400, "Missing required parameter 'environmentKey' when calling FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet");
+            
+    
+            var path = "/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(environmentKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling FlagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (DependentFlagsByEnvironment) ApiClient.Deserialize(response.Content, typeof(DependentFlagsByEnvironment), response.Headers);
+        }
+    
+        /// <summary>
+        /// Get dependent flags across all environments for the flag specified in the path parameters 
+        /// </summary>
+        /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
+        /// <param name="featureFlagKey">The feature flag&#39;s key. The key identifies the flag in your code.</param> 
+        /// <returns>MultiEnvironmentDependentFlags</returns>            
+        public MultiEnvironmentDependentFlags FlagsProjectKeyFeatureFlagKeyDependentFlagsGet (string projectKey, string featureFlagKey)
+        {
+            
+            // verify the required parameter 'projectKey' is set
+            if (projectKey == null) throw new ApiException(400, "Missing required parameter 'projectKey' when calling FlagsProjectKeyFeatureFlagKeyDependentFlagsGet");
+            
+            // verify the required parameter 'featureFlagKey' is set
+            if (featureFlagKey == null) throw new ApiException(400, "Missing required parameter 'featureFlagKey' when calling FlagsProjectKeyFeatureFlagKeyDependentFlagsGet");
+            
+    
+            var path = "/flags/{projectKey}/{featureFlagKey}/dependent-flags";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "projectKey" + "}", ApiClient.ParameterToString(projectKey));
+path = path.Replace("{" + "featureFlagKey" + "}", ApiClient.ParameterToString(featureFlagKey));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "Token" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling FlagsProjectKeyFeatureFlagKeyDependentFlagsGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling FlagsProjectKeyFeatureFlagKeyDependentFlagsGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (MultiEnvironmentDependentFlags) ApiClient.Deserialize(response.Content, typeof(MultiEnvironmentDependentFlags), response.Headers);
         }
     
         /// <summary>

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**PatchExpiringUserTargetsOnSegment**](UserSegmentsApi.md#patchexpiringusertargetsonsegment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**PatchUserSegment**](UserSegmentsApi.md#patchusersegment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**PostUserSegment**](UserSegmentsApi.md#postusersegment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
-[**UpdatedBigSegmentTargets**](UserSegmentsApi.md#updatedbigsegmenttargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
+[**UpdateBigSegmentTargets**](UserSegmentsApi.md#updatebigsegmenttargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
 
 
 <a name="deleteusersegment"></a>
@@ -500,9 +500,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="updatedbigsegmenttargets"></a>
-# **UpdatedBigSegmentTargets**
-> void UpdatedBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody)
+<a name="updatebigsegmenttargets"></a>
+# **UpdateBigSegmentTargets**
+> void UpdateBigSegmentTargets (string projectKey, string environmentKey, string userSegmentKey, BigSegmentTargetsBody bigSegmentTargetsBody)
 
 Update targets included or excluded in a big segment
 
@@ -516,7 +516,7 @@ using LaunchDarkly.Api.Model;
 
 namespace Example
 {
-    public class UpdatedBigSegmentTargetsExample
+    public class UpdateBigSegmentTargetsExample
     {
         public void main()
         {
@@ -535,11 +535,11 @@ namespace Example
             try
             {
                 // Update targets included or excluded in a big segment
-                apiInstance.UpdatedBigSegmentTargets(projectKey, environmentKey, userSegmentKey, bigSegmentTargetsBody);
+                apiInstance.UpdateBigSegmentTargets(projectKey, environmentKey, userSegmentKey, bigSegmentTargetsBody);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UserSegmentsApi.UpdatedBigSegmentTargets: " + e.Message );
+                Debug.Print("Exception when calling UserSegmentsApi.UpdateBigSegmentTargets: " + e.Message );
             }
         }
     }
