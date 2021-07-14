@@ -21,9 +21,9 @@ namespace LaunchDarkly.Api.Model {
     public string ServiceKind { get; set; }
 
     /// <summary>
-    /// Whether any changes to flags in this environment will require approval.
+    /// Whether any changes to flags in this environment will require approval. You may only set required or requiredApprovalTags, not both.
     /// </summary>
-    /// <value>Whether any changes to flags in this environment will require approval.</value>
+    /// <value>Whether any changes to flags in this environment will require approval. You may only set required or requiredApprovalTags, not both.</value>
     [DataMember(Name="required", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "required")]
     public bool? Required { get; set; }
@@ -52,6 +52,14 @@ namespace LaunchDarkly.Api.Model {
     [JsonProperty(PropertyName = "canApplyDeclinedChanges")]
     public bool? CanApplyDeclinedChanges { get; set; }
 
+    /// <summary>
+    /// An array of tags used to specify which flags with those tags require approval. You may only set requiredApprovalTags or required, not both.
+    /// </summary>
+    /// <value>An array of tags used to specify which flags with those tags require approval. You may only set requiredApprovalTags or required, not both.</value>
+    [DataMember(Name="requiredApprovalTags", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "requiredApprovalTags")]
+    public List<string> RequiredApprovalTags { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -65,6 +73,7 @@ namespace LaunchDarkly.Api.Model {
       sb.Append("  CanReviewOwnRequest: ").Append(CanReviewOwnRequest).Append("\n");
       sb.Append("  MinNumApprovals: ").Append(MinNumApprovals).Append("\n");
       sb.Append("  CanApplyDeclinedChanges: ").Append(CanApplyDeclinedChanges).Append("\n");
+      sb.Append("  RequiredApprovalTags: ").Append(RequiredApprovalTags).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

@@ -26,7 +26,7 @@ namespace LaunchDarkly.Api.Api
         /// <returns>Environment</returns>
         Environment GetEnvironment (string projectKey, string environmentKey);
         /// <summary>
-        /// Modify an environment by ID. 
+        /// Modify an environment by ID. If you try to patch the environment by setting both required and requiredApprovalTags, it will result in an error. Users can specify either required approvals for all flags in an environment or those with specific tags, but not both. Only customers on an Enterprise plan can require approval for flag updates with either mechanism. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param>
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param>
@@ -196,7 +196,7 @@ path = path.Replace("{" + "environmentKey" + "}", ApiClient.ParameterToString(en
         }
     
         /// <summary>
-        /// Modify an environment by ID. 
+        /// Modify an environment by ID. If you try to patch the environment by setting both required and requiredApprovalTags, it will result in an error. Users can specify either required approvals for all flags in an environment or those with specific tags, but not both. Only customers on an Enterprise plan can require approval for flag updates with either mechanism. 
         /// </summary>
         /// <param name="projectKey">The project key, used to tie the flags together under one project so they can be managed together.</param> 
         /// <param name="environmentKey">The environment key, used to tie together flag configuration and users under one environment so they can be managed together.</param> 
